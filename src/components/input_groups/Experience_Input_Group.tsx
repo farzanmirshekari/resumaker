@@ -20,7 +20,7 @@ function Experience_Input_Group ( { item, index, onInputArrayChange, onItemDelet
     const { id, position, overview, start_date, end_date, details } = item;
 
     return (
-        <div key={index}>
+        <div key={index} className = 'flex flex-col gap-1 input_form_group'>
             <Input_Field
                 label = "Position"
                 value = {position}

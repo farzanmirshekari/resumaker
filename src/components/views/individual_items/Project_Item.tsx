@@ -9,8 +9,8 @@ interface Props {
 
 function Project_Item ( { title, overview, tools, github_repository, start_date, end_date } : Props ) {
     return (
-        <div>
-            <div>
+        <div className = 'w-full flex flex-col items-start gap-0.5 -mt-1'>
+            <div className = 'w-full flex flex-row justify-between items-center'>
                 <div>
                     <h4>{title} | {tools}</h4>
                     <h5>{overview}</h5>

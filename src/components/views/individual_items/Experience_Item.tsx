@@ -8,13 +8,13 @@ interface Props {
 
 function Experience_Item ( { position_title, company, overview, start_date, end_date } : Props ) {
     return (
-        <div>
-            <div>
+        <div className = 'w-full flex flex-col items-start gap-0.5 -mt-1'>
+            <div className = 'w-full flex flex-row justify-between items-center'>
                 <div>
-                    <h4>{position_title} | {company}</h4>
+                    <h4 className = 'text-black'>{position_title} | {company}</h4>
                     <h5>{overview}</h5>
                 </div>
-                <div>
+                <div className = 'text-black flex flex-row items-start gap-0.5'>
                     <span>{start_date} | {end_date}</span>
                 </div>
             </div>

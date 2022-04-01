@@ -20,7 +20,7 @@ function Education_Input_Group ( { item, index, onInputArrayChange, onItemDelete
     const { id, education_institute, program, start_date, end_date, details } = item;
 
     return (
-        <div key={index}>  
+        <div key={index} className = 'flex flex-col gap-1 input_form_group'>  
             <Input_Field
                 label = "Education Institute"
                 value = {education_institute}

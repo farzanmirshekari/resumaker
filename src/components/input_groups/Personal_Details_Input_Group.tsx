@@ -11,7 +11,7 @@ function Personal_Details_Input_Group ( { item, onInputChange } : Props ) {
     const { full_name, phone_number, email_address, github_username, linkedin_username, location } = item;
 
     return (
-        <div>
+        <div className = 'flex flex-col gap-1 input_form_group'>
             <Input_Field
                 label = "Full Name"
                 value = {full_name}

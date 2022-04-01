@@ -5,7 +5,7 @@ interface Props {
 
 function Contact_Details ( { icon, text } : Props ) {
     return (
-        <div>
+        <div className = 'flex justify-center items-center gap-1.5'>
             {icon ? <img src={icon} alt="Contact Detail"/> : null}
             <span>{text}</span>
         </div>

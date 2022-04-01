@@ -1,21 +1,30 @@
-.input_form h2 {
-    margin-left: 12px;
-    font-size: 14pt;
-    color: #2d5374;
+.bold {
+    font-weight: bold;
 }
 
-.input_form section {
-    margin: 20px 10px;
+.lighter {
+    font-weight: ligher;
+}
+
+.input_form_group:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.resume_side {
+    padding: 0.7cm 1.6cm 0.49cm 1.6cm;
+    width: 21.25cm;
+    height: 29.95cm;
+    border-radius: 2px;
+    border: 1px solid black;
+    box-shadow: 5px 0 6px 0 hsl(0 0% 0% / 0.2);
 }
 
 .input_field {
-    width: 95%;
-    height: 37.5px;
-    margin-top: 7px;
+    border-radius: 5px;
+    font-size: 9pt;
+    border: 1px solid #093652;
 }
 
-.input_field input {
-    border-radius: 5px;  
-    height: 100%; 
-    border: 1px solid #2d5374;
+.input_field:focus {
+    outline: none;
 }

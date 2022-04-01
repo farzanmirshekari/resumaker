@@ -162,8 +162,8 @@ class App extends Component<{}, State>{
         } = this.state;
 
         return (
-            <div className='absolute w-full h-full flex flex-row'>
-              <div className = 'relative w-1/2 h-full flex justify-center'>
+            <div className = 'flex flex-row flex-wrap justify-center gap-10'>
+              <div style={{ width: `${595}px` }}>
                 <Form
                   {...this.state}
                   onInputChange = {this.handleInputChange}
@@ -174,27 +174,29 @@ class App extends Component<{}, State>{
                   onProjectsItemAdd = {this.handleProjectsItemAdd}
                 />
               </div>
-              <div className = 'relative w-1/2 h-full flex justify-center'>
-                <Personal_Information {...personal_details} />
-                <Skills {...skills} />
-                {project_list.length > 0 ? (
-                  <Projects_List
-                    heading = "projects"
-                    projects_list = {project_list}
-                  />
-                ) : null}
-                {experience_list.length > 0 ? (
-                  <Experience_List
-                    heading = "experience"
-                    experience_list = {experience_list}
-                  />
-                ) : null}
-                {education_list.length > 0 ? (
-                  <Education_List
-                    heading = "education"
-                    education_list = {education_list}
-                  />
-                ) : null}
+              <div className = 'flex flex-col items-center'>
+                <div className = 'flex flex-col items-start gap-4 resume_side'>
+                  <Personal_Information {...personal_details} />
+                  <Skills {...skills} />
+                  {project_list.length > 0 ? (
+                    <Projects_List
+                      heading = "projects"
+                      projects_list = {project_list}
+                    />
+                  ) : null}
+                  {experience_list.length > 0 ? (
+                    <Experience_List
+                      heading = "experience"
+                      experience_list = {experience_list}
+                    />
+                  ) : null}
+                  {education_list.length > 0 ? (
+                    <Education_List
+                      heading = "education"
+                      education_list = {education_list}
+                    />
+                  ) : null}
+                </div>
               </div>
             </div>
         )

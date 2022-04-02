@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const data = {
     personal_details: {
-        full_name: "Farzan",
+        full_name: "Farzan Mirshekari",
         phone_number: "+1 647 569-2182",
         email_address: "fmirshek@uwaterloo.ca",
         github_username: "farzanmirshekari",

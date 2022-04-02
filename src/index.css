@@ -4,6 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 
+@font-face {
+    font-family: 'TW Cen MT';
+    src: local("TW Cen MT"),
+        url("./assets/TW Cen MT.TTF") format("truetype");
+}
+
 *,
 *::before,
 *::after {
@@ -24,10 +30,11 @@ body {
     font-weight: 400;
     line-height: 1.5;
     padding: 20px;
+    font-family: 'TW Cen MT';
 }
 
 form {
-    border: 1.5px solid #093652;
+    border: 1px solid #093652;
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
     padding: 30px;

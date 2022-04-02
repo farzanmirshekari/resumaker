@@ -17,21 +17,23 @@ interface Props {
 function Experience_List ( { heading, experience_list } : Props ) {
     return (
         <div className = 'w-full flex flex-col items-start gap-2 -mt-4'>
-            {heading ? <h3 className = 'text-black uppercase'>{heading}</h3> : null}
-            <hr className = 'w-full -mt-2.5 bg-black' style={{ height: `0.75px` }}></hr>
-            {experience_list.map((item, index) => {
-                const { position, company, overview, start_date, end_date } = item;
-                return (
-                    <Experience_Item
-                        key = {index}
-                        position_title = {position}
-                        company = {company}
-                        overview = {overview}
-                        start_date = {start_date}
-                        end_date = {end_date}
-                    />
-                )
-            })}
+            {heading ? <h3 className = '-mb-2.5 lighter section_header'><p>{heading.toUpperCase()}</p></h3> : null}
+            <div className = 'horizontal_divider'></div>
+            <div className = '-translate-y-1 text-base'>
+                {experience_list.map((item, index) => {
+                    const { position, company, overview, start_date, end_date } = item;
+                    return (
+                        <Experience_Item
+                            key = {index}
+                            position_title = {position}
+                            company = {company}
+                            overview = {overview}
+                            start_date = {start_date}
+                            end_date = {end_date}
+                        />
+                    )
+                })}
+            </div>
         </div>
     )
 }

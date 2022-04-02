@@ -162,7 +162,7 @@ class App extends Component<{}, State>{
         } = this.state;
 
         return (
-            <div className = 'flex flex-row flex-wrap justify-center gap-10'>
+            <div className = 'flex flex-row flex-wrap justify-center gap-20'>
               <div style={{ width: `${595}px` }}>
                 <Form
                   {...this.state}
@@ -174,8 +174,8 @@ class App extends Component<{}, State>{
                   onProjectsItemAdd = {this.handleProjectsItemAdd}
                 />
               </div>
-              <div className = 'flex flex-col items-center'>
-                <div className = 'flex flex-col items-start gap-4 resume_side'>
+              <div className = 'flex flex-col justify-center items-center h-fit w-fit'>
+                <div className = 'flex flex-col justify-start items-start gap-4 resume_side'>
                   <Personal_Information {...personal_details} />
                   <Skills {...skills} />
                   {project_list.length > 0 ? (

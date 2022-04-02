@@ -38,21 +38,21 @@ function Form ({
     return (
         <form>
             <section>
-                <h2 className = 'mb-1'>Personal Details</h2>
+                <h2 className = 'mb-1' style={{ color: '#093652' }}>Personal Details</h2>
                 <Personal_Details_Input_Group
                     item = {personal_details}
                     onInputChange = {onInputChange}
                 />
             </section>
             <section>
-                <h2 className = 'mb-1'>Skills</h2>
+                <h2 className = 'mb-1' style={{ color: '#093652' }}>Skills</h2>
                 <Skills_Input_Group
                     item={skills}
                     onInputChange={onInputChange}       
                 />
             </section>
             <section>
-                <h2 className = 'mb-1'>Projects</h2>
+                <h2 className = 'mb-1' style={{ color: '#093652' }}>Projects</h2>
                 {
                     projects.length === 0 ? (
                         <button type='button' onClick={onProjectsItemAdd}>Add Project</button>
@@ -73,7 +73,7 @@ function Form ({
                 }
             </section>
             <section>
-                <h2 className = 'mb-1'>Experience</h2>
+                <h2 className = 'mb-1' style={{ color: '#093652' }}>Experience</h2>
                 {
                     experience.length === 0 ? (
                         <button type='button' onClick={onExperienceItemAdd}>Add Experience</button>
@@ -94,7 +94,7 @@ function Form ({
                 }
             </section>
             <section>
-                <h2 className = 'mb-1'>Education</h2>
+                <h2 className = 'mb-1' style={{ color: '#093652' }}>Education</h2>
                 {
                     education.length === 0 ? (
                         <button type='button' onClick={onEducationItemAdd}>Add Education</button>

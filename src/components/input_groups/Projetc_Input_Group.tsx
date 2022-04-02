@@ -57,9 +57,9 @@ function Project_Input_Group ( { item, index, onInputArrayChange, onItemDelete, 
                 name = "end_date"
                 onChange = {onInputArrayChange("projects", index)}
             />
-            <div>
-                <button type='button' onClick={onItemAdd}>Add</button>
-                <button type='button' onClick={() => onItemDelete("projects", id)}>Delete</button>
+            <div className = 'flex gap-2 w-full h-10 justify-end mt-1 -translate-x-0.5'>
+                <button type='button' className = 'form_button' onClick={() => onItemDelete("projects", id)}>Delete</button>
+                <button type='button' className = 'add_button form_button' onClick={onItemAdd}>Add</button>
             </div>
         </div>
     )

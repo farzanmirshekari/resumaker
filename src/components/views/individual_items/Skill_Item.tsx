@@ -5,8 +5,9 @@ interface Props {
 
 function Skill_Item ( { title, values } : Props ) {
     return (
-        <div>
-            <h3>{title}: {values}</h3>
+        <div className = 'w-full flex flex-row'>
+            <h3>{`${title}:`}</h3>
+            <p className = 'ml-2'>{values}</p>
         </div>
     )
 }

@@ -45,9 +45,9 @@ function Experience_Input_Group ( { item, index, onInputArrayChange, onItemDelet
                 name = "end_date"
                 onChange = {onInputArrayChange("experience", index)}
             />
-            <div>
-                <button type='button' onClick={() => onItemDelete("experience", id)}>Delete</button>
-                <button type='button' onClick={onItemAdd}>Add</button>
+            <div className = 'flex gap-2 w-full h-10 justify-end mt-1 -translate-x-0.5'>
+                <button type='button' className = 'form_button' onClick={() => onItemDelete("experience", id)}>Delete</button>
+                <button type='button' className = 'add_button form_button' onClick={onItemAdd}>Add</button>
             </div>
         </div>
     )

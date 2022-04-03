@@ -29,6 +29,7 @@ function Education_List ( { heading, education_list } : Props ) {
                             program = {program}
                             start_date = {start_date}
                             end_date = {end_date}
+                            details = {details}
                         />
                     )
                 })}

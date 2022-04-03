@@ -19,6 +19,8 @@ function Project_Input_Group ( { item, index, onInputArrayChange, onItemDelete, 
 
     const { id, title, overview, github_repository, tools, start_date, end_date, details } = item;
 
+    console.log(details)
+
     return (
         <div key={index} className = 'flex flex-col gap-1 input_form_group'>
             <Input_Field
@@ -57,6 +59,19 @@ function Project_Input_Group ( { item, index, onInputArrayChange, onItemDelete, 
                 name = "end_date"
                 onChange = {onInputArrayChange("projects", index)}
             />
+            {
+                details.map((details_item, index) => {
+                    return (
+                        <Input_Field
+                            key = {index}
+                            label = "Description"
+                            value = {details_item}
+                            name = "description"
+                            onChange={onInputArrayChange("projects", index)}
+                        />
+                    )
+                })
+            }
             <div className = 'flex gap-2 w-full h-10 justify-end mt-1 -translate-x-0.5'>
                 <button type='button' className = 'form_button' onClick={() => onItemDelete("projects", id)}>Delete</button>
                 <button type='button' className = 'add_button form_button' onClick={onItemAdd}>Add</button>

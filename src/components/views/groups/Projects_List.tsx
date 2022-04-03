@@ -8,6 +8,7 @@ interface Item {
     tools: string;
     start_date: string;
     end_date: string;
+    details: string[];
 }
 
 interface Props {
@@ -22,7 +23,7 @@ function Projects_List ( { heading, projects_list } : Props ) {
             <div className = 'horizontal_divider'></div>
             <div className = '-translate-y-1 text-base'>
                 {projects_list.map((item, index) => {
-                    const { title, overview, github_repository, tools, start_date, end_date } = item;
+                    const { title, overview, github_repository, tools, start_date, end_date, details } = item;
                     return (
                         <Project_Item 
                             key = {index}
@@ -32,6 +33,7 @@ function Projects_List ( { heading, projects_list } : Props ) {
                             github_repository = {github_repository}
                             start_date = {start_date}
                             end_date = {end_date}
+                            details = {details}
                         />
                     )
                 })}

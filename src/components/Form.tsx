@@ -2,7 +2,7 @@ import React from "react";
 import Input_Field from "./micro_components/Input_Field";
 import Experience_Input_Group from "./input_groups/Experience_Input_Group";
 import Education_Input_Group from "./input_groups/Education_Input_Group";
-import Project_Input_Group from "./input_groups/Projetc_Input_Group";
+import Project_Input_Group from "./input_groups/Project_Input_Group";
 import Skills_Input_Group from "./input_groups/Skills_Input_Group";
 import Personal_Details_Input_Group from "./input_groups/Personal_Details_Input_Group";
 import { State } from "../models/interface-models";
@@ -32,8 +32,6 @@ function Form ({
     onEducationItemAdd,
     onProjectsItemAdd
 } : Props) {
-
-    console.log(projects.length)
 
     return (
         <form>

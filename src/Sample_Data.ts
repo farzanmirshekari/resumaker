@@ -25,8 +25,8 @@ const data = {
             start_date: "",
             end_date: "",
             details: [
-                "",
-                ""
+                "awdadawda",
+                "dadaaadrbrrg"
             ]
         }
     ],
@@ -36,11 +36,12 @@ const data = {
             position: "IT and Help Desk Intern",
             company: "Woodgreen Community Services",
             overview: "Volunteered for 80+ hours with the IT department of a non-profit",
-            start_date: "",
-            end_date: "",
+            start_date: "March 2022",
+            end_date: "April 2022",
             details: [
-                "",
-                ""
+                "daad",
+                "adwadad",
+                "awdawdad"
             ]
         }
     ],
@@ -52,7 +53,7 @@ const data = {
             start_date: "",
             end_date: "",
             details: [
-                "",
+                "adwad",
                 ""
             ]
         }

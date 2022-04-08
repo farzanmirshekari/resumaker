@@ -1,4 +1,5 @@
 import { Experience } from "../../models/interface-models";
+import Detail_Input_Field from "../micro_components/Detail_Input_FIeld";
 import Input_Field from "../micro_components/Input_Field";
 
 interface Props {
@@ -8,6 +9,11 @@ interface Props {
         property: "experience" | "education" | "projects",
         index: number
     ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
+    onDetailsInputArrayChange: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
     onItemDelete: (
         property: "experience" | "education" | "projects",
         id: string
@@ -15,7 +21,7 @@ interface Props {
     onItemAdd: () => void;
 }
 
-function Experience_Input_Group ( { item, index, onInputArrayChange, onItemDelete, onItemAdd } : Props ) {
+function Experience_Input_Group ( { item, index, onInputArrayChange, onDetailsInputArrayChange, onItemDelete, onItemAdd } : Props ) {
 
     const { id, position, overview, start_date, end_date, details } = item;
 
@@ -46,14 +52,15 @@ function Experience_Input_Group ( { item, index, onInputArrayChange, onItemDelet
                 onChange = {onInputArrayChange("experience", index)}
             />
             {
-                details.map((details_item, index) => {
+                details.map((details_item, detail_index) => {
                     return (
-                        <Input_Field
-                            key = {index}
+                        <Detail_Input_Field
+                            key = {`experience_description-${detail_index}`}
+                            id = {`experience_description-${detail_index}`}
                             label = "Description"
                             value = {details_item}
-                            name = "description"
-                            onChange={onInputArrayChange("experience", index)}
+                            name = {`experience_description-${detail_index}`}
+                            onChange={onDetailsInputArrayChange("experience", index, detail_index)}
                         />
                     )
                 })

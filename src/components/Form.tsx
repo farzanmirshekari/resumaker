@@ -13,10 +13,20 @@ interface Props extends State {
         property: "experience" | "education" | "projects",
         index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onDetailsInputArrayChange: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
+    onDetailAdd: () => void;
     onItemDelete: (property: "experience" | "education" | "projects", id: string) => void;
     onExperienceItemAdd: () => void;
     onEducationItemAdd: () => void;
     onProjectsItemAdd: () => void;
+}
+
+const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 }
 
 function Form ({
@@ -27,6 +37,8 @@ function Form ({
     projects,
     onInputChange,
     onInputArrayChange,
+    onDetailsInputArrayChange,
+    onDetailAdd,
     onItemDelete,
     onExperienceItemAdd,
     onEducationItemAdd,
@@ -34,7 +46,7 @@ function Form ({
 } : Props) {
 
     return (
-        <form>
+        <form onSubmit={onFormSubmit}>
             <section>
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Personal Details</h2>
                 <Personal_Details_Input_Group
@@ -62,6 +74,8 @@ function Form ({
                                     item = {item}
                                     index = {index}
                                     onInputArrayChange = {onInputArrayChange}
+                                    onDetailsInputArrayChange = {onDetailsInputArrayChange}
+                                    onDetailAdd = {onDetailAdd}
                                     onItemDelete = {onItemDelete}
                                     onItemAdd = {onProjectsItemAdd}
                                 />
@@ -83,6 +97,7 @@ function Form ({
                                     item = {item}
                                     index = {index}
                                     onInputArrayChange = {onInputArrayChange}
+                                    onDetailsInputArrayChange = {onDetailsInputArrayChange}
                                     onItemDelete = {onItemDelete}
                                     onItemAdd = {onExperienceItemAdd}
                                 />
@@ -104,6 +119,7 @@ function Form ({
                                     item = {item}
                                     index = {index}
                                     onInputArrayChange = {onInputArrayChange}
+                                    onDetailsInputArrayChange = {onDetailsInputArrayChange}
                                     onItemDelete = {onItemDelete}
                                     onItemAdd = {onEducationItemAdd}
                                 />

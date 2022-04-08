@@ -22,13 +22,23 @@
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
+.detail_input_field_container {
+    border-radius: 5px;
+    border: 1px solid #093652;
+}
+
+.detail_input_field {
+    border-radius: 5px;
+    font-size: 9pt
+}
+
 .input_field {
     border-radius: 5px;
     font-size: 9pt;
     border: 1px solid #093652;
 }
 
-.input_field:focus {
+.input_field:focus, .detail_input_field:focus {
     outline: none;
 }
 

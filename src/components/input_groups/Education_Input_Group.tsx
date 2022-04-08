@@ -1,4 +1,5 @@
 import { Education } from "../../models/interface-models";
+import Detail_Input_Field from "../micro_components/Detail_Input_FIeld";
 import Input_Field from "../micro_components/Input_Field";
 
 interface Props {
@@ -8,6 +9,11 @@ interface Props {
         property: "experience" | "education" | "projects",
         index: number
     ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
+    onDetailsInputArrayChange: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
     onItemDelete: (
         property: "experience" | "education" | "projects",
         id: string
@@ -15,12 +21,9 @@ interface Props {
     onItemAdd: () => void;
 }
 
-function Education_Input_Group ( { item, index, onInputArrayChange, onItemDelete, onItemAdd } : Props ) {
+function Education_Input_Group ( { item, index, onInputArrayChange, onDetailsInputArrayChange, onItemDelete, onItemAdd } : Props ) {
     
     const { id, education_institute, program, start_date, end_date, details } = item;
-
-    console.log(details.length)
-    console.log(details)
 
     return (
         <div key={index} className = 'flex flex-col gap-1 input_form_group'>  
@@ -49,14 +52,15 @@ function Education_Input_Group ( { item, index, onInputArrayChange, onItemDelete
                 onChange = {onInputArrayChange("education", index)}
             />
             {
-                details.map((details_item, index) => {
+                details.map((details_item, detail_index) => {
                     return (
-                        <Input_Field
-                            key = {index}
+                        <Detail_Input_Field
+                            key = {`education_description-${detail_index}`}
+                            id = {`education_description-${detail_index}`}
                             label = "Description"
                             value = {details_item}
-                            name = "description"
-                            onChange={onInputArrayChange("education", index)}
+                            name = {`education_description-${detail_index}`}
+                            onChange={onDetailsInputArrayChange("education", index, detail_index)}
                         />
                     )
                 })

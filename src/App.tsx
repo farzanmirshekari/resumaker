@@ -56,7 +56,6 @@ class App extends Component<{}, State>{
     ) => {
       return ( e : React.ChangeEvent<HTMLInputElement> ) => {
         const { name, value } = e.target;
-
         this.setState((prev_state) => ({
           ...prev_state,
           [property] : [
@@ -70,6 +69,19 @@ class App extends Component<{}, State>{
         }));
       };
     };
+
+    handleDetailsInputArrayChange = (
+      property: "experience" | "education" | "projects",
+      index: number,
+      detail_index: number
+    ) => {
+      return ( e : React.ChangeEvent<HTMLInputElement> ) => {
+        const { value } = e.target;
+        const state_json = JSON.parse(JSON.stringify(this.state));
+        state_json[property][index].details[detail_index] = value;
+        this.setState(JSON.parse(JSON.stringify(state_json)));
+      }
+    }
 
     handleInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) => {
       const { name, value } = e.target;
@@ -85,6 +97,11 @@ class App extends Component<{}, State>{
         }
       }));
     };
+
+    handleDetailAdd = () => {
+      const state_json = JSON.parse(JSON.stringify(this.state));
+      console.log(state_json);
+    }
 
     handleItemDelete =  ( property: "experience" | "education" | "projects", id: string ) => {
       this.setState((prev_state) => ({
@@ -168,6 +185,8 @@ class App extends Component<{}, State>{
                   {...this.state}
                   onInputChange = {this.handleInputChange}
                   onInputArrayChange = {this.handleInputArrayChange}
+                  onDetailsInputArrayChange = {this.handleDetailsInputArrayChange}
+                  onDetailAdd = {this.handleDetailAdd}
                   onItemDelete = {this.handleItemDelete}
                   onEducationItemAdd = {this.handleEducationItemAdd}
                   onExperienceItemAdd = {this.handleExperienceItemAdd}

@@ -1,4 +1,5 @@
 import { Project } from "../../models/interface-models";
+import Detail_Input_Field from "../micro_components/Detail_Input_FIeld";
 import Input_Field from "../micro_components/Input_Field";
 
 interface Props {
@@ -8,6 +9,12 @@ interface Props {
         property: "experience" | "education" | "projects",
         index: number
     ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
+    onDetailsInputArrayChange: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
+    onDetailAdd: () => void;
     onItemDelete: (
         property: "experience" | "education" | "projects",
         id: string
@@ -15,11 +22,9 @@ interface Props {
     onItemAdd: () => void;
 }
 
-function Project_Input_Group ( { item, index, onInputArrayChange, onItemDelete, onItemAdd } : Props ) {
+function Project_Input_Group ( { item, index, onInputArrayChange, onDetailsInputArrayChange, onDetailAdd, onItemDelete, onItemAdd } : Props ) {
 
     const { id, title, overview, github_repository, tools, start_date, end_date, details } = item;
-
-    console.log(details)
 
     return (
         <div key={index} className = 'flex flex-col gap-1 input_form_group'>
@@ -60,14 +65,16 @@ function Project_Input_Group ( { item, index, onInputArrayChange, onItemDelete, 
                 onChange = {onInputArrayChange("projects", index)}
             />
             {
-                details.map((details_item, index) => {
+                details.map((details_item, detail_index) => {
                     return (
-                        <Input_Field
-                            key = {index}
+                        <Detail_Input_Field
+                            key = {`project_description-${detail_index}`}
+                            id = {`project_description-${detail_index}`}
                             label = "Description"
                             value = {details_item}
-                            name = "description"
-                            onChange={onInputArrayChange("projects", index)}
+                            name = {`project_description-${detail_index}`}
+                            onChange = {onDetailsInputArrayChange("projects", index, detail_index)}
+                            onItemAdd = {onDetailAdd}
                         />
                     )
                 })

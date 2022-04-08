@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import './../../App.css';
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
 function Input_Field( { label, value, id, name, onChange } : Props) {
 
     if (!id) {
-        id = `input_${label.split(' ').join('_')}`;
+        id = `input_${label.split(' ').join('_')}-${uuidv4()}`;
     }
 
     return (

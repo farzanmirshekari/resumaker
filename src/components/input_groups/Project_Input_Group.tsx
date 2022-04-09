@@ -14,7 +14,16 @@ interface Props {
         index: number,
         detail_index: number
     ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
-    onDetailAdd: () => void;
+    onDetailAdd: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => void;
+    onDetailDelete: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => void;
     onItemDelete: (
         property: "experience" | "education" | "projects",
         id: string
@@ -22,7 +31,7 @@ interface Props {
     onItemAdd: () => void;
 }
 
-function Project_Input_Group ( { item, index, onInputArrayChange, onDetailsInputArrayChange, onDetailAdd, onItemDelete, onItemAdd } : Props ) {
+function Project_Input_Group ( { item, index, onInputArrayChange, onDetailsInputArrayChange, onDetailAdd, onDetailDelete, onItemDelete, onItemAdd } : Props ) {
 
     const { id, title, overview, github_repository, tools, start_date, end_date, details } = item;
 
@@ -70,16 +79,25 @@ function Project_Input_Group ( { item, index, onInputArrayChange, onDetailsInput
                         <Detail_Input_Field
                             key = {`project_description-${detail_index}`}
                             id = {`project_description-${detail_index}`}
+                            property = 'projects'
+                            index = {index}
+                            detail_index = {detail_index}
                             label = "Description"
                             value = {details_item}
                             name = {`project_description-${detail_index}`}
                             onChange = {onDetailsInputArrayChange("projects", index, detail_index)}
-                            onItemAdd = {onDetailAdd}
+                            onDetailAdd = {onDetailAdd}
+                            onDetailDelete = {onDetailDelete}
                         />
                     )
                 })
             }
             <div className = 'flex gap-2 w-full h-10 justify-end mt-1 -translate-x-0.5'>
+                {
+                    details.length === 0 && (
+                        <button className = 'form_button add_description_button' onClick = {() => {onDetailAdd('projects', index, 0)}}>+ Description</button>
+                    )
+                }
                 <button type='button' className = 'form_button' onClick={() => onItemDelete("projects", id)}>Delete</button>
                 <button type='button' className = 'add_button form_button' onClick={onItemAdd}>Add</button>
             </div>

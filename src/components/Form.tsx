@@ -1,5 +1,4 @@
 import React from "react";
-import Input_Field from "./micro_components/Input_Field";
 import Experience_Input_Group from "./input_groups/Experience_Input_Group";
 import Education_Input_Group from "./input_groups/Education_Input_Group";
 import Project_Input_Group from "./input_groups/Project_Input_Group";
@@ -18,14 +17,23 @@ interface Props extends State {
         index: number,
         detail_index: number
     ) => (e : React.ChangeEvent<HTMLInputElement>) => void;
-    onDetailAdd: () => void;
+    onDetailAdd: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => void;
+    onDetailDelete: (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => void;
     onItemDelete: (property: "experience" | "education" | "projects", id: string) => void;
     onExperienceItemAdd: () => void;
     onEducationItemAdd: () => void;
     onProjectsItemAdd: () => void;
 }
 
-const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const preventDefaultOnFormSubmit = ( e: React.FormEvent<HTMLFormElement> ) => {
     e.preventDefault();
 }
 
@@ -39,6 +47,7 @@ function Form ({
     onInputArrayChange,
     onDetailsInputArrayChange,
     onDetailAdd,
+    onDetailDelete,
     onItemDelete,
     onExperienceItemAdd,
     onEducationItemAdd,
@@ -46,7 +55,7 @@ function Form ({
 } : Props) {
 
     return (
-        <form onSubmit={onFormSubmit}>
+        <form onSubmit={preventDefaultOnFormSubmit}>
             <section>
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Personal Details</h2>
                 <Personal_Details_Input_Group
@@ -65,7 +74,9 @@ function Form ({
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Projects</h2>
                 {
                     projects.length === 0 ? (
-                        <button type='button' onClick={onProjectsItemAdd}>Add Project</button>
+                        <div className = 'relative w-full h-fit flex justify-end items-center'>
+                            <button type='button' className = 'form_button add_item_button' onClick={onProjectsItemAdd}>Add Project</button>
+                        </div>
                     ) : (
                         projects.map((item, index) => {
                             return (
@@ -76,6 +87,7 @@ function Form ({
                                     onInputArrayChange = {onInputArrayChange}
                                     onDetailsInputArrayChange = {onDetailsInputArrayChange}
                                     onDetailAdd = {onDetailAdd}
+                                    onDetailDelete = {onDetailDelete}
                                     onItemDelete = {onItemDelete}
                                     onItemAdd = {onProjectsItemAdd}
                                 />
@@ -88,7 +100,9 @@ function Form ({
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Experience</h2>
                 {
                     experience.length === 0 ? (
-                        <button type='button' onClick={onExperienceItemAdd}>Add Experience</button>
+                        <div className = 'relative w-full h-fit flex justify-end items-center'>
+                            <button type='button' className = 'form_button add_item_button' onClick={onExperienceItemAdd}>Add Experience</button>
+                        </div>
                     ) : (
                         experience.map((item, index) => {
                             return (
@@ -98,7 +112,9 @@ function Form ({
                                     index = {index}
                                     onInputArrayChange = {onInputArrayChange}
                                     onDetailsInputArrayChange = {onDetailsInputArrayChange}
+                                    onDetailAdd = {onDetailAdd}
                                     onItemDelete = {onItemDelete}
+                                    onDetailDelete = {onDetailDelete}
                                     onItemAdd = {onExperienceItemAdd}
                                 />
                             )
@@ -110,7 +126,9 @@ function Form ({
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Education</h2>
                 {
                     education.length === 0 ? (
-                        <button type='button' onClick={onEducationItemAdd}>Add Education</button>
+                        <div className = 'relative w-full h-fit flex justify-end items-center'>
+                            <button type='button' className = 'form_button add_item_button' onClick={onEducationItemAdd}>Add Education</button>
+                        </div>
                     ) : (
                         education.map((item, index) => {
                             return (
@@ -120,7 +138,9 @@ function Form ({
                                     index = {index}
                                     onInputArrayChange = {onInputArrayChange}
                                     onDetailsInputArrayChange = {onDetailsInputArrayChange}
+                                    onDetailAdd = {onDetailAdd}
                                     onItemDelete = {onItemDelete}
+                                    onDetailDelete = {onDetailDelete}
                                     onItemAdd = {onEducationItemAdd}
                                 />
                             )

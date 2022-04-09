@@ -8,7 +8,7 @@ interface Props {
 
 function Education_Item ( { education_institute, program, start_date, end_date, details } : Props ) {
     return (
-        <div className = 'w-full flex flex-col items-start gap-0.5 -mt-1'>
+        <div className = 'w-full flex flex-col items-start gap-0.5'>
             <div className = 'w-full flex flex-row justify-between items-center'>
                 <h4 className = 'text-black'>{education_institute}</h4>
                 <span>{start_date} - {end_date}</span>

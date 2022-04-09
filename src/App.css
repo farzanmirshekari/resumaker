@@ -55,6 +55,14 @@
     color: #093652;
 }
 
+.add_description_button {
+    width: 7rem;
+}
+
+.add_item_button {
+    width: 8rem;
+}
+
 .horizontal_divider {
     position: relative;
     width: 100%;

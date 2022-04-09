@@ -98,10 +98,17 @@ class App extends Component<{}, State>{
       }));
     };
 
-    handleDetailAdd = () => {
-      const state_json = JSON.parse(JSON.stringify(this.state));
-      console.log(state_json);
+    handleDetailAdd = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) => {
+      const state_json = JSON.parse(JSON.stringify(this.state)); 
+      state_json[property][index].details.splice(detail_index + 1, 0, '');
+      this.setState(JSON.parse(JSON.stringify(state_json)));
     }
+
+    handleDetailDelete = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) => {
+      const state_json = JSON.parse(JSON.stringify(this.state)); 
+      state_json[property][index].details.splice(detail_index, 1);
+      this.setState(JSON.parse(JSON.stringify(state_json)));
+    } 
 
     handleItemDelete =  ( property: "experience" | "education" | "projects", id: string ) => {
       this.setState((prev_state) => ({
@@ -187,6 +194,7 @@ class App extends Component<{}, State>{
                   onInputArrayChange = {this.handleInputArrayChange}
                   onDetailsInputArrayChange = {this.handleDetailsInputArrayChange}
                   onDetailAdd = {this.handleDetailAdd}
+                  onDetailDelete = {this.handleDetailDelete}
                   onItemDelete = {this.handleItemDelete}
                   onEducationItemAdd = {this.handleEducationItemAdd}
                   onExperienceItemAdd = {this.handleExperienceItemAdd}

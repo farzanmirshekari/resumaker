@@ -201,7 +201,7 @@ class App extends Component<{}, State>{
                   onProjectsItemAdd = {this.handleProjectsItemAdd}
                 />
               </div>
-              <div className = 'flex flex-col justify-center items-center h-fit w-fit'>
+              <div className = 'flex flex-col justify-center items-center h-fit w-fit' id = 'resume_container'>
                 <div className = 'flex flex-col justify-start items-start gap-4 resume_side'>
                   <Personal_Information {...personal_details} />
                   <Skills {...skills} />

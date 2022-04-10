@@ -1,6 +1,7 @@
 {
   "name": "resumaker",
   "version": "0.1.0",
+  "homepage": "https://farzanmirshekari.github.io/Resumaker",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
@@ -10,6 +11,7 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
+    "gh-pages": "^3.2.3",
     "jspdf": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -22,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

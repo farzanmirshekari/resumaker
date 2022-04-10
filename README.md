@@ -9,6 +9,10 @@ The Résumaker offers the creation of <i>stylish</i>, <i>flexible</i> and <i>cus
 
 > This project leverages the cohesive compatibility of React, Typescript and TailwindCSS to offer an optimized UI/UX experience in scalable manner. The Résumaker is developed and maintained as a passion project by <b>Farzan Mirshekari</b>, a first-year Electrical Engineering student at the University of Waterloo. The Résumaker has been utilized to create résumes that have successfully attained co-op positions.
 
+<h3>Deployment</h3>
+
+> The Résumaker is currently hosted on GitHub Pages and can be found <a href = 'https://farzanmirshekari.github.io/Resumaker/'><i>here</i>.</a>
+
 <h3>Next Steps</h3>
 
 > The Résumaker is an evolving project. It has recently undergone a full remodeling to optimize performance as well as the structural architecture of the project. The next version will bring about customizability at a micro level, allowing users to fully personalize their résume with the design of their choice. 

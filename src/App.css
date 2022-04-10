@@ -15,11 +15,19 @@
 }
 
 .resume_side {
-    padding: 0.4cm 1.4cm 0.49cm 1.4cm;
+    padding: 0.5cm 1.4cm 0.49cm 1.4cm;
     width: 21.25cm;
     height: 29.95cm;
     border-radius: 2px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+.item_title {
+    font-size: 10pt;
+}
+
+.item_title span {
+    font-size: 10.5pt;
 }
 
 .detail_input_field_container {

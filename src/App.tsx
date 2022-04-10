@@ -185,6 +185,8 @@ class App extends Component<{}, State>{
           education: education_list
         } = this.state;
 
+        console.log(this.state)
+
         return (
             <div className = 'flex flex-row flex-wrap justify-center gap-20'>
               <div style={{ width: `${595}px` }}>

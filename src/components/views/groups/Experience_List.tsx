@@ -17,7 +17,7 @@ interface Props {
 
 function Experience_List ( { heading, experience_list } : Props ) {
     return (
-        <div className = 'w-full flex flex-col items-start gap-2 -mt-4'>
+        <div className = 'w-full flex flex-col items-start gap-2 -mt-6'>
             {heading ? <h3 className = '-mb-2.5 lighter section_header'><p>{heading.toUpperCase()}</p></h3> : null}
             <div className = 'horizontal_divider'></div>
             <div className = '-translate-y-1 text-base w-full flex flex-col'>

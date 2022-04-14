@@ -33,7 +33,7 @@ interface Props {
 
 function Experience_Input_Group ( { item, index, onInputArrayChange, onDetailsInputArrayChange, onDetailAdd, onDetailDelete, onItemDelete, onItemAdd } : Props ) {
 
-    const { id, position, overview, start_date, end_date, details } = item;
+    const { id, position, company, overview, start_date, end_date, details } = item;
 
     return (
         <div key={index} className = 'flex flex-col gap-1 input_form_group'>
@@ -41,6 +41,12 @@ function Experience_Input_Group ( { item, index, onInputArrayChange, onDetailsIn
                 label = "Position"
                 value = {position}
                 name = "position"
+                onChange = {onInputArrayChange("experience", index)}
+            />
+            <Input_Field
+                label = "Company"
+                value = {company}
+                name = "company"
                 onChange = {onInputArrayChange("experience", index)}
             />
             <Input_Field

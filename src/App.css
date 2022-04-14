@@ -50,6 +50,22 @@
     outline: none;
 }
 
+.print_button {
+    position: relative;
+    width: 16%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 13pt;
+    opacity: 0.6;
+}
+
+.print_button img {
+    height: 35px;
+}
+
 .form_button {
     background-color: #093652;
     width: 4.5rem;

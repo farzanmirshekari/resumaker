@@ -8,6 +8,8 @@ import Form from './components/Form';
 import Skills from './components/views/groups/Skills';
 import Personal_Information from './components/views/groups/Personal_Information';
 import data from './Sample_Data';
+import Printer_Icon from './assets/printer_icon.svg';
+import Return_Icon from './assets/return_icon.svg';
 import { v4 as uuidv4 } from "uuid";
 
 class App extends Component<{}, State>{
@@ -33,7 +35,8 @@ class App extends Component<{}, State>{
         },
         projects: [],
         experience: [],
-        education: []
+        education: [],
+        print_mode: false
       }
 
     }
@@ -176,6 +179,14 @@ class App extends Component<{}, State>{
       }));
     };
 
+    handlePrintMode = () => {
+      this.setState((prev_state) => ({
+        ...prev_state,
+        print_mode: !prev_state.print_mode
+      }))
+      this.state.print_mode ? document.getElementById('resume_container')!.style.transform = `translateY(${0}px)` : document.getElementById('resume_container')!.style.transform = `translateY(-${22}px)`;
+    }
+
     render() {
         const {
           personal_details,
@@ -185,24 +196,26 @@ class App extends Component<{}, State>{
           education: education_list
         } = this.state;
 
-        console.log(this.state)
-
         return (
             <div className = 'flex flex-row flex-wrap justify-center gap-20'>
-              <div style={{ width: `${595}px` }}>
-                <Form
-                  {...this.state}
-                  onInputChange = {this.handleInputChange}
-                  onInputArrayChange = {this.handleInputArrayChange}
-                  onDetailsInputArrayChange = {this.handleDetailsInputArrayChange}
-                  onDetailAdd = {this.handleDetailAdd}
-                  onDetailDelete = {this.handleDetailDelete}
-                  onItemDelete = {this.handleItemDelete}
-                  onEducationItemAdd = {this.handleEducationItemAdd}
-                  onExperienceItemAdd = {this.handleExperienceItemAdd}
-                  onProjectsItemAdd = {this.handleProjectsItemAdd}
-                />
-              </div>
+              {
+                !this.state.print_mode && (
+                  <div style={{ width: `${595}px` }}>
+                    <Form
+                      {...this.state}
+                      onInputChange = {this.handleInputChange}
+                      onInputArrayChange = {this.handleInputArrayChange}
+                      onDetailsInputArrayChange = {this.handleDetailsInputArrayChange}
+                      onDetailAdd = {this.handleDetailAdd}
+                      onDetailDelete = {this.handleDetailDelete}
+                      onItemDelete = {this.handleItemDelete}
+                      onEducationItemAdd = {this.handleEducationItemAdd}
+                      onExperienceItemAdd = {this.handleExperienceItemAdd}
+                      onProjectsItemAdd = {this.handleProjectsItemAdd}
+                    />
+                  </div>
+                )
+              }
               <div className = 'flex flex-col justify-center items-center h-fit w-fit' id = 'resume_container'>
                 <div className = 'flex flex-col justify-start items-start gap-4 resume_side'>
                   <Personal_Information {...personal_details} />
@@ -226,6 +239,18 @@ class App extends Component<{}, State>{
                     />
                   ) : null}
                 </div>
+                <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
+                  {
+                    !this.state.print_mode && (
+                      <><img src={Printer_Icon} /><p>Print to PDF</p></>
+                    )
+                  }
+                  {
+                    this.state.print_mode && (
+                      <><img src={Return_Icon} className = 'w-10 -mr-1.5'/><p>Return</p></>
+                    )
+                  }
+                </button>
               </div>
             </div>
         )

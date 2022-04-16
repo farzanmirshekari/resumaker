@@ -20,6 +20,13 @@
     height: 29.95cm;
     border-radius: 2px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    animation-duration: 1.75s;
+    animation-name: slide_up;
+}
+
+.input_form {
+    animation-duration: 2s;
+    animation-name: slide_down;
 }
 
 .item_title {
@@ -109,4 +116,22 @@
 
 .section_header p:first-letter {
     font-size: 16pt;
+}
+
+@keyframes slide_down {
+    from {
+        transform: translateY(-100%)
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slide_up {
+    from {
+        transform: translateY(100%)
+    }
+    to {
+        transform: translateY(0%);
+    }
 }

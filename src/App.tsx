@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from 'react';
 import './App.css';
 import { State, Experience, Education, Project } from './models/interface-models';
@@ -242,12 +243,12 @@ class App extends Component<{}, State>{
                 <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
                   {
                     !this.state.print_mode && (
-                      <><img src={Printer_Icon} /><p>Print to PDF</p></>
+                      <><img src={Printer_Icon} alt = 'Printer Icon'/><p>Print to PDF</p></>
                     )
                   }
                   {
                     this.state.print_mode && (
-                      <><img src={Return_Icon} className = 'w-10 -mr-1.5'/><p>Return</p></>
+                      <><img src={Return_Icon} className = 'w-10 -mr-1.5' alt = 'Return Icon'/><p>Return</p></>
                     )
                   }
                 </button>

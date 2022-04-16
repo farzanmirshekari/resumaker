@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import Experience_Input_Group from "./input_groups/Experience_Input_Group";
 import Education_Input_Group from "./input_groups/Education_Input_Group";
@@ -55,7 +56,7 @@ function Form ({
 } : Props) {
 
     return (
-        <form onSubmit={preventDefaultOnFormSubmit}>
+        <form onSubmit={preventDefaultOnFormSubmit} className = 'input_form'>
             <section>
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Personal Details</h2>
                 <Personal_Details_Input_Group

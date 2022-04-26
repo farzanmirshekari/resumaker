@@ -42,16 +42,31 @@ class App extends Component<{}, State>{
 
     }
 
+    saveToLocalStorage() {
+      localStorage.setItem('values', JSON.stringify(this.state))
+    }
+
     componentDidMount() {
-      const { personal_details, skills, projects, experience, education } = data;
-      this.setState((prev_state) => ({
-        ...prev_state,
-        personal_details,
-        skills,
-        projects,
-        experience,
-        education
-      }));
+      if (JSON.parse(localStorage.getItem('values')!)) {
+        this.setState(JSON.parse(localStorage.getItem('values')!))
+      }
+      else {
+        const { personal_details, skills, projects, experience, education } = data;
+        this.setState((prev_state) => ({
+          ...prev_state,
+          personal_details,
+          skills,
+          projects,
+          experience,
+          education
+        }));
+      }
+    }
+
+    componentDidUpdate( prev_state : any ) {
+      if (this.state !== prev_state) {
+        this.saveToLocalStorage();
+      }
     }
 
     handleInputArrayChange = (
@@ -189,6 +204,7 @@ class App extends Component<{}, State>{
     }
 
     render() {
+
         const {
           personal_details,
           skills,

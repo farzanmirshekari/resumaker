@@ -118,6 +118,11 @@
     font-size: 16pt;
 }
 
+.functional_icon {
+    animation-name: slide_up;
+    animation-duration: 1.75s;
+}
+
 @keyframes slide_down {
     from {
         transform: translateY(-100%)

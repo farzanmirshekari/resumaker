@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Resumaker/static/css/main.d4b6e5ac.css",
-    "main.js": "/Resumaker/static/js/main.99487ff4.js",
+    "main.css": "/Resumaker/static/css/main.41dd89c5.css",
+    "main.js": "/Resumaker/static/js/main.15ca7e67.js",
     "static/media/TW Cen MT.TTF": "/Resumaker/static/media/TW Cen MT.7b67eec0cc9a1e3ba9cc.TTF",
     "static/media/printer_icon.svg": "/Resumaker/static/media/printer_icon.48b39d2499c8c05a38bebf6937bc44c5.svg",
     "static/media/github_icon.svg": "/Resumaker/static/media/github_icon.3ea7d9bcdf7bb4836e2175ac2a12c306.svg",
@@ -11,11 +11,11 @@
     "static/media/return_icon.svg": "/Resumaker/static/media/return_icon.1b9b47d3c9b5f25d0e4e33a8a7be1d82.svg",
     "static/media/location_icon.svg": "/Resumaker/static/media/location_icon.d9fe5579ce7cf80dff9dec10233e4dcf.svg",
     "static/media/linkedin_icon.svg": "/Resumaker/static/media/linkedin_icon.27a3f479ca1bbb0ceef19e395081fb94.svg",
-    "main.d4b6e5ac.css.map": "/Resumaker/static/css/main.d4b6e5ac.css.map",
-    "main.99487ff4.js.map": "/Resumaker/static/js/main.99487ff4.js.map"
+    "main.41dd89c5.css.map": "/Resumaker/static/css/main.41dd89c5.css.map",
+    "main.15ca7e67.js.map": "/Resumaker/static/js/main.15ca7e67.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4b6e5ac.css",
-    "static/js/main.99487ff4.js"
+    "static/css/main.41dd89c5.css",
+    "static/js/main.15ca7e67.js"
   ]
 }

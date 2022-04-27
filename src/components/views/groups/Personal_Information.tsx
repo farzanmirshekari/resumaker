@@ -23,11 +23,31 @@ function Personal_Information ( { full_name, phone_number, email_address, github
                 </div>
             </div>
             <div className = 'flex flex-row items-center gap-4 -mt-4 translate-y-2.5'>
-                <Contact_Details text = {phone_number} icon = {Phone_Icon} />
-                <Contact_Details text = {email_address} icon = {Email_Icon} />
-                <Contact_Details text = {location} icon = {Location_Icon} />
-                <a href = {`https://github.com/${github_username}`} target = "_blank"><Contact_Details text = {github_username} icon = {GitHub_Icon} /></a>
-                <a href = {`https://linkedin.com/in/${linkedin_username}/`} target = "_blank"><Contact_Details text = {linkedin_username} icon = {LinkedIn_Icon} /></a>
+                {
+                    phone_number.length > 0 && (
+                        <Contact_Details text = {phone_number} icon = {Phone_Icon} />
+                    )
+                }
+                {
+                    email_address.length > 0 && (
+                        <Contact_Details text = {email_address} icon = {Email_Icon} />
+                    )
+                }
+                {
+                    location.length > 0 && (
+                        <Contact_Details text = {location} icon = {Location_Icon} />
+                    )
+                }
+                {
+                    github_username.length > 0 && (
+                        <a className = 'text-sky-700' href = {`https://github.com/${github_username}`} target = "_blank"><Contact_Details text = {github_username} icon = {GitHub_Icon} /></a>
+                    )   
+                }
+                {
+                    linkedin_username.length > 0 && (
+                        <a className = 'text-sky-700' href = {`https://linkedin.com/in/${linkedin_username}/`} target = "_blank"><Contact_Details text = {linkedin_username} icon = {LinkedIn_Icon} /></a>
+                    )
+                }
             </div>
         </header>
     )

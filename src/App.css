@@ -20,7 +20,7 @@
     height: 29.95cm;
     border-radius: 2px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-    animation-duration: 1.75s;
+    animation-duration: 1.9s;
     animation-name: slide_up;
 }
 
@@ -116,11 +116,6 @@
 
 .section_header p:first-letter {
     font-size: 16pt;
-}
-
-.functional_icon {
-    animation-name: slide_up;
-    animation-duration: 1.75s;
 }
 
 @keyframes slide_down {

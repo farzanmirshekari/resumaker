@@ -13,10 +13,26 @@ function Skills ( { programming_languages, frameworks, tools, certifications } :
             <h3 className = '-mb-2.5 lighter section_header'><p className = 'translate-y-0.5'>SKILLS</p></h3>
             <div className = 'horizontal_divider'></div>
             <div className = '-translate-y-1 text-base'>
-                <Skill_Item title='Languages' values={programming_languages}/>
-                <Skill_Item title='Frameworks' values={frameworks}/>
-                <Skill_Item title='Tools' values={tools}/>
-                <Skill_Item title='Certifications' values={certifications}/>
+                {
+                    programming_languages.length > 0 && (
+                        <Skill_Item title='Languages' values={programming_languages}/>
+                    )
+                }
+                {
+                    frameworks.length > 0 && (
+                        <Skill_Item title='Frameworks' values={frameworks}/>
+                    )
+                }
+                {
+                    tools.length > 0 && (
+                        <Skill_Item title='Tools' values={tools}/>
+                    )
+                }
+                {
+                    certifications.length > 0 && (
+                        <Skill_Item title='Certifications' values={certifications}/>
+                    )
+                }
             </div>
         </div>
     )

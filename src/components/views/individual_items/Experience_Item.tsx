@@ -12,7 +12,7 @@ function Experience_Item ( { position_title, company, overview, start_date, end_
         <div className = 'w-full flex flex-col justify-start items-start gap-0.5'>
             <div className = 'w-full flex flex-col justify-start items-center'>
                 <div className = 'w-full flex flex-row justify-between items-center'>
-                    <h4 className = 'text-black item_title'><span className = 'bold'>{position_title}</span> | {company}</h4>
+                    <h4 className = 'text-black item_title'><span className = 'bold'>{position_title}</span> | <span className = 'text-sky-700'>{company}</span></h4>
                     <span>{start_date} | {end_date}</span>
                 </div>
                 <div className = 'text-black w-full flex flex-row items-start justify-start gap-0.5'>

@@ -14,6 +14,11 @@
     display: none;
 }
 
+#resume_container {
+    position: sticky;
+    top: 2vh;
+}
+
 .resume_side {
     padding: 0.5cm 1.4cm 0.49cm 1.4cm;
     width: 21.25cm;

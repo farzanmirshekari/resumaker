@@ -1,5 +1,4 @@
 import Education_Item from "../individual_items/Education_Item";
-import { Draggable } from "react-drag-reorder";
 
 interface Item {
     id: string;
@@ -21,21 +20,19 @@ function Education_List ( { heading, education_list } : Props ) {
             {heading ? <h3 className = '-mb-2.5 lighter section_header'><p>{heading.toUpperCase()}</p></h3> : null}
             <div className = 'horizontal_divider'></div>
             <div className = '-translate-y-1 text-base w-full flex flex-col'>
-                <Draggable>
-                    {education_list.map((item, index) => {
-                        const { education_institute, program, start_date, end_date, details } = item;
-                        return (
-                            <Education_Item
-                                key = {index}
-                                education_institute = {education_institute}
-                                program = {program}
-                                start_date = {start_date}
-                                end_date = {end_date}
-                                details = {details}
-                            />
-                        )
-                    })}
-                </Draggable>
+                {education_list.map((item, index) => {
+                    const { education_institute, program, start_date, end_date, details } = item;
+                    return (
+                        <Education_Item
+                            key = {index}
+                            education_institute = {education_institute}
+                            program = {program}
+                            start_date = {start_date}
+                            end_date = {end_date}
+                            details = {details}
+                        />
+                    )
+                })}
             </div>
         </div>
     )

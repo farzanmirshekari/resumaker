@@ -19,10 +19,10 @@ function Personal_Information ( { full_name, phone_number, email_address, github
         <header className = 'flex flex-col w-full justify-center items-center'>
             <div className = 'flex flex-row text-center'>
                 <div className = 'uppercase'>
-                    <span className = 'flex flex-row full_name -translate-y-1'><p>{full_name.split(' ')[0].padEnd(full_name.split(' ')[0].length + 1,' ')}</p>{Array(1).fill('\xa0').join('')}<p>{full_name.split(' ')[1]}</p></span>
+                    <span className = 'flex flex-row full_name translate-y-2'><p>{full_name.split(' ')[0].padEnd(full_name.split(' ')[0].length + 1,' ')}</p>{Array(1).fill('\xa0').join('')}<p>{full_name.split(' ')[1]}</p></span>
                 </div>
             </div>
-            <div className = 'flex flex-row items-center gap-4 -mt-4 translate-y-2.5'>
+            <div className = 'flex flex-row items-center gap-4 -mt-4 translate-y-6'>
                 {
                     phone_number.length > 0 && (
                         <Contact_Details text = {phone_number} icon = {Phone_Icon} />

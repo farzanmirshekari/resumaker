@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { Project } from "../../models/interface-models";
 import Detail_Input_Field from "../micro_components/Detail_Input_FIeld";
 import Input_Field from "../micro_components/Input_Field";

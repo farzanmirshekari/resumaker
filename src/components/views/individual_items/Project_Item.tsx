@@ -21,7 +21,7 @@ function Project_Item ( { title, overview, tools, github_repository, start_date,
                     }
                 </div>
                 <div className = 'text-black w-full flex flex-row items-start justify-start gap-0.5'>
-                    <h5>{overview}</h5>
+                    <h5><i>{overview}</i></h5>
                 </div>
             </div>
             <div>

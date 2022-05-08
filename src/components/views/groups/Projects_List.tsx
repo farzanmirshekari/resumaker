@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import Project_Item from "../individual_items/Project_Item";
 
 interface Item {

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import Contact_Details from "../individual_items/Contact_Details";
 import Email_Icon from "./../../../assets/email_icon.svg";
 import Phone_Icon from "./../../../assets/phone_icon.svg";
@@ -40,12 +41,12 @@ function Personal_Information ( { full_name, phone_number, email_address, github
                 }
                 {
                     github_username.length > 0 && (
-                        <a className = 'text-sky-700' href = {`https://github.com/${github_username}`} target = "_blank"><Contact_Details text = {github_username} icon = {GitHub_Icon} /></a>
+                        <a className = 'text-sky-700' href = {`https://github.com/${github_username}`} target = "_blank" rel="noreferrer"><Contact_Details text = {github_username} icon = {GitHub_Icon} /></a>
                     )   
                 }
                 {
                     linkedin_username.length > 0 && (
-                        <a className = 'text-sky-700' href = {`https://linkedin.com/in/${linkedin_username}/`} target = "_blank"><Contact_Details text = {linkedin_username} icon = {LinkedIn_Icon} /></a>
+                        <a className = 'text-sky-700' href = {`https://linkedin.com/in/${linkedin_username}/`} target = "_blank" rel="noreferrer"><Contact_Details text = {linkedin_username} icon = {LinkedIn_Icon} /></a>
                     )
                 }
             </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import Experience_Item from "../individual_items/Experience_Item";
 
 interface Item {

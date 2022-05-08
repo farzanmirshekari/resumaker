@@ -72,32 +72,6 @@ function Form ({
                 />
             </section>
             <section>
-                <h2 className = 'mb-1' style={{ color: '#093652' }}>Projects</h2>
-                {
-                    projects.length === 0 ? (
-                        <div className = 'relative w-full h-fit flex justify-end items-center'>
-                            <button type='button' className = 'form_button add_item_button' onClick={onProjectsItemAdd}>Add Project</button>
-                        </div>
-                    ) : (
-                        projects.map((item, index) => {
-                            return (
-                                <Project_Input_Group
-                                    key = {index}
-                                    item = {item}
-                                    index = {index}
-                                    onInputArrayChange = {onInputArrayChange}
-                                    onDetailsInputArrayChange = {onDetailsInputArrayChange}
-                                    onDetailAdd = {onDetailAdd}
-                                    onDetailDelete = {onDetailDelete}
-                                    onItemDelete = {onItemDelete}
-                                    onItemAdd = {onProjectsItemAdd}
-                                />
-                            );
-                        })
-                    )
-                }
-            </section>
-            <section>
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Experience</h2>
                 {
                     experience.length === 0 ? (
@@ -119,6 +93,32 @@ function Form ({
                                     onItemAdd = {onExperienceItemAdd}
                                 />
                             )
+                        })
+                    )
+                }
+            </section>
+            <section>
+                <h2 className = 'mb-1' style={{ color: '#093652' }}>Projects</h2>
+                {
+                    projects.length === 0 ? (
+                        <div className = 'relative w-full h-fit flex justify-end items-center'>
+                            <button type='button' className = 'form_button add_item_button' onClick={onProjectsItemAdd}>Add Project</button>
+                        </div>
+                    ) : (
+                        projects.map((item, index) => {
+                            return (
+                                <Project_Input_Group
+                                    key = {index}
+                                    item = {item}
+                                    index = {index}
+                                    onInputArrayChange = {onInputArrayChange}
+                                    onDetailsInputArrayChange = {onDetailsInputArrayChange}
+                                    onDetailAdd = {onDetailAdd}
+                                    onDetailDelete = {onDetailDelete}
+                                    onItemDelete = {onItemDelete}
+                                    onItemAdd = {onProjectsItemAdd}
+                                />
+                            );
                         })
                     )
                 }

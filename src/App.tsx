@@ -237,16 +237,16 @@ class App extends Component<{}, State>{
                 <div className = 'flex flex-col justify-start items-start gap-4 resume_side'>
                   <Personal_Information {...personal_details} />
                   <Skills {...skills} />
-                  {project_list.length > 0 ? (
-                    <Projects_List
-                      heading = "projects"
-                      projects_list = {project_list}
-                    />
-                  ) : null}
                   {experience_list.length > 0 ? (
                     <Experience_List
                       heading = "experience"
                       experience_list = {experience_list}
+                    />
+                  ) : null}
+                  {project_list.length > 0 ? (
+                    <Projects_List
+                      heading = "projects"
+                      projects_list = {project_list}
                     />
                   ) : null}
                   {education_list.length > 0 ? (

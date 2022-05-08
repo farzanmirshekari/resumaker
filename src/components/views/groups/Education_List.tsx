@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import Education_Item from "../individual_items/Education_Item";
 
 interface Item {

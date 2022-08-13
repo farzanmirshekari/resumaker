@@ -10,7 +10,7 @@ interface Props {
 
 function Skills ( { programming_languages, frameworks, tools, certifications } : Props ) {
     return (
-        <div className = 'w-full flex flex-col items-start gap-2 mt-4'>
+        <div className = 'w-full flex flex-col items-start gap-2 mt-5'>
             <h3 className = '-mb-2.5 lighter section_header'><p className = 'translate-y-0.5'>SKILLS</p></h3>
             <div className = 'horizontal_divider'></div>
             <div className = '-translate-y-1 text-base'>

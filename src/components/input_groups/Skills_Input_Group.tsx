@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { Skills } from "../../models/interface-models";
 import Input_Field from "../micro_components/Input_Field";
 

@@ -12,7 +12,7 @@ function Skills_Input_Group ( { item, onInputChange } : Props ) {
     const { programming_languages, frameworks, tools, certifications } = item;
 
     return (
-        <div className = 'flex flex-col gap-1 input_form_group'>
+        <div className = 'flex flex-col gap-2.5 input_form_group'>
             <Input_Field 
                 label = "Programming Languages"
                 value = {programming_languages}

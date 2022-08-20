@@ -37,7 +37,7 @@ function Project_Input_Group ( { item, index, onInputArrayChange, onDetailsInput
     const { id, title, overview, github_repository, tools, start_date, end_date, details } = item;
 
     return (
-        <div key={index} className = 'flex flex-col gap-1 input_form_group'>
+        <div key={index} className = 'flex flex-col gap-2.5 input_form_group'>
             <Input_Field
                 label = "Title"
                 value = {title}

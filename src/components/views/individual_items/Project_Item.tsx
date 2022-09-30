@@ -13,7 +13,15 @@ function Project_Item ( { title, overview, tools, github_repository, start_date,
         <div className = 'w-full flex flex-col justify-start items-start gap-0.5'>
             <div className = 'w-full flex flex-col justify-start items-center'>
                 <div className = 'w-full flex flex-row justify-between items-center'>
-                    <h4 className = 'item_title'><span className = 'bold'><a href = {github_repository} target = "_blank" rel = 'noreferrer' className = 'text-sky-700'>{title}</a></span> | {tools}</h4>
+                    <h4 className = 'item_title'>
+                        <span className = 'bold'>
+                            {
+                                github_repository.length > 0 ? 
+                                    <a href = {github_repository} target = "_blank" rel = 'noreferrer' className = 'text-sky-700'>{title}</a> : 
+                                    <span className='text-black'>{title}</span>
+                            } 
+                        </span> | {tools}
+                    </h4>
                     {
                         start_date.length > 0 && end_date.length > 0 && (
                             <span>{start_date} | {end_date}</span>

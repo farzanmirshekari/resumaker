@@ -51,7 +51,7 @@ function Project_Input_Group ( { item, index, onInputArrayChange, onDetailsInput
                 onChange  = {onInputArrayChange("projects", index)}
             />
             <Input_Field
-                label = "GitHub Repository"
+                label = "Repository"
                 value = {github_repository}
                 name = "github_repository"
                 onChange  = {onInputArrayChange("projects", index)}

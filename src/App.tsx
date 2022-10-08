@@ -200,7 +200,9 @@ class App extends Component<{}, State>{
         ...prev_state,
         print_mode: !prev_state.print_mode
       }))
-      this.state.print_mode ? document.getElementById('resume_container')!.style.transform = `translateY(${0}px)` : document.getElementById('resume_container')!.style.transform = `translateY(-${22}px)`;
+      this.state.print_mode ? 
+        document.getElementById('resume_container')!.classList.remove('print_mode')  : 
+        document.getElementById('resume_container')!.classList.add('print_mode');
     }
 
     render() {

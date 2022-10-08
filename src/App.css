@@ -78,6 +78,10 @@
     height: 35px;
 }
 
+.print_mode {
+    transform: translateY(-2vh);
+}
+
 .form_button {
     background-color: #093652;
     width: 4.5rem;

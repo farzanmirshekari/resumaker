@@ -213,7 +213,7 @@ class App extends Component<{}, State>{
       }
     };
 
-    handlePrintMode = () => {
+    handlePrintMode = (): void => {
       this.setState((prev_state) => ({
         ...prev_state,
         print_mode: !prev_state.print_mode
@@ -221,6 +221,16 @@ class App extends Component<{}, State>{
       this.state.print_mode ? 
         document.getElementById('resume_container')!.classList.remove('print_mode')  : 
         document.getElementById('resume_container')!.classList.add('print_mode');
+    };
+
+    handleExportToJSON = (): void => {
+      const data_string = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state));
+      const download_a_tag = document.createElement('a');
+      download_a_tag.setAttribute("href", data_string);
+      download_a_tag.setAttribute("download", `${this.state.personal_details.full_name.replace(' ','-')}_${new Date().toISOString().slice(0, 10)}_resume.json`);
+      document.body.appendChild(download_a_tag);
+      download_a_tag.click();
+      download_a_tag.remove();
     };
 
     render() {
@@ -277,24 +287,30 @@ class App extends Component<{}, State>{
                     />
                   ) : null}
                 </div>
-                <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
+                <div className='relative w-full flex flex-row justify-center items-center gap-2'>
+                  {
+                    this.state.print_mode && (
+                      <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
+                        <img src={Return_Icon} className = 'w-10 -mr-1.5' alt = 'Return Icon'/>
+                        <p>Return</p>
+                      </button>
+                    )
+                  }
                   {
                     !this.state.print_mode && (
                       <>
-                        <img src={Printer_Icon} alt = 'Printer Icon'/>
-                        <p>Print to PDF</p>
+                        <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
+                          <img src={Printer_Icon} alt = 'Printer Icon'/>
+                          <p>Print to PDF</p>
+                        </button>
+                        <button className='print_button mt-16' onClick={this.handleExportToJSON}>
+                          <img src={Download_Icon} alt='Download Icon' />
+                          <p>Export to .JSON</p>
+                        </button>
                       </>
                     )
                   }
-                  {
-                    this.state.print_mode && (
-                      <>
-                        <img src={Return_Icon} className = 'w-10 -mr-1.5' alt = 'Return Icon'/>
-                        <p>Return</p>
-                      </>
-                    )
-                  }
-                </button>
+                </div>
               </div>
             </div>
         )

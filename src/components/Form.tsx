@@ -50,6 +50,7 @@ function Form ({
     onDetailsInputArrayChange,
     onDetailAdd,
     onDetailDelete,
+    onExistingSectionsUpload,
     onItemDelete,
     onExperienceItemAdd,
     onEducationItemAdd,
@@ -61,7 +62,7 @@ function Form ({
             <section className='relative w-full flex flex-row'>
                 <h2 className='relative w-full overflow-hidden whitespace-nowrap' style={{ color: '#093652' }}>Been here before?</h2>
                 <label className='relative flex w-full h-auto justify-end items-center'>
-                    <input type='file' accept='.json' className='hidden'/>
+                    <input type='file' accept='.json' className='hidden' onChange={(e : React.ChangeEvent<HTMLInputElement>) => onExistingSectionsUpload(e)}/>
                         <span className='relative w-full flex justify-center items-center cursor-pointer import_input'>
                             Upload Existing Résumé
                         </span>

@@ -64,7 +64,7 @@
 
 .print_button {
     position: relative;
-    width: 16%;
+    width: 20rem;
     display: flex;
     flex-direction: row;
     justify-content: center;

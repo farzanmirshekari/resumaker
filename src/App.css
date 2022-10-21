@@ -103,6 +103,19 @@
     width: 8rem;
 }
 
+.import_input {
+    width: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #ebebeb;
+    background-color: #093652;
+}
+
+.import_input:hover {
+    background-color: #d4d4d4;
+    color: #093652;
+}
+
 .horizontal_divider {
     position: relative;
     width: 100%;

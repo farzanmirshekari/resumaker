@@ -11,6 +11,7 @@ import Personal_Information from './components/views/groups/Personal_Information
 import data from './Sample_Data';
 import Printer_Icon from './assets/printer_icon.svg';
 import Return_Icon from './assets/return_icon.svg';
+import Download_Icon from './assets/download_icon.svg';
 import { v4 as uuidv4 } from "uuid";
 
 class App extends Component<{}, State>{
@@ -38,9 +39,9 @@ class App extends Component<{}, State>{
         experience: [],
         education: [],
         print_mode: false
-      }
+      };
 
-    }
+    };
 
     saveToLocalStorage() {
       localStorage.setItem('values', JSON.stringify(this.state))
@@ -61,13 +62,13 @@ class App extends Component<{}, State>{
           education
         }));
       }
-    }
+    };
 
     componentDidUpdate( prev_state : any ) {
       if (this.state !== prev_state) {
         this.saveToLocalStorage();
       }
-    }
+    };
 
     handleInputArrayChange = (
       property: "experience" | "education" | "projects",
@@ -100,9 +101,9 @@ class App extends Component<{}, State>{
         state_json[property][index].details[detail_index] = value;
         this.setState(JSON.parse(JSON.stringify(state_json)));
       }
-    }
+    };
 
-    handleInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) => {
+    handleInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) : void => {
       const { name, value } = e.target;
       this.setState((prev_state) => ({
         ...prev_state,
@@ -117,19 +118,19 @@ class App extends Component<{}, State>{
       }));
     };
 
-    handleDetailAdd = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) => {
+    handleDetailAdd = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) : void => {
       const state_json = JSON.parse(JSON.stringify(this.state)); 
       state_json[property][index].details.splice(detail_index + 1, 0, '');
       this.setState(JSON.parse(JSON.stringify(state_json)));
-    }
+    };
 
-    handleDetailDelete = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) => {
+    handleDetailDelete = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) : void => {
       const state_json = JSON.parse(JSON.stringify(this.state)); 
       state_json[property][index].details.splice(detail_index, 1);
       this.setState(JSON.parse(JSON.stringify(state_json)));
-    } 
+    };
 
-    handleItemDelete =  ( property: "experience" | "education" | "projects", id: string ) => {
+    handleItemDelete =  ( property: "experience" | "education" | "projects", id: string ) : void  => {
       this.setState((prev_state) => ({
         ...prev_state,
         [property]: [...prev_state[property]].filter(
@@ -138,7 +139,7 @@ class App extends Component<{}, State>{
       }));
     };
 
-    handleExperienceItemAdd = () => {
+    handleExperienceItemAdd = () : void => {
       const id = uuidv4();
       this.setState((prev_state) => ({
         ...prev_state,
@@ -157,7 +158,7 @@ class App extends Component<{}, State>{
       }));
     };
 
-    handleEducationItemAdd = () => {
+    handleEducationItemAdd = () : void => {
       const id = uuidv4();
       this.setState((prev_state) => ({
         ...prev_state,
@@ -173,9 +174,9 @@ class App extends Component<{}, State>{
           }
         ]
       }))
-    }
+    };
 
-    handleProjectsItemAdd = () => {
+    handleProjectsItemAdd = () : void => {
       const id = uuidv4();
       this.setState((prev_state) => ({
         ...prev_state,
@@ -195,6 +196,23 @@ class App extends Component<{}, State>{
       }));
     };
 
+    onExistingSectionsUpload = ( e : React.ChangeEvent<HTMLInputElement> ) : void => {
+      const reader = new FileReader();
+      const { files } = e.target;
+      if (files) {
+        reader.readAsText(files[0], "UTF-8");
+        reader.onload = (e) => {
+          const uploaded_json = JSON.parse(e.target!.result as string);
+          this.setState((prev_state) => ({
+            ...prev_state,
+            ...uploaded_json
+          }));
+        }
+      } else {
+        alert("Please upload a valid .JSON file..");
+      }
+    };
+
     handlePrintMode = () => {
       this.setState((prev_state) => ({
         ...prev_state,
@@ -203,7 +221,7 @@ class App extends Component<{}, State>{
       this.state.print_mode ? 
         document.getElementById('resume_container')!.classList.remove('print_mode')  : 
         document.getElementById('resume_container')!.classList.add('print_mode');
-    }
+    };
 
     render() {
 
@@ -227,6 +245,7 @@ class App extends Component<{}, State>{
                       onDetailsInputArrayChange = {this.handleDetailsInputArrayChange}
                       onDetailAdd = {this.handleDetailAdd}
                       onDetailDelete = {this.handleDetailDelete}
+                      onExistingSectionsUpload = {this.onExistingSectionsUpload}
                       onItemDelete = {this.handleItemDelete}
                       onEducationItemAdd = {this.handleEducationItemAdd}
                       onExperienceItemAdd = {this.handleExperienceItemAdd}
@@ -261,12 +280,18 @@ class App extends Component<{}, State>{
                 <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
                   {
                     !this.state.print_mode && (
-                      <><img src={Printer_Icon} alt = 'Printer Icon'/><p>Print to PDF</p></>
+                      <>
+                        <img src={Printer_Icon} alt = 'Printer Icon'/>
+                        <p>Print to PDF</p>
+                      </>
                     )
                   }
                   {
                     this.state.print_mode && (
-                      <><img src={Return_Icon} className = 'w-10 -mr-1.5' alt = 'Return Icon'/><p>Return</p></>
+                      <>
+                        <img src={Return_Icon} className = 'w-10 -mr-1.5' alt = 'Return Icon'/>
+                        <p>Return</p>
+                      </>
                     )
                   }
                 </button>

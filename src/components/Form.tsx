@@ -28,6 +28,7 @@ interface Props extends State {
         index: number,
         detail_index: number
     ) => void;
+    onExistingSectionsUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onItemDelete: (property: "experience" | "education" | "projects", id: string) => void;
     onExperienceItemAdd: () => void;
     onEducationItemAdd: () => void;
@@ -57,6 +58,15 @@ function Form ({
 
     return (
         <form onSubmit={preventDefaultOnFormSubmit} className = 'input_form'>
+            <section className='relative w-full flex flex-row'>
+                <h2 className='relative w-full overflow-hidden whitespace-nowrap' style={{ color: '#093652' }}>Been here before?</h2>
+                <label className='relative flex w-full h-auto justify-end items-center'>
+                    <input type='file' accept='.json' className='hidden'/>
+                        <span className='relative w-full flex justify-center items-center cursor-pointer import_input'>
+                            Upload Existing Résumé
+                        </span>
+                </label>
+            </section>
             <section>
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Personal Details</h2>
                 <Personal_Details_Input_Group

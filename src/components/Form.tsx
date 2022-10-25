@@ -8,7 +8,8 @@ import Personal_Details_Input_Group from "./input_groups/Personal_Details_Input_
 import { State } from "../models/interface-models";
 
 interface Props extends State {
-    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onPersonalDetailsInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onSkillsInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onInputArrayChange: (
         property: "experience" | "education" | "projects",
         index: number
@@ -45,7 +46,8 @@ function Form ({
     experience,
     education,
     projects,
-    onInputChange,
+    onPersonalDetailsInputChange,
+    onSkillsInputChange,
     onInputArrayChange,
     onDetailsInputArrayChange,
     onDetailAdd,
@@ -72,14 +74,14 @@ function Form ({
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Personal Details</h2>
                 <Personal_Details_Input_Group
                     item = {personal_details}
-                    onInputChange = {onInputChange}
+                    onInputChange = {onPersonalDetailsInputChange}
                 />
             </section>
             <section>
                 <h2 className = 'mb-1' style={{ color: '#093652' }}>Skills</h2>
                 <Skills_Input_Group
                     item={skills}
-                    onInputChange={onInputChange}       
+                    onInputChange={onSkillsInputChange}       
                 />
             </section>
             <section>

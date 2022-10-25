@@ -103,17 +103,24 @@ class App extends Component<{}, State>{
       }
     };
 
-    handleInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) : void => {
+    handlePersonalDetailsInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) => {
       const { name, value } = e.target;
       this.setState((prev_state) => ({
         ...prev_state,
         personal_details: {
           ...prev_state.personal_details,
           [name] : value
-        },
+        }
+      }));
+    };
+
+    handleSkillsInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) => {
+      const { name, value } = e.target;
+      this.setState((prev_state) => ({
+        ...prev_state,
         skills: {
           ...prev_state.skills,
-          [name]: value
+          [name] : value
         }
       }));
     };
@@ -250,7 +257,8 @@ class App extends Component<{}, State>{
                   <div style={{ width: `${595}px` }}>
                     <Form
                       {...this.state}
-                      onInputChange = {this.handleInputChange}
+                      onPersonalDetailsInputChange = {this.handlePersonalDetailsInputChange}
+                      onSkillsInputChange = {this.handleSkillsInputChange}
                       onInputArrayChange = {this.handleInputArrayChange}
                       onDetailsInputArrayChange = {this.handleDetailsInputArrayChange}
                       onDetailAdd = {this.handleDetailAdd}

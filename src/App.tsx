@@ -44,7 +44,10 @@ class App extends Component<{}, State>{
     };
 
     saveToLocalStorage() {
-      localStorage.setItem('values', JSON.stringify(this.state))
+      localStorage.setItem('values', JSON.stringify({
+        ...this.state,
+        print_mode: false
+      }))
     }
 
     componentDidMount() {
@@ -231,7 +234,12 @@ class App extends Component<{}, State>{
     };
 
     handleExportToJSON = (): void => {
-      const data_string = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.state));
+      const data_string = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(
+        {
+          ...this.state,
+          print_mode: false
+        }
+      ));
       const download_a_tag = document.createElement('a');
       download_a_tag.setAttribute("href", data_string);
       download_a_tag.setAttribute("download", `${this.state.personal_details.full_name.replace(' ','-')}_${new Date().toISOString().slice(0, 10)}_resume.json`);

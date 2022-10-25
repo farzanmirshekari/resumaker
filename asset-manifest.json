@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Resumaker/static/css/main.13931073.css",
-    "main.js": "/Resumaker/static/js/main.e95e15ad.js",
+    "main.js": "/Resumaker/static/js/main.1dd3c1df.js",
     "static/media/TW Cen MT.TTF": "/Resumaker/static/media/TW Cen MT.7b67eec0cc9a1e3ba9cc.TTF",
     "static/media/printer_icon.svg": "/Resumaker/static/media/printer_icon.48b39d2499c8c05a38bebf6937bc44c5.svg",
     "static/media/linkedin_icon.svg": "/Resumaker/static/media/linkedin_icon.e8eaba624b5d7057c49c3eb1f567bf0f.svg",
@@ -13,10 +13,10 @@
     "static/media/return_icon.svg": "/Resumaker/static/media/return_icon.1b9b47d3c9b5f25d0e4e33a8a7be1d82.svg",
     "static/media/location_icon.svg": "/Resumaker/static/media/location_icon.d9fe5579ce7cf80dff9dec10233e4dcf.svg",
     "main.13931073.css.map": "/Resumaker/static/css/main.13931073.css.map",
-    "main.e95e15ad.js.map": "/Resumaker/static/js/main.e95e15ad.js.map"
+    "main.1dd3c1df.js.map": "/Resumaker/static/js/main.1dd3c1df.js.map"
   },
   "entrypoints": [
     "static/css/main.13931073.css",
-    "static/js/main.e95e15ad.js"
+    "static/js/main.1dd3c1df.js"
   ]
 }

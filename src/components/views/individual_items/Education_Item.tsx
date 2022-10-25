@@ -11,7 +11,18 @@ function Education_Item ( { education_institute, program, start_date, end_date, 
         <div className = 'w-full flex flex-col justify-start items-start gap-0.5'>
             <div className = 'w-full flex flex-row justify-between items-center'>
                 <h4 className = 'text-black item_title bold'><span>{education_institute}</span></h4>
-                <span>{start_date} - {end_date}</span>
+                <span>
+                    {
+                        (start_date.length > 0 && end_date.length) > 0 && (
+                            <span>{start_date} | {end_date}</span>
+                        )
+                    }
+                    {
+                        (start_date.length > 0 && end_date.length === 0) && (
+                            <span>{start_date}</span>
+                        )
+                    }
+                </span>
             </div>
             <div className = 'text-black w-full flex flex-row items-start justify-start gap-0.5'>
                 {program}

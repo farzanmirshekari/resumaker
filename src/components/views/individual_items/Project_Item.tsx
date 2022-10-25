@@ -22,11 +22,16 @@ function Project_Item ( { title, overview, tools, github_repository, start_date,
                             } 
                         </span> | {tools}
                     </h4>
-                    {
-                        start_date.length > 0 && end_date.length > 0 && (
-                            <span>{start_date} | {end_date}</span>
-                        )
-                    }
+                        {
+                            (start_date.length > 0 && end_date.length) > 0 && (
+                                <span>{start_date} | {end_date}</span>
+                            )
+                        }
+                        {
+                            (start_date.length > 0 && end_date.length === 0) && (
+                                <span>{start_date}</span>
+                            )
+                        }
                 </div>
                 <div className = 'text-black w-full flex flex-row items-start justify-start gap-0.5'>
                     <h5><i>{overview}</i></h5>

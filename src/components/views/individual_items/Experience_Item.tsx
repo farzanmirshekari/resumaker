@@ -15,7 +15,9 @@ function Experience_Item ( { position_title, company, overview, start_date, end_
                     <h4 className = 'item_title'><span className = 'bold'>{position_title}</span>
                         {
                             company.length > 0 && (
-                                <span className = 'text-sky-700'>| {company}</span>
+                                <>
+                                    <span className='text-black'> | </span><span className = 'text-sky-700'>{company}</span>
+                                </>
                             )
                         }
                     </h4>

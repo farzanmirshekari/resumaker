@@ -1,325 +1,331 @@
 /* eslint-disable react/jsx-pascal-case */
-import React, { Component } from 'react';
-import './App.css';
-import { State, Experience, Education, Project } from './models/interface-models';
-import Experience_List from './components/views/groups/Experience_List';
-import Education_List from './components/views/groups/Education_List';
-import Projects_List from './components/views/groups/Projects_List';
-import Form from './components/Form';
-import Skills from './components/views/groups/Skills';
-import Personal_Information from './components/views/groups/Personal_Information';
-import data from './Sample_Data';
+import React, { useState, useEffect } from "react";
+import data from "./Sample_Data";
+import { Education, Experience, Project, State } from "./models/interface-models";
+import { v4 as uuidv4 } from "uuid";
+import Form from "./components/Form";
+import Personal_Information from "./components/views/groups/Personal_Information";
+import Skills from "./components/views/groups/Skills";
+import Education_List from "./components/views/groups/Education_List";
+import Experience_List from "./components/views/groups/Experience_List";
+import Projects_List from "./components/views/groups/Projects_List";
 import Printer_Icon from './assets/printer_icon.svg';
 import Return_Icon from './assets/return_icon.svg';
 import Download_Icon from './assets/download_icon.svg';
-import { v4 as uuidv4 } from "uuid";
 
-class App extends Component<{}, State>{
-
-    constructor(props = {}) {
-
-      super(props);
-
-      this.state = {
+function App() {
+    
+    const [resume_data, set_resume_data] = useState({
         personal_details: {
-          full_name: "",
-          phone_number: "",
-          email_address: "",
-          github_username: "",
-          linkedin_username: "",
-          location: ""
-        },
-        skills: {
-          programming_languages: "",
-          frameworks: "",
-          tools: "",
-          certifications: ""
-        },
-        projects: [],
-        experience: [],
-        education: [],
-        print_mode: false
-      };
+            full_name: "",
+            phone_number: "",
+            email_address: "",
+            github_username: "",
+            linkedin_username: "",
+            location: ""
+          },
+          skills: {
+            programming_languages: "",
+            frameworks: "",
+            tools: "",
+            certifications: ""
+          },
+          projects: [],
+          experience: [],
+          education: [],
+          print_mode: false
+    });
 
+    useEffect(() => {
+        if (JSON.parse(localStorage.getItem('values')!)) {
+            set_resume_data(JSON.parse(localStorage.getItem('values')!));
+        }
+        else {
+            const { personal_details, skills, projects, experience, education, print_mode }: State = data;
+            set_resume_data((prev_resume_data) => ({
+                ...prev_resume_data,
+                personal_details,
+                skills,
+                projects,
+                experience,
+                education,
+                print_mode
+            }));
+        }
+    }, []);
+
+    useEffect(() => {
+        saveToLocalStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [resume_data]);
+
+    const saveToLocalStorage = () => {
+        localStorage.setItem('values', JSON.stringify({
+            ...resume_data,
+            print_mode: false
+        }))
     };
 
-    saveToLocalStorage() {
-      localStorage.setItem('values', JSON.stringify({
-        ...this.state,
-        print_mode: false
-      }))
-    }
-
-    componentDidMount() {
-      if (JSON.parse(localStorage.getItem('values')!)) {
-        this.setState(JSON.parse(localStorage.getItem('values')!))
-      }
-      else {
-        const { personal_details, skills, projects, experience, education } = data;
-        this.setState((prev_state) => ({
-          ...prev_state,
-          personal_details,
-          skills,
-          projects,
-          experience,
-          education
-        }));
-      }
-    };
-
-    componentDidUpdate( prev_state : any ) {
-      if (this.state !== prev_state) {
-        this.saveToLocalStorage();
-      }
-    };
-
-    handleInputArrayChange = (
-      property: "experience" | "education" | "projects",
-      index: number
-    ) => {
-      return ( e : React.ChangeEvent<HTMLInputElement> ) => {
+    const handleInputArrayChange = (
+        property: "experience" | "education" | "projects",
+        index: number
+    ) => (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        this.setState((prev_state) => ({
-          ...prev_state,
+        set_resume_data((prev_resume_data) => ({
+          ...prev_resume_data,
           [property] : [
-            ...prev_state[property].slice(0, index),
+            ...prev_resume_data[property].slice(0, index),
             {
-              ...prev_state[property][index],
+              ...prev_resume_data[property][index],
               [name] : value
             },
-            ...prev_state[property].slice(index + 1)
+            ...prev_resume_data[property].slice(index + 1)
           ]
         }));
-      };
     };
 
-    handleDetailsInputArrayChange = (
-      property: "experience" | "education" | "projects",
-      index: number,
-      detail_index: number
-    ) => {
-      return ( e : React.ChangeEvent<HTMLInputElement> ) => {
-        const { value } = e.target;
-        const state_json = JSON.parse(JSON.stringify(this.state));
-        state_json[property][index].details[detail_index] = value;
-        this.setState(JSON.parse(JSON.stringify(state_json)));
-      }
+    const handleDetailsInputArrayChange = (
+        property: "experience" | "education" | "projects",
+        index: number,
+        detail_index: number
+    ) => (e: React.ChangeEvent<HTMLInputElement>) => {
+        set_resume_data((prev_resume_data) => ({
+          ...prev_resume_data,
+          [property] : [
+            ...prev_resume_data[property].slice(0, index),
+            {
+              ...prev_resume_data[property][index],
+              details: [
+                ...prev_resume_data[property][index].details.slice(0, detail_index),
+                e.target.value,
+                ...prev_resume_data[property][index].details.slice(detail_index + 1)
+              ]
+            },
+            ...prev_resume_data[property].slice(index + 1)
+          ]
+        }));
     };
 
-    handlePersonalDetailsInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) => {
-      const { name, value } = e.target;
-      this.setState((prev_state) => ({
-        ...prev_state,
-        personal_details: {
-          ...prev_state.personal_details,
-          [name] : value
+    const handlePersonalDetailsInputChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
+        const { name, value } = e.target;
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            personal_details: {
+                ...prev_resume_data.personal_details,
+                [name]: value
+            }
+        }));
+    };
+
+    const handleSkillsInputChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
+        const { name, value } = e.target;
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            skills: {
+                ...prev_resume_data.skills,
+                [name]: value
+            }
+        }));
+    };
+
+    const handleDetailItemAdd = (property: "experience" | "education" | "projects", index: number, detail_index: number) : void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            [property]: [
+                ...prev_resume_data[property].slice(0, index),
+                {
+                    ...prev_resume_data[property][index],
+                    details: [
+                        ...prev_resume_data[property][index].details.slice(0, detail_index + 1),
+                        "",
+                        ...prev_resume_data[property][index].details.slice(detail_index + 1)
+                    ]
+                },
+                ...prev_resume_data[property].slice(index + 1)
+            ]
+        }));
+    };
+
+    const handleDetailItemDelete = (property: "experience" | "education" | "projects", index: number, detail_index: number) : void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            [property]: [
+                ...prev_resume_data[property].slice(0, index),
+                {
+                    ...prev_resume_data[property][index],
+                    details: [
+                        ...prev_resume_data[property][index].details.slice(0, detail_index),
+                        ...prev_resume_data[property][index].details.slice(detail_index + 1)
+                    ]
+                },
+                ...prev_resume_data[property].slice(index + 1)
+            ]
+        }));
+    };
+
+    const handleItemDelete = (property: "experience" | "education" | "projects", id: string) : void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            [property]: prev_resume_data[property].filter((item : Experience | Education | Project) => item.id !== id)
+        }));
+    };
+
+    const handleExperienceItemAdd = () : void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            experience: [
+                ...prev_resume_data.experience,
+                {
+                    id: uuidv4(),
+                    company: "",
+                    position: "",
+                    overview: "",
+                    start_date: "",
+                    end_date: "",
+                    details: []
+                }
+            ]
+        }));
+    };
+
+    const handleEducationItemAdd = () : void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            education: [
+                ...prev_resume_data.education,
+                {
+                    id: uuidv4(),
+                    education_institute: "",
+                    program: "",
+                    start_date: "",
+                    end_date: "",
+                    details: []
+                }
+            ]
+        }));
+    };
+
+    const handleProjectItemAdd = () : void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            projects: [
+                ...prev_resume_data.projects,
+                {
+                    id: uuidv4(),
+                    title: "",
+                    overview: "",
+                    tools: "",
+                    github_repository: "",
+                    start_date: "",
+                    end_date: "",
+                    details: []
+                }
+            ]
+        }));
+    };
+
+    const onExistingSectionsUpload = (e: React.ChangeEvent<HTMLInputElement>) : void => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const data = JSON.parse(e.target?.result as string);
+                set_resume_data((prev_resume_data) => ({
+                    ...prev_resume_data,
+                    ...data
+                }));
+            };
+            reader.readAsText(file);
         }
-      }));
     };
 
-    handleSkillsInputChange = ( e : React.ChangeEvent<HTMLInputElement> ) => {
-      const { name, value } = e.target;
-      this.setState((prev_state) => ({
-        ...prev_state,
-        skills: {
-          ...prev_state.skills,
-          [name] : value
-        }
-      }));
+    const handlePrintMode = () : void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            print_mode: !prev_resume_data.print_mode
+        }));
+        resume_data.print_mode ?
+            document.getElementById('resume_container')!.classList.remove('print_mode')  : 
+            document.getElementById('resume_container')!.classList.add('print_mode');
     };
 
-    handleDetailAdd = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) : void => {
-      const state_json = JSON.parse(JSON.stringify(this.state)); 
-      state_json[property][index].details.splice(detail_index + 1, 0, '');
-      this.setState(JSON.parse(JSON.stringify(state_json)));
+    const handleExportToJSON = () : void => {
+        const data_string = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(
+            {
+              ...resume_data,
+              print_mode: false
+            }
+          ));
+          const download_a_tag = document.createElement('a');
+          download_a_tag.setAttribute("href", data_string);
+          download_a_tag.setAttribute("download", `${resume_data.personal_details.full_name.replace(' ','-')}_${new Date().toISOString().slice(0, 10)}_resume.json`);
+          document.body.appendChild(download_a_tag);
+          download_a_tag.click();
+          download_a_tag.remove();
     };
 
-    handleDetailDelete = ( property: "experience" | "education" | "projects", index: number, detail_index: number ) : void => {
-      const state_json = JSON.parse(JSON.stringify(this.state)); 
-      state_json[property][index].details.splice(detail_index, 1);
-      this.setState(JSON.parse(JSON.stringify(state_json)));
-    };
-
-    handleItemDelete =  ( property: "experience" | "education" | "projects", id: string ) : void  => {
-      this.setState((prev_state) => ({
-        ...prev_state,
-        [property]: [...prev_state[property]].filter(
-          (item: Experience | Education | Project) => item.id !== id
-        )
-      }));
-    };
-
-    handleExperienceItemAdd = () : void => {
-      const id = uuidv4();
-      this.setState((prev_state) => ({
-        ...prev_state,
-        experience: [
-          ...prev_state.experience,
-          {
-            id,
-            position: "",
-            company: "",
-            overview: "",
-            start_date: "",
-            end_date: "",
-            details: []
-          }
-        ]
-      }));
-    };
-
-    handleEducationItemAdd = () : void => {
-      const id = uuidv4();
-      this.setState((prev_state) => ({
-        ...prev_state,
-        education: [
-          ...prev_state.education,
-          {
-            id,
-            education_institute: "",
-            program: "",
-            start_date: "",
-            end_date: "",
-            details: []
-          }
-        ]
-      }))
-    };
-
-    handleProjectsItemAdd = () : void => {
-      const id = uuidv4();
-      this.setState((prev_state) => ({
-        ...prev_state,
-        projects: [
-          ...prev_state.projects,
-          {
-            id,
-            title: "",
-            overview: "",
-            tools: "",
-            github_repository: "",
-            start_date: "",
-            end_date: "",
-            details: []
-          }
-        ]
-      }));
-    };
-
-    onExistingSectionsUpload = ( e : React.ChangeEvent<HTMLInputElement> ) : void => {
-      const reader = new FileReader();
-      const { files } = e.target;
-      if (files) {
-        reader.readAsText(files[0], "UTF-8");
-        reader.onload = (e) => {
-          const uploaded_json = JSON.parse(e.target!.result as string);
-          this.setState((prev_state) => ({
-            ...prev_state,
-            ...uploaded_json
-          }));
-        }
-      } else {
-        alert("Please upload a valid .JSON file..");
-      }
-    };
-
-    handlePrintMode = (): void => {
-      this.setState((prev_state) => ({
-        ...prev_state,
-        print_mode: !prev_state.print_mode
-      }))
-      this.state.print_mode ? 
-        document.getElementById('resume_container')!.classList.remove('print_mode')  : 
-        document.getElementById('resume_container')!.classList.add('print_mode');
-    };
-
-    handleExportToJSON = (): void => {
-      const data_string = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(
-        {
-          ...this.state,
-          print_mode: false
-        }
-      ));
-      const download_a_tag = document.createElement('a');
-      download_a_tag.setAttribute("href", data_string);
-      download_a_tag.setAttribute("download", `${this.state.personal_details.full_name.replace(' ','-')}_${new Date().toISOString().slice(0, 10)}_resume.json`);
-      document.body.appendChild(download_a_tag);
-      download_a_tag.click();
-      download_a_tag.remove();
-    };
-
-    render() {
-
-        const {
-          personal_details,
-          skills,
-          projects: project_list,
-          experience: experience_list,
-          education: education_list
-        } = this.state;
-
-        return (
-            <div className = 'flex flex-row flex-wrap justify-center gap-20'>
+    return (
+        <div className = 'flex flex-row flex-wrap justify-center gap-20'>
               {
-                !this.state.print_mode && (
+                !resume_data.print_mode && (
                   <div style={{ width: `${595}px` }}>
                     <Form
-                      {...this.state}
-                      onPersonalDetailsInputChange = {this.handlePersonalDetailsInputChange}
-                      onSkillsInputChange = {this.handleSkillsInputChange}
-                      onInputArrayChange = {this.handleInputArrayChange}
-                      onDetailsInputArrayChange = {this.handleDetailsInputArrayChange}
-                      onDetailAdd = {this.handleDetailAdd}
-                      onDetailDelete = {this.handleDetailDelete}
-                      onExistingSectionsUpload = {this.onExistingSectionsUpload}
-                      onItemDelete = {this.handleItemDelete}
-                      onEducationItemAdd = {this.handleEducationItemAdd}
-                      onExperienceItemAdd = {this.handleExperienceItemAdd}
-                      onProjectsItemAdd = {this.handleProjectsItemAdd}
+                      {...resume_data}
+                      onPersonalDetailsInputChange = {handlePersonalDetailsInputChange}
+                      onSkillsInputChange = {handleSkillsInputChange}
+                      onInputArrayChange = {handleInputArrayChange}
+                      onDetailsInputArrayChange = {handleDetailsInputArrayChange}
+                      onDetailAdd = {handleDetailItemAdd}
+                      onDetailDelete = {handleDetailItemDelete}
+                      onExistingSectionsUpload = {onExistingSectionsUpload}
+                      onItemDelete = {handleItemDelete}
+                      onEducationItemAdd = {handleEducationItemAdd}
+                      onExperienceItemAdd = {handleExperienceItemAdd}
+                      onProjectsItemAdd = {handleProjectItemAdd}
                     />
                   </div>
                 )
               }
               <div className = 'flex flex-col justify-center items-center h-fit w-fit' id = 'resume_container'>
                 <div className = 'flex flex-col justify-start items-start gap-4 resume_side'>
-                  <Personal_Information {...personal_details} />
-                  <Skills {...skills} />
-                  {experience_list.length > 0 ? (
+                  <Personal_Information {...resume_data.personal_details} />
+                  <Skills {...resume_data.skills} />
+                  {resume_data.experience.length > 0 ? (
                     <Experience_List
                       heading = "experience"
-                      experience_list = {experience_list}
+                      experience_list = {resume_data.experience}
                     />
                   ) : null}
-                  {project_list.length > 0 ? (
+                  {resume_data.projects.length > 0 ? (
                     <Projects_List
                       heading = "projects"
-                      projects_list = {project_list}
+                      projects_list = {resume_data.projects}
                     />
                   ) : null}
-                  {education_list.length > 0 ? (
+                  {resume_data.education.length > 0 ? (
                     <Education_List
                       heading = "education"
-                      education_list = {education_list}
+                      education_list = {resume_data.education}
                     />
                   ) : null}
                 </div>
                 <div className='relative w-full flex flex-row justify-center items-center gap-2'>
                   {
-                    this.state.print_mode && (
-                      <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
+                    resume_data.print_mode && (
+                      <button className = 'print_button mt-16' onClick={handlePrintMode}>
                         <img src={Return_Icon} className = 'w-10 -mr-1.5' alt = 'Return Icon'/>
                         <p>Return</p>
                       </button>
                     )
                   }
                   {
-                    !this.state.print_mode && (
+                    !resume_data.print_mode && (
                       <>
-                        <button className = 'print_button mt-16' onClick={this.handlePrintMode}>
+                        <button className = 'print_button mt-16' onClick={handlePrintMode}>
                           <img src={Printer_Icon} alt = 'Printer Icon'/>
                           <p>Print to PDF</p>
                         </button>
-                        <button className='print_button mt-16' onClick={this.handleExportToJSON}>
+                        <button className='print_button mt-16' onClick={handleExportToJSON}>
                           <img src={Download_Icon} alt='Download Icon' />
                           <p>Export to .JSON</p>
                         </button>
@@ -329,9 +335,7 @@ class App extends Component<{}, State>{
                 </div>
               </div>
             </div>
-        )
-    }
-
+    )
 }
 
 export default App;

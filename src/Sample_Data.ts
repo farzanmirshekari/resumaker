@@ -57,7 +57,8 @@ const data = {
                 "1A Term's Dean Honours List - Grade: 90"
             ]
         }
-    ]
+    ],
+    print_mode: false
 }
 
 export default data;

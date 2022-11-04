@@ -3,7 +3,7 @@
 
 The Résumaker offers the creation of <i>stylish</i>, <i>flexible</i> and <i>customizable</i> résumés. Inputs are rendered in real-time, enabling you to track the progress on the creation of your résume on a real-time basis.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 <h3>Description</h3>
 
@@ -15,8 +15,8 @@ The Résumaker offers the creation of <i>stylish</i>, <i>flexible</i> and <i>cus
 
 <h3>Next Steps</h3>
 
-> The Résumaker is an evolving project. It has recently undergone a full remodeling to optimize performance as well as the structural architecture of the project. The next version will bring about customizability at a micro level, allowing users to fully personalize their résume with the design of their choice. 
+> The Résumaker is an evolving project. It has recently undergone a full remodeling to optimize performance as well as the structural architecture of the project. The next version will bring about customizability at a micro level, allowing users to fully personalize their résume with the design of their choice.
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 <i>Developed by Farzan Mirshekari</i>

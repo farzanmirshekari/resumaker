@@ -24,7 +24,8 @@
     width: 21.25cm;
     height: 29.95cm;
     border-radius: 2px;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+        rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     animation-duration: 1.9s;
     animation-name: slide_up;
 }
@@ -49,7 +50,7 @@
 
 .detail_input_field {
     border-radius: 5px;
-    font-size: 9pt
+    font-size: 9pt;
 }
 
 .input_field {
@@ -58,7 +59,8 @@
     border: 1px solid #093652;
 }
 
-.input_field:focus, .detail_input_field:focus {
+.input_field:focus,
+.detail_input_field:focus {
     outline: none;
 }
 
@@ -133,7 +135,7 @@
 
 .section_header {
     font-size: 12pt;
-    transform: translateX(-2px)
+    transform: translateX(-2px);
 }
 
 .section_header p:first-letter {
@@ -142,7 +144,7 @@
 
 @keyframes slide_down {
     from {
-        transform: translateY(-100%)
+        transform: translateY(-100%);
     }
     to {
         transform: translateY(0%);
@@ -151,7 +153,7 @@
 
 @keyframes slide_up {
     from {
-        transform: translateY(100%)
+        transform: translateY(100%);
     }
     to {
         transform: translateY(0%);

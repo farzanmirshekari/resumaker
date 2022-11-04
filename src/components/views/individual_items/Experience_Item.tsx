@@ -1,15 +1,25 @@
 interface Props {
+    index: number;
     position_title: string;
     company: string;
     overview: string;
     start_date: string;
     end_date: string;
     details: string[];
+    on_drag_start: (property: "experience" | "education" | "projects", index: number) => void;
+    on_drag_over: (e: React.DragEvent<HTMLDivElement>, property: "experience" | "education" | "projects", index: number) => void;
+    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function Experience_Item ( { position_title, company, overview, start_date, end_date, details } : Props ) {
+function Experience_Item ( { index, position_title, company, overview, start_date, end_date, details, on_drag_start, on_drag_over, on_drag_end } : Props ) {
     return (
-        <div className = 'w-full flex flex-col justify-start items-start gap-0.5'>
+        <div 
+            className = 'w-full flex flex-col justify-start items-start gap-0.5 cursor-move'
+            draggable 
+            onDragStart={() => on_drag_start('experience', index)}
+            onDragOver={(e : React.DragEvent<HTMLDivElement>) => on_drag_over(e, 'experience', index)}
+            onDragEnd={on_drag_end}
+        >
             <div className = 'w-full flex flex-col justify-start items-center'>
                 <div className = 'w-full flex flex-row justify-between items-center'>
                     <h4 className = 'item_title'><span className = 'bold'>{position_title}</span>

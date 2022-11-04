@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import data from "./Sample_Data";
 import { Education, Experience, Project, State } from "./models/interface-models";
+import { Drag_Reference } from "./models/custom-interfaces";
 import { v4 as uuidv4 } from "uuid";
 import Form from "./components/Form";
 import Personal_Information from "./components/views/groups/Personal_Information";
@@ -12,6 +13,7 @@ import Projects_List from "./components/views/groups/Projects_List";
 import Printer_Icon from './assets/printer_icon.svg';
 import Return_Icon from './assets/return_icon.svg';
 import Download_Icon from './assets/download_icon.svg';
+import { useRef } from "react";
 
 function App() {
     
@@ -35,6 +37,8 @@ function App() {
           education: [],
           print_mode: false
     });
+    const dragItem = useRef<Drag_Reference>(null);
+    const dragOverItem = useRef<Drag_Reference>(null);
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('values')!)) {
@@ -58,6 +62,30 @@ function App() {
         saveToLocalStorage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [resume_data]);
+
+    const onDragStart = (property: "experience" | "education" | "projects", index: number) => {
+        dragItem.current = { property, index };
+    };
+
+    const onDragOver = (e: React.DragEvent<HTMLDivElement>, property: "experience" | "education" | "projects", index: number) => {
+        e.preventDefault();
+        dragOverItem.current = { property, index };
+    };
+
+    const onDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        if (dragItem.current && dragOverItem.current) {
+            const { property: dragProperty, index: dragIndex } = dragItem.current;
+            const { property: overProperty, index: overIndex } = dragOverItem.current;
+            if (dragProperty === overProperty && dragIndex !== overIndex) {
+                const newResumeData = { ...resume_data };
+                const draggedItem = newResumeData[dragProperty][dragIndex];
+                newResumeData[dragProperty].splice(dragIndex, 1);
+                newResumeData[dragProperty].splice(overIndex, 0, draggedItem);
+                set_resume_data(newResumeData);
+            }
+        }
+    };
 
     const saveToLocalStorage = () => {
         localStorage.setItem('values', JSON.stringify({
@@ -294,18 +322,27 @@ function App() {
                     <Experience_List
                       heading = "experience"
                       experience_list = {resume_data.experience}
+                      on_drag_start = {onDragStart}
+                      on_drag_end = {onDragEnd}
+                      on_drag_over = {onDragOver}
                     />
                   ) : null}
                   {resume_data.projects.length > 0 ? (
                     <Projects_List
                       heading = "projects"
                       projects_list = {resume_data.projects}
+                      on_drag_start = {onDragStart}
+                      on_drag_end = {onDragEnd}
+                      on_drag_over = {onDragOver}
                     />
                   ) : null}
                   {resume_data.education.length > 0 ? (
                     <Education_List
                       heading = "education"
                       education_list = {resume_data.education}
+                      on_drag_start = {onDragStart}
+                      on_drag_end = {onDragEnd}
+                      on_drag_over = {onDragOver}
                     />
                   ) : null}
                 </div>

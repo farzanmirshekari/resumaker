@@ -1,4 +1,5 @@
 interface Props {
+    index: number;
     title: string;
     overview: string;
     tools: string;
@@ -6,11 +7,20 @@ interface Props {
     start_date: string;
     end_date: string;
     details: string[];
+    on_drag_start: (property: "experience" | "education" | "projects", index: number) => void;
+    on_drag_over: (e: React.DragEvent<HTMLDivElement>, property: "experience" | "education" | "projects", index: number) => void;
+    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function Project_Item ( { title, overview, tools, github_repository, start_date, end_date, details } : Props ) {
+function Project_Item ( { index, title, overview, tools, github_repository, start_date, end_date, details, on_drag_start, on_drag_over, on_drag_end } : Props ) {
     return (
-        <div className = 'w-full flex flex-col justify-start items-start gap-0.5'>
+        <div 
+            className = 'w-full flex flex-col justify-start items-start gap-0.5 cursor-move'
+            draggable
+            onDragStart={() => on_drag_start('projects', index)}
+            onDragOver={(e : React.DragEvent<HTMLDivElement>) => on_drag_over(e, 'projects', index)}
+            onDragEnd={on_drag_end}
+        >
             <div className = 'w-full flex flex-col justify-start items-center'>
                 <div className = 'w-full flex flex-row justify-between items-center'>
                     <h4 className = 'item_title'>

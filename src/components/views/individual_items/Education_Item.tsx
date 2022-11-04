@@ -1,14 +1,24 @@
 interface Props {
+    index: number;
     education_institute: string;
     program: string;
     start_date: string;
     end_date: string;
     details: string[];
+    on_drag_start: (property: "experience" | "education" | "projects", index: number) => void;
+    on_drag_over: (e: React.DragEvent<HTMLDivElement>, property: "experience" | "education" | "projects", index: number) => void;
+    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function Education_Item ( { education_institute, program, start_date, end_date, details } : Props ) {
+function Education_Item ( { index, education_institute, program, start_date, end_date, details, on_drag_start, on_drag_over, on_drag_end } : Props ) {
     return (
-        <div className = 'w-full flex flex-col justify-start items-start gap-0.5'>
+        <div 
+            className = 'w-full flex flex-col justify-start items-start gap-0.5 cursor-move'
+            draggable
+            onDragStart = {() => on_drag_start("education", index)}
+            onDragOver = {(e : React.DragEvent<HTMLDivElement>) => on_drag_over(e, "education", index)}
+            onDragEnd = {on_drag_end}
+        >
             <div className = 'w-full flex flex-row justify-between items-center'>
                 <h4 className = 'text-black item_title bold'><span>{education_institute}</span></h4>
                 <span>

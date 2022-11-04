@@ -69,7 +69,7 @@ function App() {
     }, [])
 
     useEffect(() => {
-        saveToLocalStorage()
+        save_to_local_storage()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [resume_data])
 
@@ -106,7 +106,7 @@ function App() {
         }
     }
 
-    const saveToLocalStorage = () => {
+    const save_to_local_storage = () => {
         localStorage.setItem(
             'values',
             JSON.stringify({
@@ -116,7 +116,7 @@ function App() {
         )
     }
 
-    const handleInputArrayChange =
+    const handle_input_array_change =
         (property: 'experience' | 'education' | 'projects', index: number) =>
         (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target
@@ -133,7 +133,7 @@ function App() {
             }))
         }
 
-    const handleDetailsInputArrayChange =
+    const handle_details_input_array_change =
         (
             property: 'experience' | 'education' | 'projects',
             index: number,
@@ -162,7 +162,7 @@ function App() {
             }))
         }
 
-    const handlePersonalDetailsInputChange = (
+    const handle_personal_details_input_change = (
         e: React.ChangeEvent<HTMLInputElement>
     ): void => {
         const { name, value } = e.target
@@ -175,7 +175,7 @@ function App() {
         }))
     }
 
-    const handleSkillsInputChange = (
+    const handle_skills_input_change = (
         e: React.ChangeEvent<HTMLInputElement>
     ): void => {
         const { name, value } = e.target
@@ -188,7 +188,7 @@ function App() {
         }))
     }
 
-    const handleDetailItemAdd = (
+    const handle_detail_item_add = (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
@@ -215,7 +215,7 @@ function App() {
         }))
     }
 
-    const handleDetailItemDelete = (
+    const handle_detail_item_delete = (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
@@ -241,7 +241,7 @@ function App() {
         }))
     }
 
-    const handleItemDelete = (
+    const handle_item_delete = (
         property: 'experience' | 'education' | 'projects',
         id: string
     ): void => {
@@ -253,7 +253,7 @@ function App() {
         }))
     }
 
-    const handleExperienceItemAdd = (): void => {
+    const handle_experience_item_add = (): void => {
         set_resume_data((prev_resume_data) => ({
             ...prev_resume_data,
             experience: [
@@ -271,7 +271,7 @@ function App() {
         }))
     }
 
-    const handleEducationItemAdd = (): void => {
+    const handle_education_item_add = (): void => {
         set_resume_data((prev_resume_data) => ({
             ...prev_resume_data,
             education: [
@@ -288,7 +288,7 @@ function App() {
         }))
     }
 
-    const handleProjectItemAdd = (): void => {
+    const handle_project_item_add = (): void => {
         set_resume_data((prev_resume_data) => ({
             ...prev_resume_data,
             projects: [
@@ -307,7 +307,7 @@ function App() {
         }))
     }
 
-    const onExistingSectionsUpload = (
+    const on_existing_section_JSON_upload = (
         e: React.ChangeEvent<HTMLInputElement>
     ): void => {
         const file = e.target.files?.[0]
@@ -324,7 +324,7 @@ function App() {
         }
     }
 
-    const handlePrintMode = (): void => {
+    const handle_print_mode = (): void => {
         set_resume_data((prev_resume_data) => ({
             ...prev_resume_data,
             print_mode: !prev_resume_data.print_mode,
@@ -338,7 +338,7 @@ function App() {
                   .classList.add('print_mode')
     }
 
-    const handleExportToJSON = (): void => {
+    const handle_export_to_JSON = (): void => {
         const data_string =
             'data:text/json;charset=utf-8,' +
             encodeURIComponent(
@@ -367,21 +367,23 @@ function App() {
                 <div style={{ width: `${595}px` }}>
                     <Form
                         {...resume_data}
-                        onPersonalDetailsInputChange={
-                            handlePersonalDetailsInputChange
+                        on_personal_details_input_change={
+                            handle_personal_details_input_change
                         }
-                        onSkillsInputChange={handleSkillsInputChange}
-                        onInputArrayChange={handleInputArrayChange}
-                        onDetailsInputArrayChange={
-                            handleDetailsInputArrayChange
+                        on_skills_input_change={handle_skills_input_change}
+                        on_input_array_change={handle_input_array_change}
+                        on_details_input_array_change={
+                            handle_details_input_array_change
                         }
-                        onDetailAdd={handleDetailItemAdd}
-                        onDetailDelete={handleDetailItemDelete}
-                        onExistingSectionsUpload={onExistingSectionsUpload}
-                        onItemDelete={handleItemDelete}
-                        onEducationItemAdd={handleEducationItemAdd}
-                        onExperienceItemAdd={handleExperienceItemAdd}
-                        onProjectsItemAdd={handleProjectItemAdd}
+                        on_detail_add={handle_detail_item_add}
+                        on_detail_delete={handle_detail_item_delete}
+                        on_existing_section_JSON_upload={
+                            on_existing_section_JSON_upload
+                        }
+                        on_item_delete={handle_item_delete}
+                        on_education_item_add={handle_education_item_add}
+                        on_experience_item_add={handle_experience_item_add}
+                        on_project_item_add={handle_project_item_add}
                     />
                 </div>
             )}
@@ -424,7 +426,7 @@ function App() {
                     {resume_data.print_mode && (
                         <button
                             className="print_button mt-16"
-                            onClick={handlePrintMode}
+                            onClick={handle_print_mode}
                         >
                             <img
                                 src={Return_Icon}
@@ -438,14 +440,14 @@ function App() {
                         <>
                             <button
                                 className="print_button mt-16"
-                                onClick={handlePrintMode}
+                                onClick={handle_print_mode}
                             >
                                 <img src={Printer_Icon} alt="Printer Icon" />
                                 <p>Print to PDF</p>
                             </button>
                             <button
                                 className="print_button mt-16"
-                                onClick={handleExportToJSON}
+                                onClick={handle_export_to_JSON}
                             >
                                 <img src={Download_Icon} alt="Download Icon" />
                                 <p>Export to .JSON</p>

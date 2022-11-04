@@ -6,41 +6,41 @@ import Input_Field from '../micro_components/Input_Field'
 interface Props {
     item: Project
     index: number
-    onInputArrayChange: (
+    on_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailsInputArrayChange: (
+    on_details_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailAdd: (
+    on_detail_add: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onDetailDelete: (
+    on_detail_delete: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onItemDelete: (
+    on_item_delete: (
         property: 'experience' | 'education' | 'projects',
         id: string
     ) => void
-    onItemAdd: () => void
+    on_item_add: () => void
 }
 
 function Project_Input_Group({
     item,
     index,
-    onInputArrayChange,
-    onDetailsInputArrayChange,
-    onDetailAdd,
-    onDetailDelete,
-    onItemDelete,
-    onItemAdd,
+    on_input_array_change,
+    on_details_input_array_change,
+    on_detail_add,
+    on_detail_delete,
+    on_item_delete,
+    on_item_add,
 }: Props) {
     const {
         id,
@@ -59,37 +59,37 @@ function Project_Input_Group({
                 label="Title"
                 value={title}
                 name="title"
-                onChange={onInputArrayChange('projects', index)}
+                onChange={on_input_array_change('projects', index)}
             />
             <Input_Field
                 label="Overview"
                 value={overview}
                 name="overview"
-                onChange={onInputArrayChange('projects', index)}
+                onChange={on_input_array_change('projects', index)}
             />
             <Input_Field
                 label="Repository"
                 value={github_repository}
                 name="github_repository"
-                onChange={onInputArrayChange('projects', index)}
+                onChange={on_input_array_change('projects', index)}
             />
             <Input_Field
                 label="Tools"
                 value={tools}
                 name="tools"
-                onChange={onInputArrayChange('projects', index)}
+                onChange={on_input_array_change('projects', index)}
             />
             <Input_Field
                 label="Start Date"
                 value={start_date}
                 name="start_date"
-                onChange={onInputArrayChange('projects', index)}
+                onChange={on_input_array_change('projects', index)}
             />
             <Input_Field
                 label="End Date"
                 value={end_date}
                 name="end_date"
-                onChange={onInputArrayChange('projects', index)}
+                onChange={on_input_array_change('projects', index)}
             />
             {details.map((details_item, detail_index) => {
                 return (
@@ -102,13 +102,13 @@ function Project_Input_Group({
                         label="Description"
                         value={details_item}
                         name={`project_description-${detail_index}`}
-                        onChange={onDetailsInputArrayChange(
+                        onChange={on_details_input_array_change(
                             'projects',
                             index,
                             detail_index
                         )}
-                        onDetailAdd={onDetailAdd}
-                        onDetailDelete={onDetailDelete}
+                        on_detail_add={on_detail_add}
+                        on_detail_delete={on_detail_delete}
                     />
                 )
             })}
@@ -117,7 +117,7 @@ function Project_Input_Group({
                     <button
                         className="form_button add_description_button"
                         onClick={() => {
-                            onDetailAdd('projects', index, 0)
+                            on_detail_add('projects', index, 0)
                         }}
                     >
                         + Description
@@ -126,14 +126,14 @@ function Project_Input_Group({
                 <button
                     type="button"
                     className="form_button"
-                    onClick={() => onItemDelete('projects', id)}
+                    onClick={() => on_item_delete('projects', id)}
                 >
                     Delete
                 </button>
                 <button
                     type="button"
                     className="add_button form_button"
-                    onClick={onItemAdd}
+                    onClick={on_item_add}
                 >
                     Add
                 </button>

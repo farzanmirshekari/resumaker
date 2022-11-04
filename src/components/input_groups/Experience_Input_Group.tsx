@@ -6,41 +6,41 @@ import Input_Field from '../micro_components/Input_Field'
 interface Props {
     item: Experience
     index: number
-    onInputArrayChange: (
+    on_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailsInputArrayChange: (
+    on_details_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailAdd: (
+    on_detail_add: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onDetailDelete: (
+    on_detail_delete: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onItemDelete: (
+    on_item_delete: (
         property: 'experience' | 'education' | 'projects',
         id: string
     ) => void
-    onItemAdd: () => void
+    on_item_add: () => void
 }
 
 function Experience_Input_Group({
     item,
     index,
-    onInputArrayChange,
-    onDetailsInputArrayChange,
-    onDetailAdd,
-    onDetailDelete,
-    onItemDelete,
-    onItemAdd,
+    on_input_array_change,
+    on_details_input_array_change,
+    on_detail_add,
+    on_detail_delete,
+    on_item_delete,
+    on_item_add,
 }: Props) {
     const { id, position, company, overview, start_date, end_date, details } =
         item
@@ -51,31 +51,31 @@ function Experience_Input_Group({
                 label="Position"
                 value={position}
                 name="position"
-                onChange={onInputArrayChange('experience', index)}
+                onChange={on_input_array_change('experience', index)}
             />
             <Input_Field
                 label="Company"
                 value={company}
                 name="company"
-                onChange={onInputArrayChange('experience', index)}
+                onChange={on_input_array_change('experience', index)}
             />
             <Input_Field
                 label="Overview"
                 value={overview}
                 name="overview"
-                onChange={onInputArrayChange('experience', index)}
+                onChange={on_input_array_change('experience', index)}
             />
             <Input_Field
                 label="Start Date"
                 value={start_date}
                 name="start_date"
-                onChange={onInputArrayChange('experience', index)}
+                onChange={on_input_array_change('experience', index)}
             />
             <Input_Field
                 label="End Date"
                 value={end_date}
                 name="end_date"
-                onChange={onInputArrayChange('experience', index)}
+                onChange={on_input_array_change('experience', index)}
             />
             {details.map((details_item, detail_index) => {
                 return (
@@ -88,13 +88,13 @@ function Experience_Input_Group({
                         label="Description"
                         value={details_item}
                         name={`experience_description-${detail_index}`}
-                        onChange={onDetailsInputArrayChange(
+                        onChange={on_details_input_array_change(
                             'experience',
                             index,
                             detail_index
                         )}
-                        onDetailAdd={onDetailAdd}
-                        onDetailDelete={onDetailDelete}
+                        on_detail_add={on_detail_add}
+                        on_detail_delete={on_detail_delete}
                     />
                 )
             })}
@@ -103,7 +103,7 @@ function Experience_Input_Group({
                     <button
                         className="form_button add_description_button"
                         onClick={() => {
-                            onDetailAdd('experience', index, 0)
+                            on_detail_add('experience', index, 0)
                         }}
                     >
                         + Description
@@ -112,14 +112,14 @@ function Experience_Input_Group({
                 <button
                     type="button"
                     className="form_button"
-                    onClick={() => onItemDelete('experience', id)}
+                    onClick={() => on_item_delete('experience', id)}
                 >
                     Delete
                 </button>
                 <button
                     type="button"
                     className="add_button form_button"
-                    onClick={onItemAdd}
+                    onClick={on_item_add}
                 >
                     Add
                 </button>

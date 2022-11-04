@@ -6,41 +6,41 @@ import Input_Field from '../micro_components/Input_Field'
 interface Props {
     item: Education
     index: number
-    onInputArrayChange: (
+    on_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailsInputArrayChange: (
+    on_details_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailAdd: (
+    on_detail_add: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onDetailDelete: (
+    on_detail_delete: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onItemDelete: (
+    on_item_delete: (
         property: 'experience' | 'education' | 'projects',
         id: string
     ) => void
-    onItemAdd: () => void
+    on_item_add: () => void
 }
 
 function Education_Input_Group({
     item,
     index,
-    onInputArrayChange,
-    onDetailsInputArrayChange,
-    onDetailAdd,
-    onDetailDelete,
-    onItemDelete,
-    onItemAdd,
+    on_input_array_change,
+    on_details_input_array_change,
+    on_detail_add,
+    on_detail_delete,
+    on_item_delete,
+    on_item_add,
 }: Props) {
     const { id, education_institute, program, start_date, end_date, details } =
         item
@@ -51,25 +51,25 @@ function Education_Input_Group({
                 label="Education Institute"
                 value={education_institute}
                 name="education_institute"
-                onChange={onInputArrayChange('education', index)}
+                onChange={on_input_array_change('education', index)}
             />
             <Input_Field
                 label="Program"
                 value={program}
                 name="program"
-                onChange={onInputArrayChange('education', index)}
+                onChange={on_input_array_change('education', index)}
             />
             <Input_Field
                 label="Start Date"
                 value={start_date}
                 name="start_date"
-                onChange={onInputArrayChange('education', index)}
+                onChange={on_input_array_change('education', index)}
             />
             <Input_Field
                 label="End Date"
                 value={end_date}
                 name="end_date"
-                onChange={onInputArrayChange('education', index)}
+                onChange={on_input_array_change('education', index)}
             />
             {details.map((details_item, detail_index) => {
                 return (
@@ -82,13 +82,13 @@ function Education_Input_Group({
                         label="Description"
                         value={details_item}
                         name={`education_description-${detail_index}`}
-                        onChange={onDetailsInputArrayChange(
+                        onChange={on_details_input_array_change(
                             'education',
                             index,
                             detail_index
                         )}
-                        onDetailAdd={onDetailAdd}
-                        onDetailDelete={onDetailDelete}
+                        on_detail_add={on_detail_add}
+                        on_detail_delete={on_detail_delete}
                     />
                 )
             })}
@@ -97,7 +97,7 @@ function Education_Input_Group({
                     <button
                         className="form_button add_description_button"
                         onClick={() => {
-                            onDetailAdd('education', index, 0)
+                            on_detail_add('education', index, 0)
                         }}
                     >
                         + Description
@@ -106,14 +106,14 @@ function Education_Input_Group({
                 <button
                     type="button"
                     className="form_button"
-                    onClick={() => onItemDelete('education', id)}
+                    onClick={() => on_item_delete('education', id)}
                 >
                     Delete
                 </button>
                 <button
                     type="button"
                     className="add_button form_button"
-                    onClick={onItemAdd}
+                    onClick={on_item_add}
                 >
                     Add
                 </button>

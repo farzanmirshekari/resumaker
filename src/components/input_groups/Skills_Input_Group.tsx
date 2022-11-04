@@ -4,10 +4,10 @@ import Input_Field from '../micro_components/Input_Field'
 
 interface Props {
     item: Skills
-    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    on_input_change: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function Skills_Input_Group({ item, onInputChange }: Props) {
+function Skills_Input_Group({ item, on_input_change }: Props) {
     const { programming_languages, frameworks, tools, certifications } = item
 
     return (
@@ -16,25 +16,25 @@ function Skills_Input_Group({ item, onInputChange }: Props) {
                 label="Programming Languages"
                 value={programming_languages}
                 name="programming_languages"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="Frameworks"
                 value={frameworks}
                 name="frameworks"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="Tools"
                 value={tools}
                 name="tools"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="Certifications"
                 value={certifications}
                 name="certifications"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
         </div>
     )

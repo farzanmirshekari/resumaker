@@ -8,37 +8,39 @@ import Personal_Details_Input_Group from './input_groups/Personal_Details_Input_
 import { State } from '../models/interface-models'
 
 interface Props extends State {
-    onPersonalDetailsInputChange: (
+    on_personal_details_input_change: (
         e: React.ChangeEvent<HTMLInputElement>
     ) => void
-    onSkillsInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    onInputArrayChange: (
+    on_skills_input_change: (e: React.ChangeEvent<HTMLInputElement>) => void
+    on_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailsInputArrayChange: (
+    on_details_input_array_change: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailAdd: (
+    on_detail_add: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onDetailDelete: (
+    on_detail_delete: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onExistingSectionsUpload: (e: React.ChangeEvent<HTMLInputElement>) => void
-    onItemDelete: (
+    on_existing_section_JSON_upload: (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => void
+    on_item_delete: (
         property: 'experience' | 'education' | 'projects',
         id: string
     ) => void
-    onExperienceItemAdd: () => void
-    onEducationItemAdd: () => void
-    onProjectsItemAdd: () => void
+    on_experience_item_add: () => void
+    on_education_item_add: () => void
+    on_project_item_add: () => void
 }
 
 const preventDefaultOnFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,17 +53,17 @@ function Form({
     experience,
     education,
     projects,
-    onPersonalDetailsInputChange,
-    onSkillsInputChange,
-    onInputArrayChange,
-    onDetailsInputArrayChange,
-    onDetailAdd,
-    onDetailDelete,
-    onExistingSectionsUpload,
-    onItemDelete,
-    onExperienceItemAdd,
-    onEducationItemAdd,
-    onProjectsItemAdd,
+    on_personal_details_input_change,
+    on_skills_input_change,
+    on_input_array_change,
+    on_details_input_array_change,
+    on_detail_add,
+    on_detail_delete,
+    on_existing_section_JSON_upload,
+    on_item_delete,
+    on_experience_item_add,
+    on_education_item_add,
+    on_project_item_add,
 }: Props) {
     return (
         <form onSubmit={preventDefaultOnFormSubmit} className="input_form">
@@ -78,7 +80,7 @@ function Form({
                         accept=".json"
                         className="hidden"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            onExistingSectionsUpload(e)
+                            on_existing_section_JSON_upload(e)
                         }
                     />
                     <span className="relative w-full flex justify-center items-center cursor-pointer import_input">
@@ -92,7 +94,7 @@ function Form({
                 </h2>
                 <Personal_Details_Input_Group
                     item={personal_details}
-                    onInputChange={onPersonalDetailsInputChange}
+                    on_input_change={on_personal_details_input_change}
                 />
             </section>
             <section>
@@ -101,7 +103,7 @@ function Form({
                 </h2>
                 <Skills_Input_Group
                     item={skills}
-                    onInputChange={onSkillsInputChange}
+                    on_input_change={on_skills_input_change}
                 />
             </section>
             <section>
@@ -113,7 +115,7 @@ function Form({
                         <button
                             type="button"
                             className="form_button add_item_button"
-                            onClick={onExperienceItemAdd}
+                            onClick={on_experience_item_add}
                         >
                             Add Experience
                         </button>
@@ -125,14 +127,14 @@ function Form({
                                 key={index}
                                 item={item}
                                 index={index}
-                                onInputArrayChange={onInputArrayChange}
-                                onDetailsInputArrayChange={
-                                    onDetailsInputArrayChange
+                                on_input_array_change={on_input_array_change}
+                                on_details_input_array_change={
+                                    on_details_input_array_change
                                 }
-                                onDetailAdd={onDetailAdd}
-                                onItemDelete={onItemDelete}
-                                onDetailDelete={onDetailDelete}
-                                onItemAdd={onExperienceItemAdd}
+                                on_detail_add={on_detail_add}
+                                on_item_delete={on_item_delete}
+                                on_detail_delete={on_detail_delete}
+                                on_item_add={on_experience_item_add}
                             />
                         )
                     })
@@ -147,7 +149,7 @@ function Form({
                         <button
                             type="button"
                             className="form_button add_item_button"
-                            onClick={onProjectsItemAdd}
+                            onClick={on_project_item_add}
                         >
                             Add Project
                         </button>
@@ -159,14 +161,14 @@ function Form({
                                 key={index}
                                 item={item}
                                 index={index}
-                                onInputArrayChange={onInputArrayChange}
-                                onDetailsInputArrayChange={
-                                    onDetailsInputArrayChange
+                                on_input_array_change={on_input_array_change}
+                                on_details_input_array_change={
+                                    on_details_input_array_change
                                 }
-                                onDetailAdd={onDetailAdd}
-                                onDetailDelete={onDetailDelete}
-                                onItemDelete={onItemDelete}
-                                onItemAdd={onProjectsItemAdd}
+                                on_detail_add={on_detail_add}
+                                on_detail_delete={on_detail_delete}
+                                on_item_delete={on_item_delete}
+                                on_item_add={on_project_item_add}
                             />
                         )
                     })
@@ -181,7 +183,7 @@ function Form({
                         <button
                             type="button"
                             className="form_button add_item_button"
-                            onClick={onEducationItemAdd}
+                            onClick={on_education_item_add}
                         >
                             Add Education
                         </button>
@@ -193,14 +195,14 @@ function Form({
                                 key={index}
                                 item={item}
                                 index={index}
-                                onInputArrayChange={onInputArrayChange}
-                                onDetailsInputArrayChange={
-                                    onDetailsInputArrayChange
+                                on_input_array_change={on_input_array_change}
+                                on_details_input_array_change={
+                                    on_details_input_array_change
                                 }
-                                onDetailAdd={onDetailAdd}
-                                onItemDelete={onItemDelete}
-                                onDetailDelete={onDetailDelete}
-                                onItemAdd={onEducationItemAdd}
+                                on_detail_add={on_detail_add}
+                                on_item_delete={on_item_delete}
+                                on_detail_delete={on_detail_delete}
+                                on_item_add={on_education_item_add}
                             />
                         )
                     })

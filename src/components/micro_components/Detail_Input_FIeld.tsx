@@ -10,12 +10,12 @@ interface Props {
     name: string
     id?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-    onDetailAdd: (
+    on_detail_add: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
     ) => void
-    onDetailDelete: (
+    on_detail_delete: (
         property: 'experience' | 'education' | 'projects',
         index: number,
         detail_index: number
@@ -31,8 +31,8 @@ function Detail_Input_Field({
     id,
     name,
     onChange,
-    onDetailAdd,
-    onDetailDelete,
+    on_detail_add,
+    on_detail_delete,
 }: Props) {
     if (!id) {
         id = `input_${label.split(' ').join('_')}-${uuidv4()}`
@@ -56,7 +56,7 @@ function Detail_Input_Field({
                 <button
                     className="relative w-1/2 h-10 -mt-0.5 text-2xl"
                     onClick={() => {
-                        onDetailDelete(property, index, detail_index)
+                        on_detail_delete(property, index, detail_index)
                     }}
                 >
                     -
@@ -68,7 +68,7 @@ function Detail_Input_Field({
                 <button
                     className="relative w-1/2 h-10 text-xl"
                     onClick={() => {
-                        onDetailAdd(property, index, detail_index)
+                        on_detail_add(property, index, detail_index)
                     }}
                 >
                     +

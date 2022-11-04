@@ -4,10 +4,10 @@ import Input_Field from '../micro_components/Input_Field'
 
 interface Props {
     item: PersonalDetails
-    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    on_input_change: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function Personal_Details_Input_Group({ item, onInputChange }: Props) {
+function Personal_Details_Input_Group({ item, on_input_change }: Props) {
     const {
         full_name,
         phone_number,
@@ -23,37 +23,37 @@ function Personal_Details_Input_Group({ item, onInputChange }: Props) {
                 label="Full Name"
                 value={full_name}
                 name="full_name"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="Phone Number"
                 value={phone_number}
                 name="phone_number"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="Email Address"
                 value={email_address}
                 name="email_address"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="GitHub Username"
                 value={github_username}
                 name="github_username"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="LinkedIn Username"
                 value={linkedin_username}
                 name="linkedin_username"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
             <Input_Field
                 label="Location"
                 value={location}
                 name="location"
-                onChange={onInputChange}
+                onChange={on_input_change}
             />
         </div>
     )

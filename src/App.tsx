@@ -35,8 +35,8 @@ function App() {
         education: [],
         print_mode: false,
     })
-    const dragItem = useRef<Drag_Reference>(null)
-    const dragOverItem = useRef<Drag_Reference>(null)
+    const drag_item = useRef<Drag_Reference>(null)
+    const drag_over_item = useRef<Drag_Reference>(null)
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('values')!)) {
@@ -71,7 +71,7 @@ function App() {
         property: 'experience' | 'education' | 'projects',
         index: number
     ) => {
-        dragItem.current = { property, index }
+        drag_item.current = { property, index }
     }
 
     const on_drag_over = (
@@ -80,16 +80,16 @@ function App() {
         index: number
     ) => {
         e.preventDefault()
-        dragOverItem.current = { property, index }
+        drag_over_item.current = { property, index }
     }
 
     const on_drag_end = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
-        if (dragItem.current && dragOverItem.current) {
+        if (drag_item.current && drag_over_item.current) {
             const { property: dragProperty, index: dragIndex } =
-                dragItem.current
+                drag_item.current
             const { property: overProperty, index: overIndex } =
-                dragOverItem.current
+                drag_over_item.current
             if (dragProperty === overProperty && dragIndex !== overIndex) {
                 const newResumeData = { ...resume_data }
                 const draggedItem = newResumeData[dragProperty][dragIndex]

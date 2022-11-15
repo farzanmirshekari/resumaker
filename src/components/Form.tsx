@@ -62,7 +62,12 @@ function Form({
     on_project_item_add,
 }: Props) {
     return (
-        <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()} className="input_form">
+        <form
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
+                e.preventDefault()
+            }
+            className="input_form"
+        >
             <section className="relative w-full flex flex-row">
                 <h2
                     className="relative w-full overflow-hidden whitespace-nowrap"

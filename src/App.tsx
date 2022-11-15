@@ -10,15 +10,9 @@ import {
 import { Drag_Reference } from './models/custom-interfaces'
 import { v4 as uuidv4 } from 'uuid'
 import Form from './components/Form'
-import Personal_Information from './components/views/groups/Personal_Information'
-import Skills from './components/views/groups/Skills'
-import Education_List from './components/views/groups/Education_List'
-import Experience_List from './components/views/groups/Experience_List'
-import Projects_List from './components/views/groups/Projects_List'
-import Printer_Icon from './assets/printer_icon.svg'
-import Return_Icon from './assets/return_icon.svg'
-import Download_Icon from './assets/download_icon.svg'
+import Resume from './components/Resume'
 import { useRef } from 'react'
+import Utilities from './components/Utilities'
 
 function App() {
     const [resume_data, set_resume_data] = useState({
@@ -73,14 +67,14 @@ function App() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [resume_data])
 
-    const onDragStart = (
+    const on_drag_start = (
         property: 'experience' | 'education' | 'projects',
         index: number
     ) => {
         dragItem.current = { property, index }
     }
 
-    const onDragOver = (
+    const on_drag_over = (
         e: React.DragEvent<HTMLDivElement>,
         property: 'experience' | 'education' | 'projects',
         index: number
@@ -89,7 +83,7 @@ function App() {
         dragOverItem.current = { property, index }
     }
 
-    const onDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    const on_drag_end = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         if (dragItem.current && dragOverItem.current) {
             const { property: dragProperty, index: dragIndex } =
@@ -391,70 +385,17 @@ function App() {
                 className="flex flex-col justify-center items-center h-fit w-fit"
                 id="resume_container"
             >
-                <div className="flex flex-col justify-start items-start gap-4 resume_side">
-                    <Personal_Information {...resume_data.personal_details} />
-                    <Skills {...resume_data.skills} />
-                    {resume_data.experience.length > 0 ? (
-                        <Experience_List
-                            heading="experience"
-                            experience_list={resume_data.experience}
-                            on_drag_start={onDragStart}
-                            on_drag_end={onDragEnd}
-                            on_drag_over={onDragOver}
-                        />
-                    ) : null}
-                    {resume_data.projects.length > 0 ? (
-                        <Projects_List
-                            heading="projects"
-                            projects_list={resume_data.projects}
-                            on_drag_start={onDragStart}
-                            on_drag_end={onDragEnd}
-                            on_drag_over={onDragOver}
-                        />
-                    ) : null}
-                    {resume_data.education.length > 0 ? (
-                        <Education_List
-                            heading="education"
-                            education_list={resume_data.education}
-                            on_drag_start={onDragStart}
-                            on_drag_end={onDragEnd}
-                            on_drag_over={onDragOver}
-                        />
-                    ) : null}
-                </div>
-                <div className="relative w-full flex flex-row justify-center items-center gap-2">
-                    {resume_data.print_mode && (
-                        <button
-                            className="print_button mt-16"
-                            onClick={handle_print_mode}
-                        >
-                            <img
-                                src={Return_Icon}
-                                className="w-10 -mr-1.5"
-                                alt="Return Icon"
-                            />
-                            <p>Return</p>
-                        </button>
-                    )}
-                    {!resume_data.print_mode && (
-                        <>
-                            <button
-                                className="print_button mt-16"
-                                onClick={handle_print_mode}
-                            >
-                                <img src={Printer_Icon} alt="Printer Icon" />
-                                <p>Print to PDF</p>
-                            </button>
-                            <button
-                                className="print_button mt-16"
-                                onClick={handle_export_to_JSON}
-                            >
-                                <img src={Download_Icon} alt="Download Icon" />
-                                <p>Export to .JSON</p>
-                            </button>
-                        </>
-                    )}
-                </div>
+                <Resume
+                    {...resume_data}
+                    on_drag_start={on_drag_start}
+                    on_drag_over={on_drag_over}
+                    on_drag_end={on_drag_end}
+                />
+                <Utilities
+                    {...resume_data}
+                    handle_print_mode={handle_print_mode}
+                    handle_export_to_JSON={handle_export_to_JSON}
+                />
             </div>
         </div>
     )

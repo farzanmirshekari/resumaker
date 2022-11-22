@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import { Skills } from '../../models/interface-models'
+import { Skills } from '../../interfaces/interface-models'
 import Input_Field from '../micro_components/Input_Field'
 
 interface Props {

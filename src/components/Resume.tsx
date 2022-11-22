@@ -5,7 +5,7 @@ import Skills from './views/groups/Skills'
 import Experience_List from './views/groups/Experience_List'
 import Education_List from './views/groups/Education_List'
 import Projects_List from './views/groups/Projects_List'
-import { State } from '../models/interface-models'
+import { State } from '../interfaces/interface-models'
 
 interface Props extends State {
     on_drag_start: (

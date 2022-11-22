@@ -5,7 +5,7 @@ import Education_Input_Group from './input_groups/Education_Input_Group'
 import Project_Input_Group from './input_groups/Project_Input_Group'
 import Skills_Input_Group from './input_groups/Skills_Input_Group'
 import Personal_Details_Input_Group from './input_groups/Personal_Details_Input_Group'
-import { State } from '../models/interface-models'
+import { State } from '../interfaces/interface-models'
 
 interface Props extends State {
     on_personal_details_input_change: (

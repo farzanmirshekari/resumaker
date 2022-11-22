@@ -6,8 +6,8 @@ import {
     Experience,
     Project,
     State,
-} from './models/interface-models'
-import { Drag_Reference } from './models/custom-interfaces'
+} from './interfaces/interface-models'
+import { Drag_Reference } from './interfaces/custom-interfaces'
 import { v4 as uuidv4 } from 'uuid'
 import Form from './components/Form'
 import Resume from './components/Resume'

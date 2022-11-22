@@ -1,5 +1,5 @@
 import React from 'react'
-import { State } from '../models/interface-models'
+import { State } from '../interfaces/interface-models'
 import Printer_Icon from '../assets/printer_icon.svg'
 import Return_Icon from '../assets/return_icon.svg'
 import Download_Icon from '../assets/download_icon.svg'

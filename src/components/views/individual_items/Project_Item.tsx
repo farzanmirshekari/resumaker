@@ -72,7 +72,7 @@ function Project_Item({
                 </div>
                 <div className="text-black w-full flex flex-row items-start justify-start gap-0.5">
                     <h5>
-                        <i>{overview}</i>
+                        {overview}
                     </h5>
                 </div>
             </div>

@@ -19,4 +19,4 @@ The Résumaker offers the creation of <i>stylish</i>, <i>flexible</i> and <i>cus
 
 ---
 
-<i>Developed by Farzan Mirshekari</i>
+<i>Developed and maintained by Farzan Mirshekari</i>

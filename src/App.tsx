@@ -86,16 +86,16 @@ function App() {
     const on_drag_end = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         if (drag_item.current && drag_over_item.current) {
-            const { property: dragProperty, index: dragIndex } =
+            const { property: drag_property, index: drag_index } =
                 drag_item.current
-            const { property: overProperty, index: overIndex } =
+            const { property: over_property, index: over_index } =
                 drag_over_item.current
-            if (dragProperty === overProperty && dragIndex !== overIndex) {
-                const newResumeData = { ...resume_data }
-                const draggedItem = newResumeData[dragProperty][dragIndex]
-                newResumeData[dragProperty].splice(dragIndex, 1)
-                newResumeData[dragProperty].splice(overIndex, 0, draggedItem)
-                set_resume_data(newResumeData)
+            if (drag_property === over_property && drag_index !== over_index) {
+                const new_resume_data = { ...resume_data }
+                const dragged_item = new_resume_data[drag_property][drag_index]
+                new_resume_data[drag_property].splice(drag_index, 1)
+                new_resume_data[drag_property].splice(over_index, 0, dragged_item)
+                set_resume_data(new_resume_data)
             }
         }
     }

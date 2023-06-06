@@ -50,5 +50,4 @@ export interface State {
     experience: Experience[]
     education: Education[]
     projects: Project[]
-    print_mode: boolean
 }

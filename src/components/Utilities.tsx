@@ -5,6 +5,7 @@ import Return_Icon from '../assets/return_icon.svg'
 import Download_Icon from '../assets/download_icon.svg'
 
 interface Props extends State {
+    print_mode: boolean
     handle_print_mode: () => void
     handle_export_to_JSON: () => void
 }

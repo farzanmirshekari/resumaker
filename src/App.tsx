@@ -33,8 +33,9 @@ function App() {
         projects: [],
         experience: [],
         education: [],
-        print_mode: false,
     })
+    const [print_mode, set_print_mode] = useState(false)
+    
     const drag_item = useRef<Drag_Reference>(null)
     const drag_over_item = useRef<Drag_Reference>(null)
 
@@ -48,7 +49,6 @@ function App() {
                 projects,
                 experience,
                 education,
-                print_mode,
             }: State = data
             set_resume_data((prev_resume_data) => ({
                 ...prev_resume_data,
@@ -57,7 +57,6 @@ function App() {
                 projects,
                 experience,
                 education,
-                print_mode,
             }))
         }
     }, [])
@@ -319,11 +318,8 @@ function App() {
     }
 
     const handle_print_mode = (): void => {
-        set_resume_data((prev_resume_data) => ({
-            ...prev_resume_data,
-            print_mode: !prev_resume_data.print_mode,
-        }))
-        resume_data.print_mode
+        set_print_mode((prev_print_mode) => !prev_print_mode)
+        print_mode
             ? document
                   .getElementById('resume_container')!
                   .classList.remove('print_mode')
@@ -357,7 +353,7 @@ function App() {
 
     return (
         <div className="flex flex-row flex-wrap justify-center gap-20">
-            {!resume_data.print_mode && (
+            {!print_mode && (
                 <div style={{ width: `${595}px` }}>
                     <Form
                         {...resume_data}
@@ -392,6 +388,7 @@ function App() {
                     on_drag_end={on_drag_end}
                 />
                 <Utilities
+                    print_mode={print_mode}
                     {...resume_data}
                     handle_print_mode={handle_print_mode}
                     handle_export_to_JSON={handle_export_to_JSON}

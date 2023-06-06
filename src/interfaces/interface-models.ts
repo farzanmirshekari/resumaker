@@ -7,6 +7,13 @@ export interface PersonalDetails {
     location: string
 }
 
+export interface Skills {
+    programming_languages: string
+    frameworks: string
+    tools: string
+    certifications: string
+}
+
 export interface Experience {
     id: string
     position: string
@@ -35,13 +42,6 @@ export interface Project {
     start_date: string
     end_date: string
     details: string[]
-}
-
-export interface Skills {
-    programming_languages: string
-    frameworks: string
-    tools: string
-    certifications: string
 }
 
 export interface State {

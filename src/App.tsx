@@ -35,7 +35,7 @@ function App() {
         education: [],
     })
     const [print_mode, set_print_mode] = useState(false)
-    
+
     const drag_item = useRef<Drag_Reference>(null)
     const drag_over_item = useRef<Drag_Reference>(null)
 
@@ -93,7 +93,11 @@ function App() {
                 const new_resume_data = { ...resume_data }
                 const dragged_item = new_resume_data[drag_property][drag_index]
                 new_resume_data[drag_property].splice(drag_index, 1)
-                new_resume_data[drag_property].splice(over_index, 0, dragged_item)
+                new_resume_data[drag_property].splice(
+                    over_index,
+                    0,
+                    dragged_item
+                )
                 set_resume_data(new_resume_data)
             }
         }

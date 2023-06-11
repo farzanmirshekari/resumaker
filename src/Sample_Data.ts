@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
 const data = {
     personal_details: {
@@ -20,7 +20,8 @@ const data = {
             id: uuidv4(),
             position: 'Software Engineer',
             company: 'XYZ Corporation',
-            overview: 'Contributed to the development of enterprise software solutions',
+            overview:
+                'Contributed to the development of enterprise software solutions',
             start_date: 'April 2020',
             end_date: 'Present',
             details: [
@@ -34,7 +35,8 @@ const data = {
         {
             id: uuidv4(),
             title: 'Inventory Management System',
-            overview: 'Developed a web-based inventory management system for a retail company',
+            overview:
+                'Developed a web-based inventory management system for a retail company',
             github_repository: 'https://github.com/johndoe/inventory-system',
             tools: 'Java, Spring Boot, MySQL',
             start_date: 'January 2022',
@@ -53,9 +55,11 @@ const data = {
             program: 'Bachelor of Science in Computer Science',
             start_date: 'September 2016',
             end_date: 'May 2020',
-            details: ["Completed coursework in algorithms, data structures, and database management"],
+            details: [
+                'Completed coursework in algorithms, data structures, and database management',
+            ],
         },
     ],
-};
+}
 
-export default data;
+export default data

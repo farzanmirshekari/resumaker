@@ -71,9 +71,7 @@ function Project_Item({
                     )}
                 </div>
                 <div className="text-black w-full flex flex-row items-start justify-start gap-0.5">
-                    <h5>
-                        {overview}
-                    </h5>
+                    <h5>{overview}</h5>
                 </div>
             </div>
             <div>

@@ -1,29 +1,29 @@
 /* eslint-disable react/jsx-pascal-case */
-import Volunteering_Item from "../individual_items/Volunteering_Item";
+import Volunteering_Item from '../individual_items/Volunteering_Item'
 
 interface Item {
-    id: string;
-    title: string;
-    organization: string;
-    overview: string;
-    start_date: string;
-    end_date: string;
-    details: string[];
+    id: string
+    title: string
+    organization: string
+    overview: string
+    start_date: string
+    end_date: string
+    details: string[]
 }
 
 interface Props {
-    heading: string;
-    volunteering_list: Item[];
+    heading: string
+    volunteering_list: Item[]
     on_drag_start: (
-        property: "experience" | "education" | "projects" | "volunteering",
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
-    ) => void;
+    ) => void
     on_drag_over: (
         e: React.DragEvent<HTMLDivElement>,
-        property: "experience" | "education" | "projects" | "volunteering",
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
-    ) => void;
-    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void;
+    ) => void
+    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void
 }
 
 function Volunteering_List({
@@ -50,7 +50,7 @@ function Volunteering_List({
                         start_date,
                         end_date,
                         details,
-                    } = item;
+                    } = item
                     return (
                         <Volunteering_Item
                             key={`volunteering_${index}`}
@@ -65,11 +65,11 @@ function Volunteering_List({
                             on_drag_over={on_drag_over}
                             on_drag_end={on_drag_end}
                         />
-                    );
+                    )
                 })}
             </div>
         </div>
-    );
+    )
 }
 
-export default Volunteering_List;
+export default Volunteering_List

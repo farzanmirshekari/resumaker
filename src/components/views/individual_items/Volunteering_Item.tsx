@@ -16,7 +16,7 @@ interface Props {
         index: number
     ) => void
     on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void
-}   
+}
 
 function Volunteering_Item({
     index,
@@ -47,7 +47,9 @@ function Volunteering_Item({
                         {organization.length > 0 && (
                             <>
                                 <span className="text-black"> | </span>
-                                <span className="text-sky-700">{organization}</span>
+                                <span className="text-sky-700">
+                                    {organization}
+                                </span>
                             </>
                         )}
                     </h4>

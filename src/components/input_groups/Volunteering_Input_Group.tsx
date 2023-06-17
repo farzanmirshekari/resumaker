@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-pascal-case */
-import { Education } from '../../interfaces/interface-models'
+import { Volunteering } from '../../interfaces/interface-models'
 import Detail_Input_Field from '../micro_components/Detail_Input_FIeld'
 import Input_Field from '../micro_components/Input_Field'
 
 interface Props {
-    item: Education
+    item: Volunteering
     index: number
     on_input_array_change: (
         property: 'experience' | 'education' | 'projects' | 'volunteering',
@@ -32,7 +32,7 @@ interface Props {
     on_item_add: () => void
 }
 
-function Education_Input_Group({
+function Volunteering_Input_Group({
     item,
     index,
     on_input_array_change,
@@ -42,48 +42,54 @@ function Education_Input_Group({
     on_item_delete,
     on_item_add,
 }: Props) {
-    const { id, education_institute, program, start_date, end_date, details } =
+    const { id, organization, title, overview, start_date, end_date, details } =
         item
 
     return (
         <div key={index} className="flex flex-col gap-2.5 input_form_group">
             <Input_Field
-                label="Education Institute"
-                value={education_institute}
-                name="education_institute"
-                onChange={on_input_array_change('education', index)}
+                label="Title"
+                value={title}
+                name="title"
+                onChange={on_input_array_change('volunteering', index)}
             />
             <Input_Field
-                label="Program"
-                value={program}
-                name="program"
-                onChange={on_input_array_change('education', index)}
+                label="Organization"
+                value={organization}
+                name="organization"
+                onChange={on_input_array_change('volunteering', index)}
+            />
+            <Input_Field
+                label="Overview"
+                value={overview}
+                name="overview"
+                onChange={on_input_array_change('volunteering', index)}
             />
             <Input_Field
                 label="Start Date"
                 value={start_date}
                 name="start_date"
-                onChange={on_input_array_change('education', index)}
+                onChange={on_input_array_change('volunteering', index)}
             />
             <Input_Field
                 label="End Date"
                 value={end_date}
                 name="end_date"
-                onChange={on_input_array_change('education', index)}
+                onChange={on_input_array_change('volunteering', index)}
             />
             {details.map((details_item, detail_index) => {
                 return (
                     <Detail_Input_Field
-                        key={`education_description-${detail_index}`}
-                        id={`education_description-${detail_index}`}
-                        property="education"
+                        key={`volunteering_description-${detail_index}`}
+                        id={`volunteering_description-${detail_index}`}
+                        property="volunteering"
                         index={index}
                         detail_index={detail_index}
                         label="Description"
                         value={details_item}
-                        name={`education_description-${detail_index}`}
+                        name={`volunteering_description-${detail_index}`}
                         onChange={on_details_input_array_change(
-                            'education',
+                            'volunteering',
                             index,
                             detail_index
                         )}
@@ -97,7 +103,7 @@ function Education_Input_Group({
                     <button
                         className="form_button add_description_button"
                         onClick={() => {
-                            on_detail_add('education', index, 0)
+                            on_detail_add('volunteering', index, 0)
                         }}
                     >
                         + Description
@@ -106,7 +112,7 @@ function Education_Input_Group({
                 <button
                     type="button"
                     className="form_button"
-                    onClick={() => on_item_delete('education', id)}
+                    onClick={() => on_item_delete('volunteering', id)}
                 >
                     Delete
                 </button>
@@ -122,4 +128,4 @@ function Education_Input_Group({
     )
 }
 
-export default Education_Input_Group
+export default Volunteering_Input_Group

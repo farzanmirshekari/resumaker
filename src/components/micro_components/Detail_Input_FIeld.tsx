@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import './../../App.css'
 
 interface Props {
-    property: 'experience' | 'education' | 'projects'
+    property: 'experience' | 'education' | 'projects' | 'volunteering'
     index: number
     detail_index: number
     label: string
@@ -11,12 +11,12 @@ interface Props {
     id?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     on_detail_add: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number,
         detail_index: number
     ) => void
     on_detail_delete: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number,
         detail_index: number
     ) => void

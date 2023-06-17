@@ -117,7 +117,10 @@ function App() {
     }
 
     const handle_input_array_change =
-        (property: 'experience' | 'education' | 'projects', index: number) =>
+        (
+            property: 'experience' | 'education' | 'projects' | 'volunteering',
+            index: number
+        ) =>
         (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target
             set_resume_data((prev_resume_data) => ({
@@ -135,7 +138,7 @@ function App() {
 
     const handle_details_input_array_change =
         (
-            property: 'experience' | 'education' | 'projects',
+            property: 'experience' | 'education' | 'projects' | 'volunteering',
             index: number,
             detail_index: number
         ) =>
@@ -189,7 +192,7 @@ function App() {
     }
 
     const handle_detail_item_add = (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number,
         detail_index: number
     ): void => {
@@ -216,7 +219,7 @@ function App() {
     }
 
     const handle_detail_item_delete = (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number,
         detail_index: number
     ): void => {
@@ -242,7 +245,7 @@ function App() {
     }
 
     const handle_item_delete = (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         id: string
     ): void => {
         set_resume_data((prev_resume_data) => ({
@@ -299,6 +302,24 @@ function App() {
                     overview: '',
                     tools: '',
                     github_repository: '',
+                    start_date: '',
+                    end_date: '',
+                    details: [],
+                },
+            ],
+        }))
+    }
+
+    const handle_volunteering_item_add = (): void => {
+        set_resume_data((prev_resume_data) => ({
+            ...prev_resume_data,
+            volunteering: [
+                ...prev_resume_data.volunteering,
+                {
+                    id: uuidv4(),
+                    organization: '',
+                    title: '',
+                    overview: '',
                     start_date: '',
                     end_date: '',
                     details: [],
@@ -381,6 +402,7 @@ function App() {
                         on_education_item_add={handle_education_item_add}
                         on_experience_item_add={handle_experience_item_add}
                         on_project_item_add={handle_project_item_add}
+                        on_volunteering_item_add={handle_volunteering_item_add}
                     />
                 </div>
             )}

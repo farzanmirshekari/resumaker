@@ -7,26 +7,26 @@ interface Props {
     item: Project
     index: number
     on_input_array_change: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
     on_details_input_array_change: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number,
         detail_index: number
     ) => (e: React.ChangeEvent<HTMLInputElement>) => void
     on_detail_add: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number,
         detail_index: number
     ) => void
     on_detail_delete: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number,
         detail_index: number
     ) => void
     on_item_delete: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         id: string
     ) => void
     on_item_add: () => void

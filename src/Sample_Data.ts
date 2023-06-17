@@ -60,6 +60,21 @@ const data = {
             ],
         },
     ],
+    volunteering: [
+        {
+            id: uuidv4(),
+            title: "Outreach Volunteer",
+            organization: "Community Outreach Initiative",
+            overview: "Participated in a community outreach program to assist vulnerable populations",
+            start_date: "June 2022",
+            end_date: "August 2022",
+            details: [
+                "Provided meals and essential supplies to homeless individuals",
+                "Assisted in organizing and coordinating community events",
+                "Offered tutoring and mentoring support to at-risk youth",
+            ]
+        },  
+    ],
 }
 
 export default data

@@ -32,6 +32,7 @@ function App() {
         },
         projects: [],
         experience: [],
+        volunteering: [],
         education: [],
     })
     const [print_mode, set_print_mode] = useState(false)
@@ -48,6 +49,7 @@ function App() {
                 skills,
                 projects,
                 experience,
+                volunteering,
                 education,
             }: State = data
             set_resume_data((prev_resume_data) => ({
@@ -56,6 +58,7 @@ function App() {
                 skills,
                 projects,
                 experience,
+                volunteering,
                 education,
             }))
         }
@@ -67,7 +70,7 @@ function App() {
     }, [resume_data])
 
     const on_drag_start = (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
     ) => {
         drag_item.current = { property, index }
@@ -75,7 +78,7 @@ function App() {
 
     const on_drag_over = (
         e: React.DragEvent<HTMLDivElement>,
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
     ) => {
         e.preventDefault()

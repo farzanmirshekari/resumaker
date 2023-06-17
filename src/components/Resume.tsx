@@ -4,17 +4,18 @@ import Personal_Information from './views/groups/Personal_Information'
 import Skills from './views/groups/Skills'
 import Experience_List from './views/groups/Experience_List'
 import Education_List from './views/groups/Education_List'
+import Volunteering_List from './views/groups/Volunteering_List'
 import Projects_List from './views/groups/Projects_List'
 import { State } from '../interfaces/interface-models'
 
 interface Props extends State {
     on_drag_start: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
     ) => void
     on_drag_over: (
         e: React.DragEvent<HTMLDivElement>,
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
     ) => void
     on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void
@@ -26,6 +27,7 @@ function Resume({
     experience,
     education,
     projects,
+    volunteering,
     on_drag_start,
     on_drag_over,
     on_drag_end,
@@ -47,6 +49,15 @@ function Resume({
                 <Projects_List
                     heading="projects"
                     projects_list={projects}
+                    on_drag_start={on_drag_start}
+                    on_drag_end={on_drag_end}
+                    on_drag_over={on_drag_over}
+                />
+            ) : null}
+            {volunteering.length > 0 ? (
+                <Volunteering_List
+                    heading="volunteering"
+                    volunteering_list={volunteering}
                     on_drag_start={on_drag_start}
                     on_drag_end={on_drag_end}
                     on_drag_over={on_drag_over}

@@ -1,34 +1,34 @@
 /* eslint-disable react/jsx-pascal-case */
-import Experience_Item from '../individual_items/Experience_Item'
+import Volunteering_Item from "../individual_items/Volunteering_Item";
 
 interface Item {
-    id: string
-    position: string
-    company: string
-    overview: string
-    start_date: string
-    end_date: string
-    details: string[]
+    id: string;
+    title: string;
+    organization: string;
+    overview: string;
+    start_date: string;
+    end_date: string;
+    details: string[];
 }
 
 interface Props {
-    heading: string
-    experience_list: Item[]
+    heading: string;
+    volunteering_list: Item[];
     on_drag_start: (
-        property: 'experience' | 'education' | 'projects',
+        property: "experience" | "education" | "projects" | "volunteering",
         index: number
-    ) => void
+    ) => void;
     on_drag_over: (
         e: React.DragEvent<HTMLDivElement>,
-        property: 'experience' | 'education' | 'projects',
+        property: "experience" | "education" | "projects" | "volunteering",
         index: number
-    ) => void
-    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void
+    ) => void;
+    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void;
 }
 
-function Experience_List({
+function Volunteering_List({
     heading,
-    experience_list,
+    volunteering_list,
     on_drag_start,
     on_drag_over,
     on_drag_end,
@@ -42,21 +42,21 @@ function Experience_List({
             ) : null}
             <div className="horizontal_divider"></div>
             <div className="-translate-y-1 text-base w-full flex flex-col">
-                {experience_list.map((item, index) => {
+                {volunteering_list.map((item, index) => {
                     const {
-                        position,
-                        company,
+                        title,
+                        organization,
                         overview,
                         start_date,
                         end_date,
                         details,
-                    } = item
+                    } = item;
                     return (
-                        <Experience_Item
-                            key={`experience_${index}`}
+                        <Volunteering_Item
+                            key={`volunteering_${index}`}
                             index={index}
-                            position={position}
-                            company={company}
+                            title={title}
+                            organization={organization}
                             overview={overview}
                             start_date={start_date}
                             end_date={end_date}
@@ -65,11 +65,11 @@ function Experience_List({
                             on_drag_over={on_drag_over}
                             on_drag_end={on_drag_end}
                         />
-                    )
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 }
 
-export default Experience_List
+export default Volunteering_List;

@@ -49,15 +49,17 @@ function Abstract_Input_Group({
 }: Props) {
     return (
         <div key={index} className="flex flex-col gap-2.5 input_form_group">
-            {label_list.map((label, idx) => (
-                <Input_Field
-                    key={idx}
-                    label={label}
-                    value={(item as any)[item_fields[idx]]}
-                    name={item_fields[idx]}
-                    onChange={on_input_array_change(type, index)}
-                />
-            ))}
+            {label_list.map((label, label_index) => {
+                return (
+                    <Input_Field
+                        key={label_index}
+                        label={label}
+                        value={(item as any)[item_fields[label_index]]}
+                        name={item_fields[label_index]}
+                        onChange={on_input_array_change(type, index)}
+                    />
+                )
+            })}
             {item.details.map((detail_item, detail_index) => {
                 return (
                     <Detail_Input_Field

@@ -42,21 +42,27 @@ function Education_Input_Group({
     on_item_delete,
     on_item_add,
 }: Props) {
-    const { id, education_institute, program, start_date, end_date, details } =
+    const { id, primary_desc, secondary_desc, overview, start_date, end_date, details } =
         item
 
     return (
         <div key={index} className="flex flex-col gap-2.5 input_form_group">
             <Input_Field
                 label="Education Institute"
-                value={education_institute}
-                name="education_institute"
+                value={primary_desc}
+                name="primary_desc"
                 onChange={on_input_array_change('education', index)}
             />
             <Input_Field
                 label="Program"
-                value={program}
-                name="program"
+                value={secondary_desc}
+                name="secondary_desc"
+                onChange={on_input_array_change('education', index)}
+            />
+            <Input_Field
+                label="Overview"
+                value={overview}
+                name="overview"
                 onChange={on_input_array_change('education', index)}
             />
             <Input_Field

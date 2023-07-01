@@ -37,7 +37,8 @@ const data = {
             primary_desc: 'Inventory Management System',
             overview:
                 'Developed a web-based inventory management system for a retail company',
-            primary_desc_hyperlink: 'https://github.com/johndoe/inventory-system',
+            primary_desc_hyperlink:
+                'https://github.com/johndoe/inventory-system',
             secondary_desc: 'Java, Spring Boot, MySQL',
             start_date: 'January 2022',
             end_date: 'March 2022',
@@ -51,8 +52,9 @@ const data = {
     education: [
         {
             id: uuidv4(),
-            education_institute: 'University of ABC',
-            program: 'Bachelor of Science in Computer Science',
+            primary_desc: 'University of ABC',
+            secondary_desc: 'Bachelor of Science in Computer Science',
+            overview: '',
             start_date: 'September 2016',
             end_date: 'May 2020',
             details: [
@@ -63,8 +65,8 @@ const data = {
     volunteering: [
         {
             id: uuidv4(),
-            title: 'Outreach Volunteer',
-            organization: 'Community Outreach Initiative',
+            primary_desc: 'Outreach Volunteer',
+            secondary_desc: 'Community Outreach Initiative',
             overview:
                 'Participated in a community outreach program to assist vulnerable populations',
             start_date: 'June 2022',

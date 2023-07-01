@@ -1,30 +1,30 @@
 /* eslint-disable react/jsx-pascal-case */
-import Abstract_Item from "../individual_items/Abstract_Item";
+import Abstract_Item from '../individual_items/Abstract_Item'
 
 interface Item {
-    id: string;
-    primary_desc: string;
-    primary_desc_hyperlink?: string;
-    secondary_desc: string;
-    overview: string;
-    start_date: string;
-    end_date: string;
-    details: string[];
+    id: string
+    primary_desc: string
+    primary_desc_hyperlink?: string
+    secondary_desc: string
+    overview: string
+    start_date: string
+    end_date: string
+    details: string[]
 }
 
 interface Props {
-    heading: string;
-    items_list: Item[];
+    heading: string
+    items_list: Item[]
     on_drag_start: (
-        property: "experience" | "education" | "projects" | "volunteering",
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
-    ) => void;
+    ) => void
     on_drag_over: (
         e: React.DragEvent<HTMLDivElement>,
-        property: "experience" | "education" | "projects" | "volunteering",
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
-    ) => void;
-    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void;
+    ) => void
+    on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void
 }
 
 function Abstract_List({
@@ -52,7 +52,7 @@ function Abstract_List({
                         start_date,
                         end_date,
                         details,
-                    } = item;
+                    } = item
                     return (
                         <Abstract_Item
                             key={`experience_${index}`}
@@ -69,11 +69,11 @@ function Abstract_List({
                             on_drag_over={on_drag_over}
                             on_drag_end={on_drag_end}
                         />
-                    );
+                    )
                 })}
             </div>
         </div>
-    );
+    )
 }
 
-export default Abstract_List;
+export default Abstract_List

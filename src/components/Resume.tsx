@@ -2,11 +2,8 @@
 import React from 'react'
 import Personal_Information from './views/groups/Personal_Information'
 import Skills from './views/groups/Skills'
-import Experience_List from './views/groups/Experience_List'
-import Education_List from './views/groups/Education_List'
-import Volunteering_List from './views/groups/Volunteering_List'
-import { State } from '../interfaces/interface-models'
 import Abstract_List from './views/groups/Abstract_List'
+import { State } from '../interfaces/interface-models'
 
 interface Props extends State {
     on_drag_start: (
@@ -55,18 +52,18 @@ function Resume({
                 />
             ) : null}
             {volunteering.length > 0 ? (
-                <Volunteering_List
+                <Abstract_List
                     heading="volunteering"
-                    volunteering_list={volunteering}
+                    items_list={volunteering}
                     on_drag_start={on_drag_start}
                     on_drag_end={on_drag_end}
                     on_drag_over={on_drag_over}
                 />
             ) : null}
             {education.length > 0 ? (
-                <Education_List
+                <Abstract_List
                     heading="education"
-                    education_list={education}
+                    items_list={education}
                     on_drag_start={on_drag_start}
                     on_drag_end={on_drag_end}
                     on_drag_over={on_drag_over}

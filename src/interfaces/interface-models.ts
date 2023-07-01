@@ -37,21 +37,22 @@ export interface Experience {
 
 export interface Volunteering {
     id: string
-    title: string
-    organization: string
-    overview: string
-    start_date: string
-    end_date: string
-    details: string[]
+    primary_desc: string              // volunteering title
+    secondary_desc: string            // volunteering organization
+    overview: string                  // volunteering overview
+    start_date: string                // volunteering start date
+    end_date: string                  // volunteering end date
+    details: string[]                 // volunteering details
 }
 
 export interface Education {
     id: string
-    education_institute: string
-    program: string
-    start_date: string
-    end_date: string
-    details: string[]
+    primary_desc: string              // education institute name
+    secondary_desc: string            // education program
+    overview: string                  // education overview
+    start_date: string                // education start date
+    end_date: string                  // education end date
+    details: string[]                 // education details
 }
 
 export interface State {

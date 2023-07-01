@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import Education_Item from '../individual_items/Education_Item'
+import Abstract_Item from '../individual_items/Abstract_Item'
 
 interface Item {
     id: string
@@ -50,11 +50,13 @@ function Education_List({
                         details,
                     } = item
                     return (
-                        <Education_Item
+                        <Abstract_Item
                             key={`education_${index}`}
                             index={index}
-                            education_institute={education_institute}
-                            program={program}
+                            type="education"
+                            primary_desc={education_institute}
+                            secondary_desc=""
+                            overview={program}
                             start_date={start_date}
                             end_date={end_date}
                             details={details}

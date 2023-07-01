@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import Project_Item from '../individual_items/Project_Item'
+import Abstract_Item from '../individual_items/Abstract_Item'
 
 interface Item {
     id: string
@@ -54,13 +54,14 @@ function Projects_List({
                         details,
                     } = item
                     return (
-                        <Project_Item
+                        <Abstract_Item
                             key={`project_${index}`}
                             index={index}
-                            title={title}
+                            type="projects"
+                            primary_desc={title}
+                            primary_desc_hyperlink={github_repository}
+                            secondary_desc={tools}
                             overview={overview}
-                            tools={tools}
-                            github_repository={github_repository}
                             start_date={start_date}
                             end_date={end_date}
                             details={details}

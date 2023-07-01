@@ -2,6 +2,7 @@ interface Props {
     index: number
     type: 'experience' | 'education' | 'projects' | 'volunteering'
     primary_desc: string
+    primary_desc_hyperlink?: string
     secondary_desc: string
     overview: string
     start_date: string
@@ -23,6 +24,7 @@ function Abstract_Item({
     index,
     type,
     primary_desc,
+    primary_desc_hyperlink,
     secondary_desc,
     overview,
     start_date,
@@ -45,15 +47,23 @@ function Abstract_Item({
             <div className="w-full flex flex-col justify-start items-center">
                 <div className="w-full flex flex-row justify-between items-center">
                     <h4 className="item_title">
-                        <span className="bold">{primary_desc}</span>
-                        {secondary_desc.length > 0 && (
-                            <>
-                                <span className="text-black"> | </span>
-                                <span className="text-sky-700">
-                                    {secondary_desc}
+                        <span className="bold">
+                            {primary_desc_hyperlink?.length > 0 ? (
+                                <a
+                                    href={primary_desc_hyperlink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-sky-700"
+                                >
+                                    {primary_desc}
+                                </a>
+                            ) : (
+                                <span className="text-black">
+                                    {primary_desc}
                                 </span>
-                            </>
-                        )}
+                            )}
+                        </span>{' '}
+                        {secondary_desc ? `| ${secondary_desc}` : ''}
                     </h4>
                     <span>
                         {(start_date.length > 0 && end_date.length) > 0 && (

@@ -14,12 +14,12 @@ interface Props {
     heading: string
     education_list: Item[]
     on_drag_start: (
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
     ) => void
     on_drag_over: (
         e: React.DragEvent<HTMLDivElement>,
-        property: 'experience' | 'education' | 'projects',
+        property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
     ) => void
     on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void

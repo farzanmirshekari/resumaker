@@ -1,5 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
-import { item_fields } from '../../interfaces/interface-fields'
+import {
+    item_fields,
+    item_fields_with_hyperlink,
+} from '../../interfaces/interface-fields'
 import { AbstractModel } from '../../interfaces/interface-models'
 import Input_Field from '../micro_components/Input_Field'
 import Detail_Input_Field from '../micro_components/Detail_Input_FIeld'
@@ -50,12 +53,16 @@ function Abstract_Input_Group({
     return (
         <div key={index} className="flex flex-col gap-2.5 input_form_group">
             {label_list.map((label, label_index) => {
+                const fields =
+                    type === 'projects'
+                        ? item_fields_with_hyperlink
+                        : item_fields
                 return (
                     <Input_Field
                         key={label_index}
                         label={label}
-                        value={(item as any)[item_fields[label_index]]}
-                        name={item_fields[label_index]}
+                        value={(item as any)[fields[label_index]]}
+                        name={fields[label_index]}
                         onChange={on_input_array_change(type, index)}
                     />
                 )

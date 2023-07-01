@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react'
-import Project_Input_Group from './input_groups/Project_Input_Group'
 import Skills_Input_Group from './input_groups/Skills_Input_Group'
 import Personal_Details_Input_Group from './input_groups/Personal_Details_Input_Group'
 import { State } from '../interfaces/interface-models'
@@ -168,8 +167,17 @@ function Form({
                 ) : (
                     projects.map((item, index) => {
                         return (
-                            <Project_Input_Group
+                            <Abstract_Input_Group
                                 key={index}
+                                type="projects"
+                                label_list={[
+                                    'Title',
+                                    'Repository',
+                                    'Tools',
+                                    'Overview',
+                                    'Start Date',
+                                    'End Date',
+                                ]}
                                 item={item}
                                 index={index}
                                 on_input_array_change={on_input_array_change}

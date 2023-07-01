@@ -52,7 +52,7 @@ function Abstract_Input_Group({
             {label_list.map((label, idx) => (
                 <Input_Field
                     key={idx}
-                    label={label_list[idx]}
+                    label={label}
                     value={(item as any)[item_fields[idx]]}
                     name={item_fields[idx]}
                     onChange={on_input_array_change(type, index)}

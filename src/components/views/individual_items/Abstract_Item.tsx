@@ -1,7 +1,8 @@
 interface Props {
     index: number
-    position: string
-    company: string
+    type: 'experience' | 'education' | 'projects' | 'volunteering'
+    primary_desc: string
+    secondary_desc: string
     overview: string
     start_date: string
     end_date: string
@@ -18,10 +19,11 @@ interface Props {
     on_drag_end: (e: React.DragEvent<HTMLDivElement>) => void
 }
 
-function Experience_Item({
+function Abstract_Item({
     index,
-    position,
-    company,
+    type,
+    primary_desc,
+    secondary_desc,
     overview,
     start_date,
     end_date,
@@ -36,18 +38,20 @@ function Experience_Item({
             draggable
             onDragStart={() => on_drag_start('experience', index)}
             onDragOver={(e: React.DragEvent<HTMLDivElement>) =>
-                on_drag_over(e, 'experience', index)
+                on_drag_over(e, type, index)
             }
             onDragEnd={on_drag_end}
         >
             <div className="w-full flex flex-col justify-start items-center">
                 <div className="w-full flex flex-row justify-between items-center">
                     <h4 className="item_title">
-                        <span className="bold">{position}</span>
-                        {company.length > 0 && (
+                        <span className="bold">{primary_desc}</span>
+                        {secondary_desc.length > 0 && (
                             <>
                                 <span className="text-black"> | </span>
-                                <span className="text-sky-700">{company}</span>
+                                <span className="text-sky-700">
+                                    {secondary_desc}
+                                </span>
                             </>
                         )}
                     </h4>
@@ -84,4 +88,4 @@ function Experience_Item({
     )
 }
 
-export default Experience_Item
+export default Abstract_Item

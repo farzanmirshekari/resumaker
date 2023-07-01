@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import Experience_Item from '../individual_items/Experience_Item'
+import Abstract_Item from '../individual_items/Abstract_Item'
 
 interface Item {
     id: string
@@ -52,11 +52,12 @@ function Experience_List({
                         details,
                     } = item
                     return (
-                        <Experience_Item
+                        <Abstract_Item
                             key={`experience_${index}`}
                             index={index}
-                            position={position}
-                            company={company}
+                            type="experience"
+                            primary_desc={position}
+                            secondary_desc={company}
                             overview={overview}
                             start_date={start_date}
                             end_date={end_date}

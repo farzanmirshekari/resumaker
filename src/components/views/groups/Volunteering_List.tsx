@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import Volunteering_Item from '../individual_items/Volunteering_Item'
+import Abstract_Item from '../individual_items/Abstract_Item'
 
 interface Item {
     id: string
@@ -52,11 +52,12 @@ function Volunteering_List({
                         details,
                     } = item
                     return (
-                        <Volunteering_Item
+                        <Abstract_Item
                             key={`volunteering_${index}`}
                             index={index}
-                            title={title}
-                            organization={organization}
+                            type="volunteering"
+                            primary_desc={title}
+                            secondary_desc={organization}
                             overview={overview}
                             start_date={start_date}
                             end_date={end_date}

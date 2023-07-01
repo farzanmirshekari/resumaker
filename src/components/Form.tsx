@@ -1,12 +1,10 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react'
-import Experience_Input_Group from './input_groups/Experience_Input_Group'
-import Education_Input_Group from './input_groups/Education_Input_Group'
 import Project_Input_Group from './input_groups/Project_Input_Group'
 import Skills_Input_Group from './input_groups/Skills_Input_Group'
 import Personal_Details_Input_Group from './input_groups/Personal_Details_Input_Group'
 import { State } from '../interfaces/interface-models'
-import Volunteering_Input_Group from './input_groups/Volunteering_Input_Group'
+import Abstract_Input_Group from './input_groups/Abstract_Input_Group'
 
 interface Props extends State {
     on_personal_details_input_change: (
@@ -128,8 +126,16 @@ function Form({
                 ) : (
                     experience.map((item, index) => {
                         return (
-                            <Experience_Input_Group
+                            <Abstract_Input_Group
                                 key={index}
+                                type="experience"
+                                label_list={[
+                                    'Position',
+                                    'Company',
+                                    'Overview',
+                                    'Start Date',
+                                    'End Date',
+                                ]}
                                 item={item}
                                 index={index}
                                 on_input_array_change={on_input_array_change}
@@ -188,7 +194,7 @@ function Form({
                         <button
                             type="button"
                             className="form_button add_item_button"
-                            onClick={on_volunteering_item_add}
+                            onClick={on_experience_item_add}
                         >
                             Add Volunteering
                         </button>
@@ -196,8 +202,16 @@ function Form({
                 ) : (
                     volunteering.map((item, index) => {
                         return (
-                            <Volunteering_Input_Group
+                            <Abstract_Input_Group
                                 key={index}
+                                type="volunteering"
+                                label_list={[
+                                    'Title',
+                                    'Organization',
+                                    'Overview',
+                                    'Start Date',
+                                    'End Date',
+                                ]}
                                 item={item}
                                 index={index}
                                 on_input_array_change={on_input_array_change}
@@ -230,8 +244,16 @@ function Form({
                 ) : (
                     education.map((item, index) => {
                         return (
-                            <Education_Input_Group
+                            <Abstract_Input_Group
                                 key={index}
+                                type="education"
+                                label_list={[
+                                    'Education Institute',
+                                    'Degree',
+                                    'Overview',
+                                    'Start Date',
+                                    'End Date',
+                                ]}
                                 item={item}
                                 index={index}
                                 on_input_array_change={on_input_array_change}

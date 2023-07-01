@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-pascal-case */
-import { Education } from '../../interfaces/interface-models'
-import Detail_Input_Field from '../micro_components/Detail_Input_FIeld'
+import { item_fields } from '../../interfaces/interface-fields'
+import { AbstractModel } from '../../interfaces/interface-models'
 import Input_Field from '../micro_components/Input_Field'
+import Detail_Input_Field from '../micro_components/Detail_Input_FIeld'
 
 interface Props {
-    item: Education
     index: number
+    type: 'experience' | 'education' | 'projects' | 'volunteering'
+    label_list: string[]
+    item: AbstractModel
     on_input_array_change: (
         property: 'experience' | 'education' | 'projects' | 'volunteering',
         index: number
@@ -32,9 +35,11 @@ interface Props {
     on_item_add: () => void
 }
 
-function Education_Input_Group({
-    item,
+function Abstract_Input_Group({
     index,
+    type,
+    label_list,
+    item,
     on_input_array_change,
     on_details_input_array_change,
     on_detail_add,
@@ -42,61 +47,30 @@ function Education_Input_Group({
     on_item_delete,
     on_item_add,
 }: Props) {
-    const {
-        id,
-        primary_desc,
-        secondary_desc,
-        overview,
-        start_date,
-        end_date,
-        details,
-    } = item
-
     return (
         <div key={index} className="flex flex-col gap-2.5 input_form_group">
-            <Input_Field
-                label="Education Institute"
-                value={primary_desc}
-                name="primary_desc"
-                onChange={on_input_array_change('education', index)}
-            />
-            <Input_Field
-                label="Program"
-                value={secondary_desc}
-                name="secondary_desc"
-                onChange={on_input_array_change('education', index)}
-            />
-            <Input_Field
-                label="Overview"
-                value={overview}
-                name="overview"
-                onChange={on_input_array_change('education', index)}
-            />
-            <Input_Field
-                label="Start Date"
-                value={start_date}
-                name="start_date"
-                onChange={on_input_array_change('education', index)}
-            />
-            <Input_Field
-                label="End Date"
-                value={end_date}
-                name="end_date"
-                onChange={on_input_array_change('education', index)}
-            />
-            {details.map((details_item, detail_index) => {
+            {label_list.map((label, idx) => (
+                <Input_Field
+                    key={idx}
+                    label={label_list[idx]}
+                    value={(item as any)[item_fields[idx]]}
+                    name={item_fields[idx]}
+                    onChange={on_input_array_change(type, index)}
+                />
+            ))}
+            {item.details.map((detail_item, detail_index) => {
                 return (
                     <Detail_Input_Field
-                        key={`education_description-${detail_index}`}
-                        id={`education_description-${detail_index}`}
-                        property="education"
+                        key={type + '_description-' + detail_index}
+                        id={type + '_description-' + detail_index}
+                        property={type}
                         index={index}
                         detail_index={detail_index}
                         label="Description"
-                        value={details_item}
-                        name={`education_description-${detail_index}`}
+                        value={detail_item}
+                        name={type + '_description-' + detail_index}
                         onChange={on_details_input_array_change(
-                            'education',
+                            type,
                             index,
                             detail_index
                         )}
@@ -106,11 +80,11 @@ function Education_Input_Group({
                 )
             })}
             <div className="flex gap-2 w-full h-10 justify-end mt-1 -translate-x-0.5">
-                {details.length === 0 && (
+                {item.details.length === 0 && (
                     <button
                         className="form_button add_description_button"
                         onClick={() => {
-                            on_detail_add('education', index, 0)
+                            on_detail_add(type, index, 0)
                         }}
                     >
                         + Description
@@ -119,7 +93,7 @@ function Education_Input_Group({
                 <button
                     type="button"
                     className="form_button"
-                    onClick={() => on_item_delete('education', id)}
+                    onClick={() => on_item_delete(type, item.id)}
                 >
                     Delete
                 </button>
@@ -135,4 +109,4 @@ function Education_Input_Group({
     )
 }
 
-export default Education_Input_Group
+export default Abstract_Input_Group

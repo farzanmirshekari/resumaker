@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-pascal-case */
-import { Project } from '../../interfaces/interface-models'
+import { AbstractModel } from '../../interfaces/interface-models'
 import Detail_Input_Field from '../micro_components/Detail_Input_FIeld'
 import Input_Field from '../micro_components/Input_Field'
 
 interface Props {
-    item: Project
+    item: AbstractModel
     index: number
     on_input_array_change: (
         property: 'experience' | 'education' | 'projects' | 'volunteering',
@@ -64,7 +64,7 @@ function Project_Input_Group({
             <Input_Field
                 label="Repository"
                 value={primary_desc_hyperlink}
-                name="github_repository"
+                name="primary_desc_hyperlink"
                 onChange={on_input_array_change('projects', index)}
             />
             <Input_Field

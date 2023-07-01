@@ -1,12 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { useState, useEffect } from 'react'
 import data from './Sample_Data'
-import {
-    Education,
-    Experience,
-    Project,
-    State,
-} from './interfaces/interface-models'
+import { AbstractModel, State } from './interfaces/interface-models'
 import { Drag_Reference } from './interfaces/drag-reference'
 import { v4 as uuidv4 } from 'uuid'
 import Form from './components/Form'
@@ -251,7 +246,7 @@ function App() {
         set_resume_data((prev_resume_data) => ({
             ...prev_resume_data,
             [property]: prev_resume_data[property].filter(
-                (item: Experience | Education | Project) => item.id !== id
+                (item: AbstractModel) => item.id !== id
             ),
         }))
     }

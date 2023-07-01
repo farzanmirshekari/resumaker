@@ -42,8 +42,15 @@ function Education_Input_Group({
     on_item_delete,
     on_item_add,
 }: Props) {
-    const { id, primary_desc, secondary_desc, overview, start_date, end_date, details } =
-        item
+    const {
+        id,
+        primary_desc,
+        secondary_desc,
+        overview,
+        start_date,
+        end_date,
+        details,
+    } = item
 
     return (
         <div key={index} className="flex flex-col gap-2.5 input_form_group">

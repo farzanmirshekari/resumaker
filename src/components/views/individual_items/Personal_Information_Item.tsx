@@ -3,7 +3,7 @@ interface Props {
     text: string
 }
 
-function Contact_Details({ icon, text }: Props) {
+function Personal_Information_Item({ icon, text }: Props) {
     return (
         <div className="flex flex-row justify-center items-center gap-1.5 -mt-0.5">
             {icon ? (
@@ -16,4 +16,4 @@ function Contact_Details({ icon, text }: Props) {
     )
 }
 
-export default Contact_Details
+export default Personal_Information_Item

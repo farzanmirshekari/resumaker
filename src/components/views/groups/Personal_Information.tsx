@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import Contact_Details from '../individual_items/Contact_Details'
+import Personal_Information_Item from '../individual_items/Personal_Information_Item'
 import Email_Icon from './../../../assets/email_icon.svg'
 import Phone_Icon from './../../../assets/phone_icon.svg'
 import LinkedIn_Icon from './../../../assets/linkedin_icon.svg'
@@ -43,13 +43,22 @@ function Personal_Information({
             </div>
             <div className="flex flex-row items-center gap-4 -mt-4 translate-y-7">
                 {phone_number.length > 0 && (
-                    <Contact_Details text={phone_number} icon={Phone_Icon} />
+                    <Personal_Information_Item
+                        text={phone_number}
+                        icon={Phone_Icon}
+                    />
                 )}
                 {email_address.length > 0 && (
-                    <Contact_Details text={email_address} icon={Email_Icon} />
+                    <Personal_Information_Item
+                        text={email_address}
+                        icon={Email_Icon}
+                    />
                 )}
                 {location.length > 0 && (
-                    <Contact_Details text={location} icon={Location_Icon} />
+                    <Personal_Information_Item
+                        text={location}
+                        icon={Location_Icon}
+                    />
                 )}
                 {github_username.length > 0 && (
                     <a
@@ -58,7 +67,7 @@ function Personal_Information({
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <Contact_Details
+                        <Personal_Information_Item
                             text={github_username}
                             icon={GitHub_Icon}
                         />
@@ -71,7 +80,7 @@ function Personal_Information({
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <Contact_Details
+                        <Personal_Information_Item
                             text={linkedin_username}
                             icon={LinkedIn_Icon}
                         />

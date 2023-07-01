@@ -37,9 +37,9 @@ function Resume({
             <Personal_Information {...personal_details} />
             <Skills {...skills} />
             {experience.length > 0 ? (
-                <Experience_List
+                <Abstract_List
                     heading="experience"
-                    experience_list={experience}
+                    items_list={experience}
                     on_drag_start={on_drag_start}
                     on_drag_end={on_drag_end}
                     on_drag_over={on_drag_over}

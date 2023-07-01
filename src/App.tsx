@@ -123,6 +123,8 @@ function App() {
         ) =>
         (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target
+            console.log(name, value)
+            console.log(resume_data)
             set_resume_data((prev_resume_data) => ({
                 ...prev_resume_data,
                 [property]: [

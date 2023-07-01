@@ -18,8 +18,8 @@ const data = {
     experience: [
         {
             id: uuidv4(),
-            position: 'Software Engineer',
-            company: 'XYZ Corporation',
+            primary_desc: 'Software Engineer',
+            secondary_desc: 'XYZ Corporation',
             overview:
                 'Contributed to the development of enterprise software solutions',
             start_date: 'April 2020',

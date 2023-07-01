@@ -42,21 +42,21 @@ function Experience_Input_Group({
     on_item_delete,
     on_item_add,
 }: Props) {
-    const { id, position, company, overview, start_date, end_date, details } =
+    const { id, primary_desc, secondary_desc, overview, start_date, end_date, details } =
         item
 
     return (
         <div key={index} className="flex flex-col gap-2.5 input_form_group">
             <Input_Field
                 label="Position"
-                value={position}
-                name="position"
+                value={primary_desc}
+                name="primary_desc"
                 onChange={on_input_array_change('experience', index)}
             />
             <Input_Field
                 label="Company"
-                value={company}
-                name="company"
+                value={secondary_desc}
+                name="secondary_desc"
                 onChange={on_input_array_change('experience', index)}
             />
             <Input_Field

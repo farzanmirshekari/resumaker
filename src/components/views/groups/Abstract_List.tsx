@@ -4,7 +4,7 @@ import Abstract_Item from "../individual_items/Abstract_Item";
 interface Item {
     id: string;
     primary_desc: string;
-    primary_desc_hyperlink: string;
+    primary_desc_hyperlink?: string;
     secondary_desc: string;
     overview: string;
     start_date: string;

@@ -16,23 +16,23 @@ export interface Skills {
 
 export interface Project {
     id: string
-    primary_desc: string
-    primary_desc_hyperlink: string
-    secondary_desc: string
-    overview: string
-    start_date: string
-    end_date: string
-    details: string[]
+    primary_desc: string              // project title
+    primary_desc_hyperlink: string    // project link
+    secondary_desc: string            // project tools
+    overview: string                  // project overview
+    start_date: string                // project start date
+    end_date: string                  // project end date 
+    details: string[]                 // project details
 }
 
 export interface Experience {
     id: string
-    position: string
-    company: string
-    overview: string
-    start_date: string
-    end_date: string
-    details: string[]
+    primary_desc: string              // job title
+    secondary_desc: string            // employer
+    overview: string                  // job overview
+    start_date: string                // job start date
+    end_date: string                  // job end date
+    details: string[]                 // job details
 }
 
 export interface Volunteering {

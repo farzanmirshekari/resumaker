@@ -58,13 +58,7 @@ function Project_Input_Group({
             <Input_Field
                 label="Title"
                 value={primary_desc}
-                name="title"
-                onChange={on_input_array_change('projects', index)}
-            />
-            <Input_Field
-                label="Overview"
-                value={overview}
-                name="overview"
+                name="primary_desc"
                 onChange={on_input_array_change('projects', index)}
             />
             <Input_Field
@@ -76,7 +70,13 @@ function Project_Input_Group({
             <Input_Field
                 label="Tools"
                 value={secondary_desc}
-                name="tools"
+                name="secondary_desc"
+                onChange={on_input_array_change('projects', index)}
+            />
+            <Input_Field
+                label="Overview"
+                value={overview}
+                name="overview"
                 onChange={on_input_array_change('projects', index)}
             />
             <Input_Field

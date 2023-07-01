@@ -15,7 +15,7 @@ interface Props {
     location: string
 }
 
-function Personal_Information({
+function Personal_Information_List({
     full_name,
     phone_number,
     email_address,
@@ -91,4 +91,4 @@ function Personal_Information({
     )
 }
 
-export default Personal_Information
+export default Personal_Information_List

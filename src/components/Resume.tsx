@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react'
-import Personal_Information from './views/groups/Personal_Information'
-import Skills from './views/groups/Skills'
+import Personal_Information_List from './views/groups/Personal_Information_List'
+import Skills_List from './views/groups/Skills_List'
 import Abstract_List from './views/groups/Abstract_List'
 import { State } from '../interfaces/interface-models'
 
@@ -31,8 +31,8 @@ function Resume({
 }: Props) {
     return (
         <div className="flex flex-col justify-start items-start gap-4 resume_side">
-            <Personal_Information {...personal_details} />
-            <Skills {...skills} />
+            <Personal_Information_List {...personal_details} />
+            <Skills_List {...skills} />
             {experience.length > 0 ? (
                 <Abstract_List
                     heading="experience"

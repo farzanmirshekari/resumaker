@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import Skill_Item from './../individual_items/Skill_Item'
+import Skill_Item from '../individual_items/Skill_Item'
 
 interface Props {
     programming_languages: string
@@ -8,7 +8,7 @@ interface Props {
     certifications: string
 }
 
-function Skills({
+function Skills_List({
     programming_languages,
     frameworks,
     tools,
@@ -44,4 +44,4 @@ function Skills({
     )
 }
 
-export default Skills
+export default Skills_List

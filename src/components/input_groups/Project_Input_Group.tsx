@@ -44,10 +44,10 @@ function Project_Input_Group({
 }: Props) {
     const {
         id,
-        title,
+        primary_desc,
+        primary_desc_hyperlink,
+        secondary_desc,
         overview,
-        github_repository,
-        tools,
         start_date,
         end_date,
         details,
@@ -57,7 +57,7 @@ function Project_Input_Group({
         <div key={index} className="flex flex-col gap-2.5 input_form_group">
             <Input_Field
                 label="Title"
-                value={title}
+                value={primary_desc}
                 name="title"
                 onChange={on_input_array_change('projects', index)}
             />
@@ -69,13 +69,13 @@ function Project_Input_Group({
             />
             <Input_Field
                 label="Repository"
-                value={github_repository}
+                value={primary_desc_hyperlink}
                 name="github_repository"
                 onChange={on_input_array_change('projects', index)}
             />
             <Input_Field
                 label="Tools"
-                value={tools}
+                value={secondary_desc}
                 name="tools"
                 onChange={on_input_array_change('projects', index)}
             />

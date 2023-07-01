@@ -34,11 +34,11 @@ const data = {
     projects: [
         {
             id: uuidv4(),
-            title: 'Inventory Management System',
+            primary_desc: 'Inventory Management System',
             overview:
                 'Developed a web-based inventory management system for a retail company',
-            github_repository: 'https://github.com/johndoe/inventory-system',
-            tools: 'Java, Spring Boot, MySQL',
+            primary_desc_hyperlink: 'https://github.com/johndoe/inventory-system',
+            secondary_desc: 'Java, Spring Boot, MySQL',
             start_date: 'January 2022',
             end_date: 'March 2022',
             details: [

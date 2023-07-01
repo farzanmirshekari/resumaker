@@ -3,10 +3,10 @@ import Abstract_Item from '../individual_items/Abstract_Item'
 
 interface Item {
     id: string
-    title: string
+    primary_desc: string
+    primary_desc_hyperlink: string
+    secondary_desc: string
     overview: string
-    github_repository: string
-    tools: string
     start_date: string
     end_date: string
     details: string[]
@@ -45,10 +45,10 @@ function Projects_List({
             <div className="-translate-y-1 text-base w-full flex flex-col">
                 {projects_list.map((item, index) => {
                     const {
-                        title,
+                        primary_desc,
+                        primary_desc_hyperlink,
+                        secondary_desc,
                         overview,
-                        github_repository,
-                        tools,
                         start_date,
                         end_date,
                         details,
@@ -58,9 +58,9 @@ function Projects_List({
                             key={`project_${index}`}
                             index={index}
                             type="projects"
-                            primary_desc={title}
-                            primary_desc_hyperlink={github_repository}
-                            secondary_desc={tools}
+                            primary_desc={primary_desc}
+                            primary_desc_hyperlink={primary_desc_hyperlink}
+                            secondary_desc={secondary_desc}
                             overview={overview}
                             start_date={start_date}
                             end_date={end_date}

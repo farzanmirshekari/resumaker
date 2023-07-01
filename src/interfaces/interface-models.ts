@@ -16,10 +16,10 @@ export interface Skills {
 
 export interface Project {
     id: string
-    title: string
+    primary_desc: string
+    primary_desc_hyperlink: string
+    secondary_desc: string
     overview: string
-    github_repository: string
-    tools: string
     start_date: string
     end_date: string
     details: string[]

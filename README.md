@@ -12,7 +12,7 @@ In anticipation of applying for my first co-op position in the summer of 2021, I
 
 ---
 
-<h3>Where?</h3>
+<h3>Try it out</h3>
 
 The Résumaker is currently hosted on GitHub Pages and can be found <a href = 'https://farzanmirshekari.github.io/Resumaker/'><i>here</i></a>.
 

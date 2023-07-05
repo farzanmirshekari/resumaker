@@ -30,7 +30,6 @@ function App() {
         volunteering: [],
         education: [],
     })
-    const [print_mode, set_print_mode] = useState(false)
 
     const drag_item = useRef<Drag_Reference>(null)
     const drag_over_item = useRef<Drag_Reference>(null)
@@ -102,13 +101,7 @@ function App() {
     }
 
     const save_to_local_storage = () => {
-        localStorage.setItem(
-            'values',
-            JSON.stringify({
-                ...resume_data,
-                print_mode: false,
-            })
-        )
+        localStorage.setItem('values', JSON.stringify(resume_data))
     }
 
     const handle_input_array_change =
@@ -340,17 +333,6 @@ function App() {
         }
     }
 
-    const handle_print_mode = (): void => {
-        set_print_mode((prev_print_mode) => !prev_print_mode)
-        print_mode
-            ? document
-                  .getElementById('resume_container')!
-                  .classList.remove('print_mode')
-            : document
-                  .getElementById('resume_container')!
-                  .classList.add('print_mode')
-    }
-
     const handle_export_to_JSON = (): void => {
         const data_string =
             'data:text/json;charset=utf-8,' +
@@ -376,31 +358,29 @@ function App() {
 
     return (
         <div className="flex flex-row flex-wrap justify-center gap-20">
-            {!print_mode && (
-                <div style={{ width: `${595}px` }}>
-                    <Form
-                        {...resume_data}
-                        on_personal_details_input_change={
-                            handle_personal_details_input_change
-                        }
-                        on_skills_input_change={handle_skills_input_change}
-                        on_input_array_change={handle_input_array_change}
-                        on_details_input_array_change={
-                            handle_details_input_array_change
-                        }
-                        on_detail_add={handle_detail_item_add}
-                        on_detail_delete={handle_detail_item_delete}
-                        on_existing_section_JSON_upload={
-                            on_existing_section_JSON_upload
-                        }
-                        on_item_delete={handle_item_delete}
-                        on_education_item_add={handle_education_item_add}
-                        on_experience_item_add={handle_experience_item_add}
-                        on_project_item_add={handle_project_item_add}
-                        on_volunteering_item_add={handle_volunteering_item_add}
-                    />
-                </div>
-            )}
+            <div style={{ width: `${595}px` }} id="resume_form">
+                <Form
+                    {...resume_data}
+                    on_personal_details_input_change={
+                        handle_personal_details_input_change
+                    }
+                    on_skills_input_change={handle_skills_input_change}
+                    on_input_array_change={handle_input_array_change}
+                    on_details_input_array_change={
+                        handle_details_input_array_change
+                    }
+                    on_detail_add={handle_detail_item_add}
+                    on_detail_delete={handle_detail_item_delete}
+                    on_existing_section_JSON_upload={
+                        on_existing_section_JSON_upload
+                    }
+                    on_item_delete={handle_item_delete}
+                    on_education_item_add={handle_education_item_add}
+                    on_experience_item_add={handle_experience_item_add}
+                    on_project_item_add={handle_project_item_add}
+                    on_volunteering_item_add={handle_volunteering_item_add}
+                />
+            </div>
             <div
                 className="flex flex-col justify-center items-center h-fit w-fit"
                 id="resume_container"
@@ -412,9 +392,7 @@ function App() {
                     on_drag_end={on_drag_end}
                 />
                 <Utilities
-                    print_mode={print_mode}
                     {...resume_data}
-                    handle_print_mode={handle_print_mode}
                     handle_export_to_JSON={handle_export_to_JSON}
                 />
             </div>

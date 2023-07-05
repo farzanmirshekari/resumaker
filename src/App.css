@@ -80,10 +80,6 @@
     height: 35px;
 }
 
-.print_mode {
-    transform: translateY(-2vh);
-}
-
 .form_button {
     background-color: #093652;
     width: 4.5rem;
@@ -163,6 +159,12 @@
 @media print {
     @page {
         margin: 0;
+    }
+    #resume_form {
+        display: none;
+    }
+    #resume_container {
+        transform: translateY(-2vh);
     }
     .resume_side {
         box-shadow: none;

@@ -57,7 +57,13 @@ function Abstract_List({
                         <Abstract_Item
                             key={`${heading}_${index}`}
                             index={index}
-                            type={heading as 'experience' | 'education' | 'projects' | 'volunteering'}
+                            type={
+                                heading as
+                                    | 'experience'
+                                    | 'education'
+                                    | 'projects'
+                                    | 'volunteering'
+                            }
                             primary_desc={primary_desc}
                             primary_desc_hyperlink={primary_desc_hyperlink}
                             secondary_desc={secondary_desc}

@@ -3,7 +3,6 @@
 
 The Résumaker simplifies the - usually tedious - process of drafting your résumé. Simply type in your qualifications and have a stylish, professional, carefully crafted résumé ready to go!
 
-
 ---
 
 <h3>Origins</h3>

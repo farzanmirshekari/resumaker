@@ -63,9 +63,23 @@ function Abstract_Item({
                                 </span>
                             )}
                         </span>{' '}
-                        <span className={(type === 'education' || type === 'projects') ? 'text-black' : 'text-sky-700'}>
-                            {secondary_desc ? `| ${secondary_desc}` : ''}
-                        </span>
+                        {secondary_desc ? (
+                            <span>
+                                {'| '}
+                                <span
+                                    className={
+                                        type === 'education' ||
+                                        type === 'projects'
+                                            ? 'text-black'
+                                            : 'text-sky-700'
+                                    }
+                                >
+                                    {secondary_desc}
+                                </span>
+                            </span>
+                        ) : (
+                            ''
+                        )}
                     </h4>
                     <span>
                         {(start_date.length > 0 && end_date.length) > 0 && (

@@ -55,9 +55,9 @@ function Abstract_List({
                     } = item
                     return (
                         <Abstract_Item
-                            key={`experience_${index}`}
+                            key={`${heading}_${index}`}
                             index={index}
-                            type="experience"
+                            type={heading as 'experience' | 'education' | 'projects' | 'volunteering'}
                             primary_desc={primary_desc}
                             primary_desc_hyperlink={primary_desc_hyperlink}
                             secondary_desc={secondary_desc}

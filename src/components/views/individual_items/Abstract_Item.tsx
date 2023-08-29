@@ -38,7 +38,7 @@ function Abstract_Item({
         <div
             className="w-full flex flex-col justify-start items-start gap-0.5 cursor-move"
             draggable
-            onDragStart={() => on_drag_start('experience', index)}
+            onDragStart={() => on_drag_start(type, index)}
             onDragOver={(e: React.DragEvent<HTMLDivElement>) =>
                 on_drag_over(e, type, index)
             }

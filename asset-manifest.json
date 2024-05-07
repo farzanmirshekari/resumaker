@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Resumaker/static/css/main.cfbe27e1.css",
-    "main.js": "/Resumaker/static/js/main.b281c626.js",
-    "static/media/TW Cen MT.TTF": "/Resumaker/static/media/TW Cen MT.7b67eec0cc9a1e3ba9cc.TTF",
-    "static/media/printer_icon.svg": "/Resumaker/static/media/printer_icon.48b39d2499c8c05a38bebf6937bc44c5.svg",
-    "static/media/linkedin_icon.svg": "/Resumaker/static/media/linkedin_icon.e8eaba624b5d7057c49c3eb1f567bf0f.svg",
-    "static/media/github_icon.svg": "/Resumaker/static/media/github_icon.555f826dd6c280b433d7461e8f8b0347.svg",
-    "static/media/download_icon.svg": "/Resumaker/static/media/download_icon.cc4ae5159cbb46169d1997e2efc6f906.svg",
-    "static/media/email_icon.svg": "/Resumaker/static/media/email_icon.bcb187448eea33563fb58e7919f0c110.svg",
-    "index.html": "/Resumaker/index.html",
-    "static/media/phone_icon.svg": "/Resumaker/static/media/phone_icon.9c22c8e1baf7a08ef85e2c3da2016020.svg",
-    "static/media/location_icon.svg": "/Resumaker/static/media/location_icon.d9fe5579ce7cf80dff9dec10233e4dcf.svg",
-    "main.cfbe27e1.css.map": "/Resumaker/static/css/main.cfbe27e1.css.map",
-    "main.b281c626.js.map": "/Resumaker/static/js/main.b281c626.js.map"
+    "main.css": "/resumaker/static/css/main.c23e591a.css",
+    "main.js": "/resumaker/static/js/main.17c72a37.js",
+    "static/media/TW Cen MT.TTF": "/resumaker/static/media/TW Cen MT.7b67eec0cc9a1e3ba9cc.TTF",
+    "static/media/printer_icon.svg": "/resumaker/static/media/printer_icon.48b39d2499c8c05a38bebf6937bc44c5.svg",
+    "static/media/linkedin_icon.svg": "/resumaker/static/media/linkedin_icon.e8eaba624b5d7057c49c3eb1f567bf0f.svg",
+    "static/media/github_icon.svg": "/resumaker/static/media/github_icon.555f826dd6c280b433d7461e8f8b0347.svg",
+    "static/media/download_icon.svg": "/resumaker/static/media/download_icon.cc4ae5159cbb46169d1997e2efc6f906.svg",
+    "static/media/email_icon.svg": "/resumaker/static/media/email_icon.bcb187448eea33563fb58e7919f0c110.svg",
+    "index.html": "/resumaker/index.html",
+    "static/media/phone_icon.svg": "/resumaker/static/media/phone_icon.9c22c8e1baf7a08ef85e2c3da2016020.svg",
+    "static/media/location_icon.svg": "/resumaker/static/media/location_icon.d9fe5579ce7cf80dff9dec10233e4dcf.svg",
+    "main.c23e591a.css.map": "/resumaker/static/css/main.c23e591a.css.map",
+    "main.17c72a37.js.map": "/resumaker/static/js/main.17c72a37.js.map"
   },
   "entrypoints": [
-    "static/css/main.cfbe27e1.css",
-    "static/js/main.b281c626.js"
+    "static/css/main.c23e591a.css",
+    "static/js/main.17c72a37.js"
   ]
 }
